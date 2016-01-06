@@ -1,0 +1,137 @@
+//
+//  GameScene.swift
+//  Physics Breaker
+//
+//  Created by Charlie Bushman on 1/3/16.
+//  Copyright (c) 2016 imaginary inc. All rights reserved.
+//
+
+import SpriteKit
+import UIKit
+
+class MenuScene: SKScene {
+    
+    let menuLabel = SKLabelNode(text: "PHYSICS BREAKER")
+    
+    let startButton = UIButton()
+    
+    let volumeButton = UIButton(type: .RoundedRect)
+    let volumeImages = [UIImage(named: "Volume-3Bars"), UIImage(named: "Volume-1Bar"), UIImage(named: "Volume-Mute")]
+    
+    let settingsButton = UIButton(type: .RoundedRect)
+    
+    let helpButton = UIButton(type: .RoundedRect)
+    
+    let IDKButton = UIButton(type: .RoundedRect)
+    
+    override func didMoveToView(view: SKView) {
+        /*LABEL: Displays title*/
+        menuLabel.fontColor = UIColor.blackColor()
+        menuLabel.fontSize = 60
+        menuLabel.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame))
+        
+        self.addChild(menuLabel)
+        
+        /*BUTTON: Start button*/
+        startButton.setTitle("Start", forState: UIControlState.Normal)
+        startButton.titleLabel!.font = UIFont(name: "AmericanTypewriter-Light", size: 30.0)
+        startButton.frame = CGRect(x: (self.view!.frame.size.width/2)-50, y: (self.view!.frame.size.height/2)+50, width: 100, height: 50)
+        startButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        startButton.addTarget(self, action: "goToDrawingBoard:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        self.view!.addSubview(startButton)
+        
+        /*BUTTON: Volume button*/
+        volumeButton.setBackgroundImage(volumeImages[0], forState: UIControlState.Normal)
+        volumeButton.frame = CGRect(x: 20, y: (self.view!.frame.size.height)-50, width: 40, height: 40)
+        volumeButton.addTarget(self, action: "changeVolume:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        self.view!.addSubview(volumeButton)
+        
+        /*BUTTON: Settings button*/
+        settingsButton.setTitle("Settings", forState: UIControlState.Normal)
+        settingsButton.titleLabel!.font = UIFont(name: "AmericanTypewriter-Light", size: 20.0)
+        settingsButton.frame = CGRect(x: (self.view!.frame.size.width)-125, y: 20, width: 125, height: 30)
+        settingsButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        
+        self.view!.addSubview(settingsButton)
+        
+        /*BUTTON: Help button*/
+        helpButton.setTitle("Help", forState: UIControlState.Normal)
+        helpButton.titleLabel!.font = UIFont(name: "AmericanTypewriter-Light", size: 20.0)
+        helpButton.frame = CGRect(x: (self.view!.frame.size.width)-110, y: (self.view!.frame.size.height)-50, width: 115, height: 30)
+        helpButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        
+        self.view!.addSubview(helpButton)
+        
+        /*BUTTON: IDK button*/
+        IDKButton.setTitle("IDKs", forState: UIControlState.Normal)
+        IDKButton.titleLabel!.font = UIFont(name: "AmericanTypewriter-Light", size: 20.0)
+        IDKButton.frame = CGRect(x: 20, y: 20, width: 50, height: 30)
+        IDKButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        
+        self.view!.addSubview(IDKButton)
+        
+    }
+    
+    @objc func changeVolume(sender: UIButton){
+        var volumeChanged: Int = 0
+        
+        if(volumeChanged == 0){
+            if(volumeImages[0] == volumeButton.currentBackgroundImage){
+                volumeButton.setBackgroundImage(volumeImages[1], forState: UIControlState.Normal)
+            
+                //Change volume to half volume
+            
+                volumeChanged = 1
+            }
+        }
+        if(volumeChanged == 0){
+            if(volumeImages[1] == volumeButton.currentBackgroundImage){
+                volumeButton.setBackgroundImage(volumeImages[2], forState: UIControlState.Normal)
+                
+                //Change volume to mute
+                
+                volumeChanged = 1
+            }
+        }
+        if(volumeChanged == 0){
+            if(volumeImages[2] == volumeButton.currentBackgroundImage){
+                volumeButton.setBackgroundImage(volumeImages[0], forState: UIControlState.Normal)
+                
+                //Change volume to full volume
+                
+                volumeChanged = 1
+            }
+        }
+    }
+    
+    @objc func goToDrawingBoard(sender: UIButton){
+        let scene = DrawingBoardScene(size: self.size)
+        self.scene?.view?.presentScene(scene, transition: SKTransition.crossFadeWithDuration(1.0))
+    }
+    
+    /*override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+       /* Called when a touch begins */
+        
+        for touch in touches {
+            let location = touch.locationInNode(self)
+            
+            let sprite = SKSpriteNode(imageNamed:"Imaginary Inc Logo")
+            
+            sprite.xScale = 0.5
+            sprite.yScale = 0.5
+            sprite.position = location
+            
+            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:0.25)
+            
+            sprite.runAction(SKAction.repeatActionForever(action))
+            
+            self.addChild(sprite)
+        }
+    }*/
+   
+    override func update(currentTime: CFTimeInterval) {
+        /* Called before each frame is rendered */
+    }
+}
