@@ -1,0 +1,25 @@
+//
+//  File.swift
+//  Physics Breaker
+//
+//  Created by Charlie Bushman on 1/5/16.
+//  Copyright © 2016 imaginary inc. All rights reserved.
+//
+
+import Foundation
+import SpriteKit
+import UIKit
+
+class DrawingBoardScene: SKScene {
+    
+    let titleLabel = SKLabelNode(text: "DRAWING BOARD")
+    
+    override func didMoveToView(view: SKView) {
+        /*LABEL: Displays title*/
+        titleLabel.fontColor = UIColor.blackColor()
+        titleLabel.fontSize = 60
+        titleLabel.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame))
+        
+        self.addChild(titleLabel)
+    }
+}
