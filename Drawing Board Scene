@@ -12,7 +12,7 @@ import UIKit
 
 class DrawingBoardScene: SKScene {
     
-    let titleLabel = SKLabelNode(text: "DRAWING BOARD")
+    let titleLabel = SKLabelNode(text: "DRAWING BOARD")  //REMOVE
     
     override func didMoveToView(view: SKView) {
         /*LABEL: Displays title*/
