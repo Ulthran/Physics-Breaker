@@ -14,7 +14,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let scene = MenuScene(fileNamed:"MenuScene") {
+        if let menuScene = MenuScene(fileNamed:"MenuScene") {
             // Configure the view.
             let skView = self.view as! SKView
             skView.showsFPS = true
@@ -24,12 +24,21 @@ class GameViewController: UIViewController {
             skView.ignoresSiblingOrder = true
             
             /* Set the scale mode to scale to fit the window */
-            scene.scaleMode = .AspectFill
+            menuScene.scaleMode = .AspectFill
             
-            skView.presentScene(scene)
+            skView.presentScene(menuScene)
+            
+            ViewClass.setUpMenuScene()
         }
+        
+        
     }
-
+    
+    
+    
+    
+    
+    
     override func shouldAutorotate() -> Bool {
         return true
     }
