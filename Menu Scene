@@ -25,7 +25,7 @@ class MenuScene: SKScene {
     let IDKButton = UIButton(type: .RoundedRect)
     
     override func didMoveToView(view: SKView) {
-        setUpView()
+        setUpScene()
     }
     
     override func willMoveFromView(view: SKView) {
@@ -46,7 +46,7 @@ class MenuScene: SKScene {
         }
     }
     
-    func setUpView(){
+    func setUpScene(){
         /*LABEL: Displays title*/
         menuLabel.fontColor = UIColor.blackColor()
         menuLabel.fontSize = 60
