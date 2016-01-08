@@ -28,9 +28,26 @@ class IDKsScene: SKScene{
     setUpScene()
     }
     
+    override willMoveFromView(view:SKView){
+        self.removeAllChildren()
+    }
+    
+    override func delete(sender: AnyObject?) {
+        let subviews = (self.view?.subviews)! as [UIView]
+        for v in subviews {
+            if let button = v as? UIButton {
+                button.removeFromSuperview()
+            }
+        }
+    }
+    
     func setUpScene(){
         /*BUTTON: Button in top right that returns to main menu*/
-        
+        menuButton.setTitle("MENU", forState: UIControlState.Normal)
+        menuButton.titleLabel!.font = UIFont(name: "AmericanTypewriter-Light", size: 20.0)
+        menuButton.frame = CGRect(x: (self.view!.frame.size.width)-120, y: (self.view!.frame.size.height)-50, width: 100, height: 30)
+        menuButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        menuButton.addTarget(self, action: "goToMenu:", forControlEvents: UIControlEvents.TouchUpInside)
         
         /*LABEL: Presents title; 'IDKs'*/
 
@@ -46,6 +63,14 @@ class IDKsScene: SKScene{
         
         
 
+    }
+    
+    @objc func goToMenu(sender: UIButton){
+        let menuScene = MenuScene(size: self.size)
+        
+        self.view?.presentScene(menuScene, transition: SKTransition.crossFadeWithDuration(1.0))
+        
+        delete(menuButton)
     }
     
 }
