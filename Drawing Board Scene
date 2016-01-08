@@ -12,14 +12,11 @@ import UIKit
 
 class DrawingBoardScene: SKScene {
     
-    let titleLabel = SKLabelNode(text: "DRAWING BOARD")  //REMOVE
+
     
     override func didMoveToView(view: SKView) {
-        /*LABEL: Displays title*/
-        titleLabel.fontColor = UIColor.blackColor()
-        titleLabel.fontSize = 60
-        titleLabel.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame))
+        self.backgroundColor = UIColor.whiteColor()  //sets scene's background to white
         
-        self.addChild(titleLabel)
+        
     }
 }
