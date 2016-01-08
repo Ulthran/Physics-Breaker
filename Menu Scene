@@ -30,26 +30,11 @@ class MenuScene: SKScene {
     
     override func willMoveFromView(view: SKView) {
         self.removeAllChildren()
-        
-        /*startButton.tag = 0
-        volumeButton.tag = 1
-        helpButton.tag = 2
-        settingsButton.tag = 3
-        IDKButton.tag = 4
-        
-        print(startButton.tag)
-        print(volumeButton.tag)
-        print(helpButton.tag)
-        print(settingsButton.tag)
-        print(IDKButton.tag)
-        
-        self.view?.viewWithTag(0)?.removeFromSuperview()
-        self.view?.viewWithTag(1)?.removeFromSuperview()
-        self.view?.viewWithTag(2)?.removeFromSuperview()
-        self.view?.viewWithTag(3)?.removeFromSuperview()
-        self.view?.viewWithTag(4)?.removeFromSuperview()*/
-        
+
         delete(startButton)
+        delete(IDKButton)
+        delete(settingsButton)
+        delete(helpButton)
     }
     
     override func delete(sender: AnyObject?) {
