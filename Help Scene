@@ -1,0 +1,22 @@
+//
+//  HelpScene.swift
+//  Physics Breaker
+//
+//  Created by Charlie Bushman on 1/7/16.
+//  Copyright © 2016 imaginary inc. All rights reserved.
+//
+
+import Foundation
+import UIKit
+import SpriteKit
+
+class HelpScene: SKScene{
+    
+    
+    override func didMoveToView(view: SKView) {
+        self.backgroundColor = UIColor.whiteColor()  //sets scene's background to white
+        
+        
+    }
+    
+}
