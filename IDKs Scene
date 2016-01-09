@@ -11,7 +11,7 @@ import UIKit
 import SpriteKit
 
 class IDKsScene: SKScene{
-
+    
     let menuButton = UIButton()
     
     let IDKLabel = SKLabelNode(text: "IDK's")
@@ -23,21 +23,40 @@ class IDKsScene: SKScene{
     let buyMoreButton = UIButton()
     
     override func didMoveToView(view: SKView) {
-    self.backgroundColor = UIColor.whiteColor()  //sets scene's background to white
+        self.backgroundColor = UIColor.whiteColor()  //sets scene's background to white
+        
+        setUpScene()
+    }
     
-    setUpScene()
+    override func willMoveFromView(view:SKView){
+    self.removeAllChildren()
+    }
+    
+    override func delete(sender: AnyObject?) {
+        let subviews = (self.view?.subviews)! as [UIView]
+        for v in subviews {
+            if let button = v as? UIButton {
+                button.removeFromSuperview()
+            }
+        }
     }
     
     func setUpScene(){
         /*BUTTON: Button in top right that returns to main menu*/
+        menuButton.setTitle("MENU", forState: UIControlState.Normal)
+        menuButton.titleLabel!.font = UIFont(name: "AmericanTypewriter-Light", size: 20.0)
+        menuButton.frame = CGRect(x: /*(self.view!.frame.size.width)*/0, y: /*(self.view!.frame.size.height)*/0, width: 100, height: 30)
+        menuButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        menuButton.addTarget(self, action: "goToMenu:", forControlEvents: UIControlEvents.TouchUpInside)
         
+        self.view!.addSubview(menuButton)
         
         /*LABEL: Presents title; 'IDKs'*/
-
-
+        
+        
         /*LABEL: Shows number of IDKs that the user currently has*/
-
-
+        
+        
         /*LABEL: Desribes what IDKs are*/
         //Look for a better class for displaying large blocks of text
         
@@ -45,7 +64,15 @@ class IDKsScene: SKScene{
         /*BUTTON: Sends the user to the In-App Purchases page*/
         
         
-
+        
+    }
+    
+    @objc func goToMenu(sender: UIButton){
+        let menuScene = MenuScene(size: self.size)
+        
+        self.view?.presentScene(menuScene, transition: SKTransition.crossFadeWithDuration(0.0))
+        
+        delete(menuButton)
     }
     
 }
