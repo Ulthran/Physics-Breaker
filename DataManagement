@@ -10,16 +10,33 @@ import Foundation
 
 
 class DataManagement{
+    let defaults = NSUserDefaults.standardUserDefaults()
+    
+    enum defaultKeys{
+        static let IDKsKey = "numIDKs"
+        /*More keys*/
+    }
+    
     var numIDKs: Int = 5
     
     init(){
     }
     
+    func setValues(){
+        defaults.setValue(5, forKey: defaultKeys.IDKsKey)
+    }
+    
     func getNumIDKs() ->Int{
+        numIDKs = defaults.integerForKey(defaultKeys.IDKsKey)
+        
         return numIDKs
     }
     
     func addNumIDKs(addNum: Int){
+        numIDKs = defaults.integerForKey(defaultKeys.IDKsKey)
+        
         numIDKs += addNum
+        
+        defaults.setValue(numIDKs, forKey: defaultKeys.IDKsKey)
     }
 }
