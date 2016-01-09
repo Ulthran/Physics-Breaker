@@ -28,7 +28,7 @@ class IDKsScene: SKScene{
     setUpScene()
     }
     
-    override willMoveFromView(view:SKView){
+    override func willMoveFromView(view:SKView){
         self.removeAllChildren()
     }
     
