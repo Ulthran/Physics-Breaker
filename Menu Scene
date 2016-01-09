@@ -130,13 +130,17 @@ class MenuScene: SKScene {
     @objc func goToDrawingBoard(sender: UIButton){
         let drawingBoardScene = DrawingBoardScene(size: self.size)
         
+        drawingBoardScene.scaleMode = .AspectFill
+        
         self.view?.presentScene(drawingBoardScene, transition: SKTransition.crossFadeWithDuration(0.0))
         
         delete(startButton)
     }
     
     @objc func goToIDKs(sender: UIButton){
-        let idksScene = IDKsScene(size: self.size)
+        let idksScene = IDKsScene(size: CGSize(width: 1024, height: 720))
+        
+        idksScene.scaleMode = .AspectFill
         
         self.view?.presentScene(idksScene, transition: SKTransition.crossFadeWithDuration(0.0))
         
@@ -146,6 +150,8 @@ class MenuScene: SKScene {
     @objc func goToHelp(sender: UIButton){
         let helpScene = HelpScene(size: self.size)
         
+        helpScene.scaleMode = .AspectFill
+        
         self.view?.presentScene(helpScene, transition: SKTransition.crossFadeWithDuration(0.0))
         
         delete(helpButton)
@@ -153,6 +159,8 @@ class MenuScene: SKScene {
     
     @objc func goToSettings(sender: UIButton){
         let settingsScene = SettingsScene(size: self.size)
+        
+        settingsScene.scaleMode = .AspectFill
         
         self.view?.presentScene(settingsScene, transition: SKTransition.crossFadeWithDuration(0.0))
         
