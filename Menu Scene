@@ -25,6 +25,8 @@ class MenuScene: SKScene {
     let IDKButton = UIButton(type: .RoundedRect)
     
     override func didMoveToView(view: SKView) {
+        self.backgroundColor = UIColor.whiteColor()
+        
         setUpScene()
     }
     
@@ -99,9 +101,9 @@ class MenuScene: SKScene {
         if(volumeChanged == 0){
             if(volumeImages[0] == volumeButton.currentBackgroundImage){
                 volumeButton.setBackgroundImage(volumeImages[1], forState: UIControlState.Normal)
-            
+                
                 //Change volume to half volume
-            
+                
                 volumeChanged = 1
             }
         }
@@ -128,7 +130,7 @@ class MenuScene: SKScene {
     @objc func goToDrawingBoard(sender: UIButton){
         let drawingBoardScene = DrawingBoardScene(size: self.size)
         
-        self.view?.presentScene(drawingBoardScene, transition: SKTransition.crossFadeWithDuration(1.0))
+        self.view?.presentScene(drawingBoardScene, transition: SKTransition.crossFadeWithDuration(0.0))
         
         delete(startButton)
     }
@@ -136,7 +138,7 @@ class MenuScene: SKScene {
     @objc func goToIDKs(sender: UIButton){
         let idksScene = IDKsScene(size: self.size)
         
-        self.view?.presentScene(idksScene, transition: SKTransition.crossFadeWithDuration(1.0))
+        self.view?.presentScene(idksScene, transition: SKTransition.crossFadeWithDuration(0.0))
         
         delete(IDKButton)
     }
@@ -144,7 +146,7 @@ class MenuScene: SKScene {
     @objc func goToHelp(sender: UIButton){
         let helpScene = HelpScene(size: self.size)
         
-        self.view?.presentScene(helpScene, transition: SKTransition.crossFadeWithDuration(1.0))
+        self.view?.presentScene(helpScene, transition: SKTransition.crossFadeWithDuration(0.0))
         
         delete(helpButton)
     }
@@ -152,31 +154,31 @@ class MenuScene: SKScene {
     @objc func goToSettings(sender: UIButton){
         let settingsScene = SettingsScene(size: self.size)
         
-        self.view?.presentScene(settingsScene, transition: SKTransition.crossFadeWithDuration(1.0))
+        self.view?.presentScene(settingsScene, transition: SKTransition.crossFadeWithDuration(0.0))
         
         delete(settingsButton)
     }
     
     /*override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-       /* Called when a touch begins */
-        
-        for touch in touches {
-            let location = touch.locationInNode(self)
-            
-            let sprite = SKSpriteNode(imageNamed:"Imaginary Inc Logo")
-            
-            sprite.xScale = 0.5
-            sprite.yScale = 0.5
-            sprite.position = location
-            
-            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:0.25)
-            
-            sprite.runAction(SKAction.repeatActionForever(action))
-            
-            self.addChild(sprite)
-        }
+    /* Called when a touch begins */
+    
+    for touch in touches {
+    let location = touch.locationInNode(self)
+    
+    let sprite = SKSpriteNode(imageNamed:"Imaginary Inc Logo")
+    
+    sprite.xScale = 0.5
+    sprite.yScale = 0.5
+    sprite.position = location
+    
+    let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:0.25)
+    
+    sprite.runAction(SKAction.repeatActionForever(action))
+    
+    self.addChild(sprite)
+    }
     }*/
-   
+    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
     }
