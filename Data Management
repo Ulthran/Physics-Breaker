@@ -13,17 +13,24 @@ class DataManagement{
     let defaults = NSUserDefaults.standardUserDefaults()
     
     enum defaultKeys{
+        static let uninitializedKey = "uninitialized"
         static let IDKsKey = "numIDKs"
-        /*More keys*/
     }
     
+    var uninitialized: Bool = false
     var numIDKs: Int = 5
     
     init(){
     }
     
     func setValues(){
-        defaults.setValue(5, forKey: defaultKeys.IDKsKey)
+        defaults.setValue(true, forKey: defaultKeys.uninitializedKey)
+        if(!defaults.boolForKey(defaultKeys.uninitializedKey)){
+            /*Set all values for first run after download here*/
+            
+            defaults.setValue(5, forKey: defaultKeys.IDKsKey)
+            
+        }
     }
     
     func getNumIDKs() ->Int{
