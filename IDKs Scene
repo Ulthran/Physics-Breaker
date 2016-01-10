@@ -120,7 +120,7 @@ class IDKsScene: SKScene{
         IDKDescription5.fontSize = 30
         IDKDescription5.position = CGPoint(x: CGRectGetMidX(self.frame), y: 240)
         IDKDescription5.fontName = "HelveticaNeue"
-        IDKDescription5.text = "you can't figure out what it is asking for, you may use an IDK to fill "
+        IDKDescription5.text = "you can't figure out what it is asking for, you may use an IDK to fill in the "
         
         self.addChild(IDKDescription5)
         
@@ -129,7 +129,7 @@ class IDKsScene: SKScene{
         IDKDescription6.fontSize = 30
         IDKDescription6.position = CGPoint(x: CGRectGetMidX(self.frame), y: 200)
         IDKDescription6.fontName = "HelveticaNeue"
-        IDKDescription6.text = "in the answer automatically. However, you only have so many IDKs and you "
+        IDKDescription6.text = "answer automatically. However, you only have so many IDKs and you might "
         
         self.addChild(IDKDescription6)
         
@@ -138,7 +138,7 @@ class IDKsScene: SKScene{
         IDKDescription7.fontSize = 30
         IDKDescription7.position = CGPoint(x: CGRectGetMidX(self.frame), y: 160)
         IDKDescription7.fontName = "HelveticaNeue"
-        IDKDescription7.text = "might have to buy more if you run out so use them sparingly."
+        IDKDescription7.text = "have to buy more if you run out so use them sparingly."
         
         self.addChild(IDKDescription7)
         
