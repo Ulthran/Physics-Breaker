@@ -15,10 +15,14 @@ class DataManagement{
     enum defaultKeys{
         static let uninitializedKey = "uninitialized"
         static let IDKsKey = "numIDKs"
+        static let musicVolumeKey = "musicVolume"
+        static let soundVolumeKey = "soundVolume"
     }
     
     var uninitialized: Bool = false
     var numIDKs: Int = 5
+    var musicVolume: Int = 100
+    var soundVolume: Int = 100
     
     init(){
     }
@@ -29,7 +33,8 @@ class DataManagement{
             /*Set all values for first run after download here*/
             
             defaults.setValue(5, forKey: defaultKeys.IDKsKey)
-            
+            defaults.setValue(100, forKey: defaultKeys.musicVolumeKey)
+            defaults.setValue(100, forKey: defaultKeys.soundVolumeKey)
         }
     }
     
@@ -46,4 +51,63 @@ class DataManagement{
         
         defaults.setValue(numIDKs, forKey: defaultKeys.IDKsKey)
     }
+    
+    func getMusicVolume() ->Int{
+        musicVolume = defaults.integerForKey(defaultKeys.musicVolumeKey)
+        
+        return musicVolume
+    }
+    
+    func setMusicVolume(newVolume: Int){
+        defaults.setValue(musicVolume, forKey: defaultKeys.musicVolumeKey)
+    }
+    
+    func getSoundVolume() ->Int{
+        soundVolume = defaults.integerForKey(defaultKeys.soundVolumeKey)
+        
+        return soundVolume
+    }
+    
+    func setSoundVolume(newVolume: Int){
+        defaults.setValue(soundVolume, forKey: defaultKeys.soundVolumeKey)
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
