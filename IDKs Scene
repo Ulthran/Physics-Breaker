@@ -32,26 +32,22 @@ class IDKsScene: SKScene{
         self.backgroundColor = UIColor.whiteColor()  //sets scene's background to white
         
         setUpScene()
+        setUpZAxis()
     }
     
     override func willMoveFromView(view:SKView){
     self.removeAllChildren()
     }
     
-    override func delete(sender: AnyObject?) {
-        let subviews = (self.view?.subviews)! as [UIView]
-        for v in subviews {
-            if let button = v as? UIButton {
-                button.removeFromSuperview()
-            }
-        }
-    }
-    
     func setUpScene(){
+        //Sets a new Data Manager for the scene
+        let dataManager = DataManagement()
+        
+        
         /*BUTTON: Button in top right that returns to main menu*/
         menuButton.setTitle("MENU", forState: UIControlState.Normal)
         menuButton.titleLabel!.font = UIFont(name: "HelveticaNeue-UltraLight", size: 20.0)
-        menuButton.frame = CGRect(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame), width: 100, height: 30)
+        menuButton.frame = CGRect(x: self.view!.frame.size.width-100, y: self.view!.frame.size.height-300, width: 100, height: 30)
         menuButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         menuButton.addTarget(self, action: "goToMenu:", forControlEvents: UIControlEvents.TouchUpInside)
         
@@ -66,8 +62,6 @@ class IDKsScene: SKScene{
         
         
         /*LABEL: Shows number of IDKs that the user currently has*/
-        let dataManager = DataManagement()
-        
         let stringNumIDKs: String = "My IDKs:      " + String(dataManager.getNumIDKs())
         
         myIDKsLabel.fontColor = UIColor.blackColor()
@@ -144,8 +138,8 @@ class IDKsScene: SKScene{
         
         /*BUTTON: Sends the user to the In-App Purchases page*/
         buyMoreButton.setTitle("Buy More IDKs", forState: UIControlState.Normal)
-        buyMoreButton.titleLabel!.font = UIFont(name: "HelveticaNeue-UltraLight", size: 40)
-        buyMoreButton.frame = CGRect(x: CGRectGetMidX(self.frame), y: 75, width: 150, height: 50)
+        buyMoreButton.titleLabel!.font = UIFont(name: "HelveticaNeue-UltraLight", size: 20)
+        buyMoreButton.frame = CGRect(x: CGRectGetMidX(self.frame)-310, y: 270, width: 150, height: 50)
         buyMoreButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         buyMoreButton.addTarget(self, action: "goToInAppPurchases:", forControlEvents: UIControlEvents.TouchUpInside)
         
@@ -154,12 +148,25 @@ class IDKsScene: SKScene{
         
     }
     
+    func setUpZAxis(){
+        IDKLabel.zPosition = 1.0
+        myIDKsLabel.zPosition = 1.0
+        IDKDescription1.zPosition = 1.0
+        IDKDescription2.zPosition = 1.0
+        IDKDescription3.zPosition = 1.0
+        IDKDescription4.zPosition = 1.0
+        IDKDescription5.zPosition = 1.0
+        IDKDescription6.zPosition = 1.0
+        IDKDescription7.zPosition = 1.0
+    }
+    
     @objc func goToMenu(sender: UIButton){
         let menuScene = MenuScene(size: self.size)
         
         self.view?.presentScene(menuScene, transition: SKTransition.crossFadeWithDuration(0.0))
         
-        delete(menuButton)
+        menuButton.removeFromSuperview()
+        buyMoreButton.removeFromSuperview()
     }
     
     @objc func goToInAppPurchases(sender: UIButton){
