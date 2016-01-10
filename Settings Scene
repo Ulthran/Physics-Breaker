@@ -31,6 +31,10 @@ class SettingsScene: SKScene{
     }
     
     func setUpScene(){
+        //Sets a Data Manager for the scene
+        let dataManager = DataManagement()
+        
+        
         /*LABEL: Displays the title 'SETTINGS'*/
         titleLabel.fontColor = UIColor.blackColor()
         titleLabel.fontSize = 60
@@ -53,10 +57,20 @@ class SettingsScene: SKScene{
         self.addChild(soundVolumeLabel)
         
         /*SLIDER: Slider that sets the music volume*/
+        musicVolumeSlider.maximumValue = 100.0
+        musicVolumeSlider.value = dataManager.getMusicVolume()
+        musicVolumeSlider.frame = CGRect(x: 600, y: 400, width: 300, height: 50)
+        musicVolumeSlider.addTarget(self, action: "changeMusicVolume:", forControlEvents: UIControlEvents.ValueChanged)
         
+        self.view!.addSubview(musicVolumeSlider)
         
         /*SLIDER: Slider that sets the sound volume*/
+        soundVolumeSlider.maximumValue = 100.0
+        soundVolumeSlider.value = dataManager.getSoundVolume()
+        soundVolumeSlider.frame = CGRect(x: 600, y: 300, width: 300, height: 50)
+        soundVolumeSlider.addTarget(self, action: "changeSoundVolume:", forControlEvents: UIControlEvents.ValueChanged)
         
+        self.view!.addSubview(soundVolumeSlider)
         
         /*BUTTON: Allows user to return to the main menu*/
         menuButton.setTitle("MENU", forState: UIControlState.Normal)
@@ -76,8 +90,22 @@ class SettingsScene: SKScene{
         
         delete(menuButton)
     }
+    
+    @objc func changeMusicVolume(){
+        
+    }
+    
+    @objc func changeSoundVolume(){
+        
+    }
 
 }
+
+
+
+
+
+
 
 
 
