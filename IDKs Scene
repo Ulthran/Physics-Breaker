@@ -18,7 +18,13 @@ class IDKsScene: SKScene{
     
     let myIDKsLabel = SKLabelNode(text: "MY IDKs: ")
     
-    let IDKDescription = SKLabelNode()
+    let IDKDescription1 = SKLabelNode()
+    let IDKDescription2 = SKLabelNode()
+    let IDKDescription3 = SKLabelNode()
+    let IDKDescription4 = SKLabelNode()
+    let IDKDescription5 = SKLabelNode()
+    let IDKDescription6 = SKLabelNode()
+    let IDKDescription7 = SKLabelNode()
     
     let buyMoreButton = UIButton()
     
@@ -72,13 +78,69 @@ class IDKsScene: SKScene{
         self.addChild(myIDKsLabel)
         
         /*LABEL: Desribes what IDKs are*/
-        IDKDescription.fontColor = UIColor.blackColor()
-        IDKDescription.fontSize = 20
-        IDKDescription.position = CGPoint(x: CGRectGetMidX(self.frame), y: 200)
-        IDKDescription.fontName = "HelveticaNeue"
-        IDKDescription.text = "IDKs or 'I Don't Know's are a feature added into Physics Breaker to help whenever you get really stuck on a problem. During the phase when the app is walking you through how to solve a problem, the app may ask for you to input an answer to make sure you are understanding the process. If you can't figure out what it is asking for, you may use an IDK to fill in the answer automatically. However, you only have so many IDKs and you might have to buy more if you run out so use them sparingly."
+        //Has to be multi level as SKLabelNode doesn't support line wrapping
+        /*Line 1*/
+        IDKDescription1.fontColor = UIColor.blackColor()
+        IDKDescription1.fontSize = 30
+        IDKDescription1.position = CGPoint(x: CGRectGetMidX(self.frame), y: 400)
+        IDKDescription1.fontName = "HelveticaNeue"
+        IDKDescription1.text = "IDKs or 'I Don't Know's are a feature added into Physics Breaker to help "
         
-        self.addChild(IDKDescription)
+        self.addChild(IDKDescription1)
+        
+        /*Line 2*/
+        IDKDescription2.fontColor = UIColor.blackColor()
+        IDKDescription2.fontSize = 30
+        IDKDescription2.position = CGPoint(x: CGRectGetMidX(self.frame), y: 360)
+        IDKDescription2.fontName = "HelveticaNeue"
+        IDKDescription2.text = "whenever you get really stuck on a problem. During the phase when the app "
+        
+        self.addChild(IDKDescription2)
+        
+        /*Line 3*/
+        IDKDescription3.fontColor = UIColor.blackColor()
+        IDKDescription3.fontSize = 30
+        IDKDescription3.position = CGPoint(x: CGRectGetMidX(self.frame), y: 320)
+        IDKDescription3.fontName = "HelveticaNeue"
+        IDKDescription3.text = "is walking you through how to solve a problem, the app may ask for you "
+        
+        self.addChild(IDKDescription3)
+        
+        /*Line 4*/
+        IDKDescription4.fontColor = UIColor.blackColor()
+        IDKDescription4.fontSize = 30
+        IDKDescription4.position = CGPoint(x: CGRectGetMidX(self.frame), y: 280)
+        IDKDescription4.fontName = "HelveticaNeue"
+        IDKDescription4.text = "to input an answer to make sure you are understanding the process. If "
+        
+        self.addChild(IDKDescription4)
+        
+        /*Line 5*/
+        IDKDescription5.fontColor = UIColor.blackColor()
+        IDKDescription5.fontSize = 30
+        IDKDescription5.position = CGPoint(x: CGRectGetMidX(self.frame), y: 240)
+        IDKDescription5.fontName = "HelveticaNeue"
+        IDKDescription5.text = "you can't figure out what it is asking for, you may use an IDK to fill "
+        
+        self.addChild(IDKDescription5)
+        
+        /*Line 6*/
+        IDKDescription6.fontColor = UIColor.blackColor()
+        IDKDescription6.fontSize = 30
+        IDKDescription6.position = CGPoint(x: CGRectGetMidX(self.frame), y: 200)
+        IDKDescription6.fontName = "HelveticaNeue"
+        IDKDescription6.text = "in the answer automatically. However, you only have so many IDKs and you "
+        
+        self.addChild(IDKDescription6)
+        
+        /*Line 7*/
+        IDKDescription7.fontColor = UIColor.blackColor()
+        IDKDescription7.fontSize = 30
+        IDKDescription7.position = CGPoint(x: CGRectGetMidX(self.frame), y: 160)
+        IDKDescription7.fontName = "HelveticaNeue"
+        IDKDescription7.text = "might have to buy more if you run out so use them sparingly."
+        
+        self.addChild(IDKDescription7)
         
         /*BUTTON: Sends the user to the In-App Purchases page*/
         buyMoreButton.setTitle("Buy More IDKs", forState: UIControlState.Normal)
