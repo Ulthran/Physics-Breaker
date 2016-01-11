@@ -35,6 +35,8 @@ class MenuScene: SKScene {
     }
     
     func setUpScene(){
+        let dataManager = DataManagement()
+        
         /*LABEL: Displays title*/
         menuLabel.fontColor = UIColor.blackColor()
         menuLabel.fontSize = 60
@@ -52,7 +54,13 @@ class MenuScene: SKScene {
         self.view!.addSubview(startButton)
         
         /*BUTTON: Volume button*/
-        volumeButton.setBackgroundImage(volumeImages[0], forState: UIControlState.Normal)
+        if(dataManager.getMusicVolume() == 0){
+            volumeButton.setBackgroundImage(volumeImages[2], forState: UIControlState.Normal)
+        }else if(dataManager.getMusicVolume() > 0){
+            volumeButton.setBackgroundImage(volumeImages[1], forState: UIControlState.Normal)
+        }else if(dataManager.getMusicVolume() >= 75){
+            volumeButton.setBackgroundImage(volumeImages[0], forState: UIControlState.Normal)
+        }
         volumeButton.frame = CGRect(x: 20, y: (self.view!.frame.size.height)-50, width: 40, height: 40)
         volumeButton.addTarget(self, action: "changeVolume:", forControlEvents: UIControlEvents.TouchUpInside)
         
