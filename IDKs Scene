@@ -31,6 +31,8 @@ class IDKsScene: SKScene{
     override func didMoveToView(view: SKView) {
         self.backgroundColor = UIColor.whiteColor()  //sets scene's background to white
         
+        print(self)
+        
         setUpScene()
         setUpZAxis()
     }
@@ -138,8 +140,8 @@ class IDKsScene: SKScene{
         
         /*BUTTON: Sends the user to the In-App Purchases page*/
         buyMoreButton.setTitle("Buy More IDKs", forState: UIControlState.Normal)
-        buyMoreButton.titleLabel!.font = UIFont(name: "HelveticaNeue-UltraLight", size: 20)
-        buyMoreButton.frame = CGRect(x: CGRectGetMidX(self.frame)-310, y: 270, width: 150, height: 50)
+        buyMoreButton.titleLabel!.font = UIFont(name: "HelveticaNeue-UltraLight", size: 30)
+        buyMoreButton.frame = CGRect(x: CGRectGetMidX(self.frame)-325, y: 270, width: 200, height: 50)
         buyMoreButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         buyMoreButton.addTarget(self, action: "goToInAppPurchases:", forControlEvents: UIControlEvents.TouchUpInside)
         
