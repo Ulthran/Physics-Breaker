@@ -12,11 +12,95 @@ import SpriteKit
 
 class HelpScene: SKScene{
     
+    let menuButton = UIButton()
+    
+    let titleLabel = SKLabelNode()
+    
+    let helpText1 = SKLabelNode()
+    
+    let furtherHelpButton = UIButton()
     
     override func didMoveToView(view: SKView) {
         self.backgroundColor = UIColor.whiteColor()  //sets scene's background to white
         
+        setUpScene()
+        setUpZAxis()
+    }
+    
+    override func willMoveFromView(view: SKView) {
+        self.removeAllChildren()
+    }
+    
+    func setUpScene(){
+        /*BUTTON: Button in top right that returns to main menu*/
+        menuButton.setTitle("MENU", forState: UIControlState.Normal)
+        menuButton.titleLabel!.font = UIFont(name: "HelveticaNeue-UltraLight", size: 20.0)
+        menuButton.frame = CGRect(x: self.view!.frame.size.width-100, y: self.view!.frame.size.height-300, width: 100, height: 30)
+        menuButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        menuButton.addTarget(self, action: "goToMenu:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        self.view!.addSubview(menuButton)
+        
+        /*LABEL: Displays title with text 'HELP'*/
+        titleLabel.fontColor = UIColor.blackColor()
+        titleLabel.fontSize = 60.0
+        titleLabel.position = CGPoint(x: CGRectGetMidX(self.frame), y: 550)
+        
+        self.addChild(titleLabel)
+        
+        /*LABEL: Displays help text as a block; uses multiple labels*/
+        helpText1.fontColor = UIColor.blackColor()
+        helpText1.fontSize = 30
+        helpText1.position = CGPoint(x: CGRectGetMidX(self.frame), y: 450)
+        helpText1.fontName = "HelveticaNeue"
+        
+        self.addChild(helpText1)
+        
+        /*BUTTON: Links to a forum designed to provide support for the app*/
+        furtherHelpButton.setTitle("Further Help", forState: UIControlState.Normal)
+        furtherHelpButton.titleLabel!.font = UIFont(name: "HelveticaNeue-UltraLight", size: 30.0)
+        furtherHelpButton.frame = CGRect(x: CGRectGetMidX(self.frame)-325, y: 270, width: 200, height: 50)
+        furtherHelpButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        furtherHelpButton.addTarget(self, action: "linkToFurtherHelp:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        self.view!.addSubview(furtherHelpButton)
         
     }
     
+    func setUpZAxis(){
+        
+    }
+    
+    @objc func goToMenu(sender: UIButton){
+        let menuScene = MenuScene(size: self.size)
+        
+        self.view?.presentScene(menuScene, transition: SKTransition.crossFadeWithDuration(0.0))
+        
+        menuButton.removeFromSuperview()
+        furtherHelpButton.removeFromSuperview()
+    }
+    
+    @objc func linkToFurtherHelp(){
+        UIApplication.sharedApplication().openURL(NSURL(string: "http://physics-breaker.freeforums.net")!)
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
