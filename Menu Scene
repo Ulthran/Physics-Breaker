@@ -79,7 +79,7 @@ class MenuScene: SKScene {
         /*BUTTON: IDK button*/
         IDKButton.setTitle("IDKs", forState: UIControlState.Normal)
         IDKButton.titleLabel!.font = UIFont(name: "HelveticaNeue-UltraLight", size: 30.0)
-        IDKButton.frame = CGRect(x: 20, y: 20, width: 75, height: 30)
+        IDKButton.frame = CGRect(x: 20, y: 20, width: 60, height: 30)
         IDKButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         IDKButton.addTarget(self, action: "goToIDKs:", forControlEvents: UIControlEvents.TouchUpInside)
         
