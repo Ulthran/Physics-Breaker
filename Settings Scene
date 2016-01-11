@@ -27,6 +27,8 @@ class SettingsScene: SKScene{
     override func didMoveToView(view: SKView) {
         self.backgroundColor = UIColor.whiteColor()  //sets scene's background to white
         
+        print(self)
+        
         setUpScene()
         setUpZAxis()
     }
@@ -58,14 +60,14 @@ class SettingsScene: SKScene{
         /*LABEL: Displays the title for the sound volume slider*/
         soundVolumeLabel.fontColor = UIColor.blackColor()
         soundVolumeLabel.fontSize = 40
-        soundVolumeLabel.position = CGPoint(x: 200, y: 300)
+        soundVolumeLabel.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame))
         
         self.addChild(soundVolumeLabel)
         
         /*SLIDER: Slider that sets the music volume*/
         musicVolumeSlider.maximumValue = 100.0
         musicVolumeSlider.value = dataManager.getMusicVolume()
-        musicVolumeSlider.frame = CGRect(x: 600, y: 400, width: 300, height: 50)
+        musicVolumeSlider.frame = CGRect(x: self.view!.frame.size.width-350, y: self.view!.frame.size.height-225, width: 300, height: 50)
         musicVolumeSlider.addTarget(self, action: "changeMusicVolume:", forControlEvents: UIControlEvents.ValueChanged)
         
         self.view!.addSubview(musicVolumeSlider)
@@ -73,14 +75,14 @@ class SettingsScene: SKScene{
         /*SLIDER: Slider that sets the sound volume*/
         soundVolumeSlider.maximumValue = 100.0
         soundVolumeSlider.value = dataManager.getSoundVolume()
-        soundVolumeSlider.frame = CGRect(x: 600, y: 300, width: 300, height: 50)
+        soundVolumeSlider.frame = CGRect(x: self.view!.frame.size.width-350, y: self.view!.frame.size.height-150, width: 300, height: 50)
         soundVolumeSlider.addTarget(self, action: "changeSoundVolume:", forControlEvents: UIControlEvents.ValueChanged)
         
         self.view!.addSubview(soundVolumeSlider)
         
         /*BUTTON: Allows user to return to the main menu*/
         menuButton.setTitle("MENU", forState: UIControlState.Normal)
-        menuButton.titleLabel!.font = UIFont(name: "HelveticaNeue-UltraLight", size: 20.0)
+        menuButton.titleLabel!.font = UIFont(name: "HelveticaNeue-UltraLight", size: 30.0)
         menuButton.frame = CGRect(x: self.view!.frame.size.width-100, y: self.view!.frame.size.height-300, width: 100, height: 30)
         menuButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         menuButton.addTarget(self, action: "goToMenu:", forControlEvents: UIControlEvents.TouchUpInside)
