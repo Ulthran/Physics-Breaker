@@ -47,20 +47,23 @@ class SettingsScene: SKScene{
         titleLabel.fontColor = UIColor.blackColor()
         titleLabel.fontSize = 60
         titleLabel.position = CGPoint(x: CGRectGetMidX(self.frame), y: 550)
+        titleLabel.text = "SETTINGS"
         
         self.addChild(titleLabel)
         
         /*LABEL: Displays the title for the music volume slider*/
         musicVolumeLabel.fontColor = UIColor.blackColor()
         musicVolumeLabel.fontSize = 40
-        musicVolumeLabel.position = CGPoint(x: 200, y: 400)
+        musicVolumeLabel.position = CGPoint(x: 200, y: 425)
+        musicVolumeLabel.text = "Music Volume: "
         
         self.addChild(musicVolumeLabel)
         
         /*LABEL: Displays the title for the sound volume slider*/
         soundVolumeLabel.fontColor = UIColor.blackColor()
         soundVolumeLabel.fontSize = 40
-        soundVolumeLabel.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame))
+        soundVolumeLabel.position = CGPoint(x: 200, y: 285)
+        soundVolumeLabel.text = "Sounds Volume: "
         
         self.addChild(soundVolumeLabel)
         
@@ -82,7 +85,7 @@ class SettingsScene: SKScene{
         
         /*BUTTON: Allows user to return to the main menu*/
         menuButton.setTitle("MENU", forState: UIControlState.Normal)
-        menuButton.titleLabel!.font = UIFont(name: "HelveticaNeue-UltraLight", size: 30.0)
+        menuButton.titleLabel!.font = UIFont(name: "HelveticaNeue-UltraLight", size: 20.0)
         menuButton.frame = CGRect(x: self.view!.frame.size.width-100, y: self.view!.frame.size.height-300, width: 100, height: 30)
         menuButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         menuButton.addTarget(self, action: "goToMenu:", forControlEvents: UIControlEvents.TouchUpInside)
