@@ -56,7 +56,7 @@ class MenuScene: SKScene {
         /*BUTTON: Volume button*/
         if(dataManager.getMusicVolume() == 0){
             volumeButton.setBackgroundImage(volumeImages[2], forState: UIControlState.Normal)
-        }else if(dataManager.getMusicVolume() > 0){
+        }else if(dataManager.getMusicVolume() > 0 && dataManager.getMusicVolume() < 75){
             volumeButton.setBackgroundImage(volumeImages[1], forState: UIControlState.Normal)
         }else if(dataManager.getMusicVolume() >= 75){
             volumeButton.setBackgroundImage(volumeImages[0], forState: UIControlState.Normal)
