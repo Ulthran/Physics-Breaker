@@ -21,21 +21,22 @@ class DataManagement{
     
     var uninitialized: Bool = false
     var numIDKs: Int = 5
-    var musicVolume: Int = 100
-    var soundVolume: Int = 100
+    var musicVolume: Float = 100
+    var soundVolume: Float = 100
     
     init(){
     }
     
     func setValues(){
-        defaults.setValue(true, forKey: defaultKeys.uninitializedKey)
         if(!defaults.boolForKey(defaultKeys.uninitializedKey)){
             /*Set all values for first run after download here*/
             
             defaults.setValue(5, forKey: defaultKeys.IDKsKey)
-            defaults.setValue(100, forKey: defaultKeys.musicVolumeKey)
-            defaults.setValue(100, forKey: defaultKeys.soundVolumeKey)
+            defaults.setValue(100.0, forKey: defaultKeys.musicVolumeKey)
+            defaults.setValue(100.0, forKey: defaultKeys.soundVolumeKey)
         }
+        
+        defaults.setValue(true, forKey: defaultKeys.uninitializedKey)
     }
     
     func getNumIDKs() ->Int{
@@ -52,24 +53,24 @@ class DataManagement{
         defaults.setValue(numIDKs, forKey: defaultKeys.IDKsKey)
     }
     
-    func getMusicVolume() ->Int{
-        musicVolume = defaults.integerForKey(defaultKeys.musicVolumeKey)
+    func getMusicVolume() ->Float{
+        musicVolume = defaults.floatForKey(defaultKeys.musicVolumeKey)
         
         return musicVolume
     }
     
-    func setMusicVolume(newVolume: Int){
-        defaults.setValue(musicVolume, forKey: defaultKeys.musicVolumeKey)
+    func setMusicVolume(newVolume: Float){
+        defaults.setValue(newVolume, forKey: defaultKeys.musicVolumeKey)
     }
     
-    func getSoundVolume() ->Int{
-        soundVolume = defaults.integerForKey(defaultKeys.soundVolumeKey)
+    func getSoundVolume() ->Float{
+        soundVolume = defaults.floatForKey(defaultKeys.soundVolumeKey)
         
         return soundVolume
     }
     
-    func setSoundVolume(newVolume: Int){
-        defaults.setValue(soundVolume, forKey: defaultKeys.soundVolumeKey)
+    func setSoundVolume(newVolume: Float){
+        defaults.setValue(newVolume, forKey: defaultKeys.soundVolumeKey)
     }
 }
 
