@@ -45,6 +45,7 @@ class HelpScene: SKScene{
         titleLabel.fontColor = UIColor.blackColor()
         titleLabel.fontSize = 60.0
         titleLabel.position = CGPoint(x: CGRectGetMidX(self.frame), y: 550)
+        titleLabel.text = "HELP"
         
         self.addChild(titleLabel)
         
@@ -53,6 +54,7 @@ class HelpScene: SKScene{
         helpText1.fontSize = 30
         helpText1.position = CGPoint(x: CGRectGetMidX(self.frame), y: 450)
         helpText1.fontName = "HelveticaNeue"
+        helpText1.text = "Helpful stuff"
         
         self.addChild(helpText1)
         
