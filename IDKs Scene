@@ -31,8 +31,6 @@ class IDKsScene: SKScene{
     override func didMoveToView(view: SKView) {
         self.backgroundColor = UIColor.whiteColor()  //sets scene's background to white
         
-        print(self)
-        
         setUpScene()
         setUpZAxis()
     }
@@ -44,7 +42,6 @@ class IDKsScene: SKScene{
     func setUpScene(){
         //Sets a new Data Manager for the scene
         let dataManager = DataManagement()
-        
         
         /*BUTTON: Button in top right that returns to main menu*/
         menuButton.setTitle("MENU", forState: UIControlState.Normal)
