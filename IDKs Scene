@@ -48,7 +48,7 @@ class IDKsScene: SKScene{
         menuButton.titleLabel!.font = UIFont(name: "HelveticaNeue-UltraLight", size: 20.0)
         menuButton.frame = CGRect(x: self.view!.frame.size.width-100, y: self.view!.frame.size.height-300, width: 100, height: 30)
         menuButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        menuButton.addTarget(self, action: "goToMenu:", forControlEvents: UIControlEvents.TouchUpInside)
+        menuButton.addTarget(self, action: "goToMenuIDK:", forControlEvents: UIControlEvents.TouchUpInside)
         
         self.view!.addSubview(menuButton)
         
@@ -159,7 +159,7 @@ class IDKsScene: SKScene{
         IDKDescription7.zPosition = 1.0
     }
     
-    @objc func goToMenu(sender: UIButton){
+    @objc func goToMenuIDK(sender: UIButton){
         let menuScene = MenuScene(size: self.size)
         
         self.view?.presentScene(menuScene, transition: SKTransition.crossFadeWithDuration(0.0))
