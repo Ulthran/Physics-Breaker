@@ -1,0 +1,111 @@
+//
+//  DataManagement.swift
+//  Physics Breaker
+//
+//  Created by Charlie Bushman on 1/9/16.
+//  Copyright © 2016 imaginary inc. All rights reserved.
+//
+
+import Foundation
+
+
+class DataManagement{
+    let defaults = NSUserDefaults.standardUserDefaults()
+    
+    enum defaultKeys{
+        static let uninitializedKey = "uninitialized"
+        static let IDKsKey = "numIDKs"
+        static let musicVolumeKey = "musicVolume"
+        static let soundVolumeKey = "soundVolume"
+    }
+    
+    var uninitialized: Bool = false
+    var numIDKs: Int = 5
+    var musicVolume: Float = 100
+    var soundVolume: Float = 100
+    
+    func setValues(){
+        if(!defaults.boolForKey(defaultKeys.uninitializedKey)){
+            /*Set all values for first run after download here*/
+            
+            defaults.setValue(5, forKey: defaultKeys.IDKsKey)
+            defaults.setValue(100.0, forKey: defaultKeys.musicVolumeKey)
+            defaults.setValue(100.0, forKey: defaultKeys.soundVolumeKey)
+        }
+        
+        defaults.setValue(true, forKey: defaultKeys.uninitializedKey)
+    }
+    
+    func getNumIDKs() ->Int{
+        numIDKs = defaults.integerForKey(defaultKeys.IDKsKey)
+        
+        return numIDKs
+    }
+    
+    func addNumIDKs(addNum: Int){
+        numIDKs = defaults.integerForKey(defaultKeys.IDKsKey)
+        
+        numIDKs += addNum
+        
+        defaults.setValue(numIDKs, forKey: defaultKeys.IDKsKey)
+    }
+    
+    func getMusicVolume() ->Float{
+        musicVolume = defaults.floatForKey(defaultKeys.musicVolumeKey)
+        
+        return musicVolume
+    }
+    
+    func setMusicVolume(newVolume: Float){
+        defaults.setValue(newVolume, forKey: defaultKeys.musicVolumeKey)
+    }
+    
+    func getSoundVolume() ->Float{
+        soundVolume = defaults.floatForKey(defaultKeys.soundVolumeKey)
+        
+        return soundVolume
+    }
+    
+    func setSoundVolume(newVolume: Float){
+        defaults.setValue(newVolume, forKey: defaultKeys.soundVolumeKey)
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

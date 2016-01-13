@@ -18,42 +18,41 @@ class IDKsScene: SKScene{
     
     let myIDKsLabel = SKLabelNode(text: "MY IDKs: ")
     
-    let IDKDescription = SKLabelNode()
+    let IDKDescription1 = SKLabelNode()
+    let IDKDescription2 = SKLabelNode()
+    let IDKDescription3 = SKLabelNode()
+    let IDKDescription4 = SKLabelNode()
+    let IDKDescription5 = SKLabelNode()
+    let IDKDescription6 = SKLabelNode()
+    let IDKDescription7 = SKLabelNode()
     
     let buyMoreButton = UIButton()
     
     override func didMoveToView(view: SKView) {
         self.backgroundColor = UIColor.whiteColor()  //sets scene's background to white
         
-        print(self.size)
-        
         setUpScene()
+        setUpZAxis()
     }
     
     override func willMoveFromView(view:SKView){
     self.removeAllChildren()
     }
     
-    override func delete(sender: AnyObject?) {
-        let subviews = (self.view?.subviews)! as [UIView]
-        for v in subviews {
-            if let button = v as? UIButton {
-                button.removeFromSuperview()
-            }
-        }
-    }
-    
     func setUpScene(){
+        //Sets a new Data Manager for the scene
+        let dataManager = DataManagement()
+        
         /*BUTTON: Button in top right that returns to main menu*/
         menuButton.setTitle("MENU", forState: UIControlState.Normal)
-        menuButton.titleLabel!.font = UIFont(name: "AmericanTypewriter-Light", size: 20.0)
-        menuButton.frame = CGRect(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame), width: 100, height: 30)
+        menuButton.titleLabel!.font = UIFont(name: "HelveticaNeue-UltraLight", size: 20.0)
+        menuButton.frame = CGRect(x: self.view!.frame.size.width-100, y: self.view!.frame.size.height-300, width: 100, height: 30)
         menuButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        menuButton.addTarget(self, action: "goToMenu:", forControlEvents: UIControlEvents.TouchUpInside)
+        menuButton.addTarget(self, action: "goToMenuIDK:", forControlEvents: UIControlEvents.TouchUpInside)
         
         self.view!.addSubview(menuButton)
         
-        /*LABEL: Presents title; 'IDKs'*/
+        /*LABEL: Presents title 'IDKs'*/
         IDKLabel.fontColor = UIColor.blackColor()
         IDKLabel.fontSize = 60
         IDKLabel.position = CGPoint(x: CGRectGetMidX(self.frame), y: 550)
@@ -62,8 +61,6 @@ class IDKsScene: SKScene{
         
         
         /*LABEL: Shows number of IDKs that the user currently has*/
-        let dataManager = DataManagement()
-        
         let stringNumIDKs: String = "My IDKs:      " + String(dataManager.getNumIDKs())
         
         myIDKsLabel.fontColor = UIColor.blackColor()
@@ -74,21 +71,124 @@ class IDKsScene: SKScene{
         self.addChild(myIDKsLabel)
         
         /*LABEL: Desribes what IDKs are*/
-        //Look for a better class for displaying large blocks of text
+        //Has to be multi level as SKLabelNode doesn't support line wrapping
+        /*Line 1*/
+        IDKDescription1.fontColor = UIColor.blackColor()
+        IDKDescription1.fontSize = 30
+        IDKDescription1.position = CGPoint(x: CGRectGetMidX(self.frame), y: 400)
+        IDKDescription1.fontName = "HelveticaNeue"
+        IDKDescription1.text = "IDKs or 'I Don't Know's are a feature added into Physics Breaker to help "
         
+        self.addChild(IDKDescription1)
+        
+        /*Line 2*/
+        IDKDescription2.fontColor = UIColor.blackColor()
+        IDKDescription2.fontSize = 30
+        IDKDescription2.position = CGPoint(x: CGRectGetMidX(self.frame), y: 360)
+        IDKDescription2.fontName = "HelveticaNeue"
+        IDKDescription2.text = "whenever you get really stuck on a problem. During the phase when the app "
+        
+        self.addChild(IDKDescription2)
+        
+        /*Line 3*/
+        IDKDescription3.fontColor = UIColor.blackColor()
+        IDKDescription3.fontSize = 30
+        IDKDescription3.position = CGPoint(x: CGRectGetMidX(self.frame), y: 320)
+        IDKDescription3.fontName = "HelveticaNeue"
+        IDKDescription3.text = "is walking you through how to solve a problem, the app may ask for you "
+        
+        self.addChild(IDKDescription3)
+        
+        /*Line 4*/
+        IDKDescription4.fontColor = UIColor.blackColor()
+        IDKDescription4.fontSize = 30
+        IDKDescription4.position = CGPoint(x: CGRectGetMidX(self.frame), y: 280)
+        IDKDescription4.fontName = "HelveticaNeue"
+        IDKDescription4.text = "to input an answer to make sure you are understanding the process. If "
+        
+        self.addChild(IDKDescription4)
+        
+        /*Line 5*/
+        IDKDescription5.fontColor = UIColor.blackColor()
+        IDKDescription5.fontSize = 30
+        IDKDescription5.position = CGPoint(x: CGRectGetMidX(self.frame), y: 240)
+        IDKDescription5.fontName = "HelveticaNeue"
+        IDKDescription5.text = "you can't figure out what it is asking for, you may use an IDK to fill in the "
+        
+        self.addChild(IDKDescription5)
+        
+        /*Line 6*/
+        IDKDescription6.fontColor = UIColor.blackColor()
+        IDKDescription6.fontSize = 30
+        IDKDescription6.position = CGPoint(x: CGRectGetMidX(self.frame), y: 200)
+        IDKDescription6.fontName = "HelveticaNeue"
+        IDKDescription6.text = "answer automatically. However, you only have so many IDKs and you might "
+        
+        self.addChild(IDKDescription6)
+        
+        /*Line 7*/
+        IDKDescription7.fontColor = UIColor.blackColor()
+        IDKDescription7.fontSize = 30
+        IDKDescription7.position = CGPoint(x: CGRectGetMidX(self.frame), y: 160)
+        IDKDescription7.fontName = "HelveticaNeue"
+        IDKDescription7.text = "have to buy more if you run out so use them sparingly."
+        
+        self.addChild(IDKDescription7)
         
         /*BUTTON: Sends the user to the In-App Purchases page*/
+        buyMoreButton.setTitle("Buy More IDKs", forState: UIControlState.Normal)
+        buyMoreButton.titleLabel!.font = UIFont(name: "HelveticaNeue-UltraLight", size: 30)
+        buyMoreButton.frame = CGRect(x: CGRectGetMidX(self.frame)-325, y: 270, width: 200, height: 50)
+        buyMoreButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        buyMoreButton.addTarget(self, action: "goToInAppPurchases:", forControlEvents: UIControlEvents.TouchUpInside)
         
+        self.view!.addSubview(buyMoreButton)
         
         
     }
     
-    @objc func goToMenu(sender: UIButton){
+    func setUpZAxis(){
+        IDKLabel.zPosition = 1.0
+        myIDKsLabel.zPosition = 1.0
+        IDKDescription1.zPosition = 1.0
+        IDKDescription2.zPosition = 1.0
+        IDKDescription3.zPosition = 1.0
+        IDKDescription4.zPosition = 1.0
+        IDKDescription5.zPosition = 1.0
+        IDKDescription6.zPosition = 1.0
+        IDKDescription7.zPosition = 1.0
+    }
+    
+    @objc func goToMenuIDK(sender: UIButton){
         let menuScene = MenuScene(size: self.size)
         
         self.view?.presentScene(menuScene, transition: SKTransition.crossFadeWithDuration(0.0))
         
-        delete(menuButton)
+        menuButton.removeFromSuperview()
+        buyMoreButton.removeFromSuperview()
+    }
+    
+    @objc func goToInAppPurchases(sender: UIButton){
+        /*Work on this later*/
     }
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
