@@ -12,11 +12,136 @@ import SpriteKit
 
 class SettingsScene: SKScene{
     
+    let titleLabel = SKLabelNode()
+    
+    let musicVolumeLabel = SKLabelNode()
+    
+    let soundVolumeLabel = SKLabelNode()
+    
+    let musicVolumeSlider = UISlider()
+    
+    let soundVolumeSlider = UISlider()
+    
+    let menuButton = UIButton()
     
     override func didMoveToView(view: SKView) {
         self.backgroundColor = UIColor.whiteColor()  //sets scene's background to white
         
-        
+        setUpScene()
+        setUpZAxis()
     }
     
+    override func willMoveFromView(view:SKView){
+        self.removeAllChildren()
+    }
+    
+    
+    func setUpScene(){
+        //Sets a Data Manager for the scene
+        let dataManager = DataManagement()
+        
+        /*LABEL: Displays the title 'SETTINGS'*/
+        titleLabel.fontColor = UIColor.blackColor()
+        titleLabel.fontSize = 60
+        titleLabel.position = CGPoint(x: CGRectGetMidX(self.frame), y: 550)
+        titleLabel.text = "SETTINGS"
+        
+        self.addChild(titleLabel)
+        
+        /*LABEL: Displays the title for the music volume slider*/
+        musicVolumeLabel.fontColor = UIColor.blackColor()
+        musicVolumeLabel.fontSize = 40
+        musicVolumeLabel.position = CGPoint(x: 200, y: 425)
+        musicVolumeLabel.text = "Music Volume: "
+        
+        self.addChild(musicVolumeLabel)
+        
+        /*LABEL: Displays the title for the sound volume slider*/
+        soundVolumeLabel.fontColor = UIColor.blackColor()
+        soundVolumeLabel.fontSize = 40
+        soundVolumeLabel.position = CGPoint(x: 200, y: 285)
+        soundVolumeLabel.text = "Sounds Volume: "
+        
+        self.addChild(soundVolumeLabel)
+        
+        /*SLIDER: Slider that sets the music volume*/
+        musicVolumeSlider.maximumValue = 100.0
+        musicVolumeSlider.value = dataManager.getMusicVolume()
+        musicVolumeSlider.frame = CGRect(x: self.view!.frame.size.width-350, y: self.view!.frame.size.height-225, width: 300, height: 50)
+        musicVolumeSlider.addTarget(self, action: "changeMusicVolume:", forControlEvents: UIControlEvents.ValueChanged)
+        musicVolumeSlider.addTarget(self, action: "changeMusicVolume:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        self.view!.addSubview(musicVolumeSlider)
+        
+        /*SLIDER: Slider that sets the sound volume*/
+        soundVolumeSlider.maximumValue = 100.0
+        soundVolumeSlider.value = dataManager.getSoundVolume()
+        soundVolumeSlider.frame = CGRect(x: self.view!.frame.size.width-350, y: self.view!.frame.size.height-150, width: 300, height: 50)
+        soundVolumeSlider.addTarget(self, action: "changeSoundVolume:", forControlEvents: UIControlEvents.ValueChanged)
+        soundVolumeSlider.addTarget(self, action: "changeSoundVolume:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        self.view!.addSubview(soundVolumeSlider)
+        
+        /*BUTTON: Allows user to return to the main menu*/
+        menuButton.setTitle("MENU", forState: UIControlState.Normal)
+        menuButton.titleLabel!.font = UIFont(name: "HelveticaNeue-UltraLight", size: 20.0)
+        menuButton.frame = CGRect(x: self.view!.frame.size.width-100, y: self.view!.frame.size.height-300, width: 100, height: 30)
+        menuButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        menuButton.addTarget(self, action: "goToMenuSettings:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        self.view!.addSubview(menuButton)
+
+    }
+    
+    func setUpZAxis(){
+        titleLabel.zPosition = 1.0
+        musicVolumeLabel.zPosition = 1.0
+        soundVolumeLabel.zPosition = 1.0
+    }
+    
+    @objc func goToMenuSettings(sender: UIButton){
+        let menuScene = MenuScene(size: self.size)
+        
+        self.view?.presentScene(menuScene, transition: SKTransition.crossFadeWithDuration(0.0))
+        
+        menuButton.removeFromSuperview()
+        musicVolumeSlider.removeFromSuperview()
+        soundVolumeSlider.removeFromSuperview()
+    }
+    
+    @objc func changeMusicVolume(sender: UISlider){
+        let dataManager = DataManagement()
+        
+        dataManager.setMusicVolume(musicVolumeSlider.value)
+    }
+    
+    @objc func changeSoundVolume(sender: UISlider){
+        let dataManager = DataManagement()
+        
+        dataManager.setSoundVolume(soundVolumeSlider.value)
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
