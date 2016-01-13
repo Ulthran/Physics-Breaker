@@ -40,7 +40,6 @@ class SettingsScene: SKScene{
         //Sets a Data Manager for the scene
         let dataManager = DataManagement()
         
-        
         /*LABEL: Displays the title 'SETTINGS'*/
         titleLabel.fontColor = UIColor.blackColor()
         titleLabel.fontSize = 60
@@ -69,7 +68,8 @@ class SettingsScene: SKScene{
         musicVolumeSlider.maximumValue = 100.0
         musicVolumeSlider.value = dataManager.getMusicVolume()
         musicVolumeSlider.frame = CGRect(x: self.view!.frame.size.width-350, y: self.view!.frame.size.height-225, width: 300, height: 50)
-        musicVolumeSlider.addTarget(self, action: "changeSoundVolume:", forControlEvents: UIControlEvents.ValueChanged)
+        musicVolumeSlider.addTarget(self, action: "changeMusicVolume:", forControlEvents: UIControlEvents.ValueChanged)
+        musicVolumeSlider.addTarget(self, action: "changeMusicVolume:", forControlEvents: UIControlEvents.TouchUpInside)
         
         self.view!.addSubview(musicVolumeSlider)
         
@@ -77,7 +77,8 @@ class SettingsScene: SKScene{
         soundVolumeSlider.maximumValue = 100.0
         soundVolumeSlider.value = dataManager.getSoundVolume()
         soundVolumeSlider.frame = CGRect(x: self.view!.frame.size.width-350, y: self.view!.frame.size.height-150, width: 300, height: 50)
-        soundVolumeSlider.addTarget(self, action: "changeMusicVolume:", forControlEvents: UIControlEvents.ValueChanged)
+        soundVolumeSlider.addTarget(self, action: "changeSoundVolume:", forControlEvents: UIControlEvents.ValueChanged)
+        soundVolumeSlider.addTarget(self, action: "changeSoundVolume:", forControlEvents: UIControlEvents.TouchUpInside)
         
         self.view!.addSubview(soundVolumeSlider)
         
