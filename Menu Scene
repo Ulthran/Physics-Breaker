@@ -34,26 +34,19 @@ class MenuScene: SKScene {
         self.removeAllChildren()
     }
     
-    override func delete(sender: AnyObject?) {
-        let subviews = (self.view?.subviews)! as [UIView]
-        for v in subviews {
-            if let button = v as? UIButton {
-                button.removeFromSuperview()
-            }
-        }
-    }
-    
     func setUpScene(){
+        let dataManager = DataManagement()
+        
         /*LABEL: Displays title*/
         menuLabel.fontColor = UIColor.blackColor()
-        menuLabel.fontSize = 60
+        menuLabel.fontSize = 80
         menuLabel.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame))
         
         self.addChild(menuLabel)
         
         /*BUTTON: Start button*/
         startButton.setTitle("Start", forState: UIControlState.Normal)
-        startButton.titleLabel!.font = UIFont(name: "AmericanTypewriter-Light", size: 30.0)
+        startButton.titleLabel!.font = UIFont(name: "HelveticaNeue-UltraLight", size: 40.0)
         startButton.frame = CGRect(x: (self.view!.frame.size.width/2)-50, y: (self.view!.frame.size.height/2)+50, width: 100, height: 50)
         startButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         startButton.addTarget(self, action: "goToDrawingBoard:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -61,7 +54,13 @@ class MenuScene: SKScene {
         self.view!.addSubview(startButton)
         
         /*BUTTON: Volume button*/
-        volumeButton.setBackgroundImage(volumeImages[0], forState: UIControlState.Normal)
+        if(dataManager.getMusicVolume() == 0){
+            volumeButton.setBackgroundImage(volumeImages[2], forState: UIControlState.Normal)
+        }else if(dataManager.getMusicVolume() > 0 && dataManager.getMusicVolume() < 75){
+            volumeButton.setBackgroundImage(volumeImages[1], forState: UIControlState.Normal)
+        }else if(dataManager.getMusicVolume() >= 75){
+            volumeButton.setBackgroundImage(volumeImages[0], forState: UIControlState.Normal)
+        }
         volumeButton.frame = CGRect(x: 20, y: (self.view!.frame.size.height)-50, width: 40, height: 40)
         volumeButton.addTarget(self, action: "changeVolume:", forControlEvents: UIControlEvents.TouchUpInside)
         
@@ -69,7 +68,7 @@ class MenuScene: SKScene {
         
         /*BUTTON: Settings button*/
         settingsButton.setTitle("Settings", forState: UIControlState.Normal)
-        settingsButton.titleLabel!.font = UIFont(name: "AmericanTypewriter-Light", size: 20.0)
+        settingsButton.titleLabel!.font = UIFont(name: "HelveticaNeue-UltraLight", size: 30.0)
         settingsButton.frame = CGRect(x: (self.view!.frame.size.width)-125, y: 20, width: 125, height: 30)
         settingsButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         settingsButton.addTarget(self, action: "goToSettings:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -78,7 +77,7 @@ class MenuScene: SKScene {
         
         /*BUTTON: Help button*/
         helpButton.setTitle("Help", forState: UIControlState.Normal)
-        helpButton.titleLabel!.font = UIFont(name: "AmericanTypewriter-Light", size: 20.0)
+        helpButton.titleLabel!.font = UIFont(name: "HelveticaNeue-UltraLight", size: 30.0)
         helpButton.frame = CGRect(x: (self.view!.frame.size.width)-110, y: (self.view!.frame.size.height)-40, width: 115, height: 30)
         helpButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         helpButton.addTarget(self, action: "goToHelp:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -87,8 +86,8 @@ class MenuScene: SKScene {
         
         /*BUTTON: IDK button*/
         IDKButton.setTitle("IDKs", forState: UIControlState.Normal)
-        IDKButton.titleLabel!.font = UIFont(name: "AmericanTypewriter-Light", size: 20.0)
-        IDKButton.frame = CGRect(x: 20, y: 20, width: 50, height: 30)
+        IDKButton.titleLabel!.font = UIFont(name: "HelveticaNeue-UltraLight", size: 30.0)
+        IDKButton.frame = CGRect(x: 20, y: 20, width: 60, height: 30)
         IDKButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         IDKButton.addTarget(self, action: "goToIDKs:", forControlEvents: UIControlEvents.TouchUpInside)
         
@@ -97,12 +96,13 @@ class MenuScene: SKScene {
     
     @objc func changeVolume(sender: UIButton){
         var volumeChanged: Int = 0
+        let dataManager = DataManagement()
         
         if(volumeChanged == 0){
             if(volumeImages[0] == volumeButton.currentBackgroundImage){
                 volumeButton.setBackgroundImage(volumeImages[1], forState: UIControlState.Normal)
                 
-                //Change volume to half volume
+                dataManager.setMusicVolume(50.0)
                 
                 volumeChanged = 1
             }
@@ -111,7 +111,7 @@ class MenuScene: SKScene {
             if(volumeImages[1] == volumeButton.currentBackgroundImage){
                 volumeButton.setBackgroundImage(volumeImages[2], forState: UIControlState.Normal)
                 
-                //Change volume to mute
+                dataManager.setMusicVolume(0.0)
                 
                 volumeChanged = 1
             }
@@ -120,7 +120,7 @@ class MenuScene: SKScene {
             if(volumeImages[2] == volumeButton.currentBackgroundImage){
                 volumeButton.setBackgroundImage(volumeImages[0], forState: UIControlState.Normal)
                 
-                //Change volume to full volume
+                dataManager.setMusicVolume(100.0)
                 
                 volumeChanged = 1
             }
@@ -128,13 +128,17 @@ class MenuScene: SKScene {
     }
     
     @objc func goToDrawingBoard(sender: UIButton){
-        let drawingBoardScene = DrawingBoardScene(size: self.size)
+        let drawingBoardScene = DrawingBoardScene(size: CGSize(width: 1024, height: 720))
         
         drawingBoardScene.scaleMode = .AspectFill
         
         self.view?.presentScene(drawingBoardScene, transition: SKTransition.crossFadeWithDuration(0.0))
         
-        delete(startButton)
+        IDKButton.removeFromSuperview()
+        startButton.removeFromSuperview()
+        helpButton.removeFromSuperview()
+        settingsButton.removeFromSuperview()
+        volumeButton.removeFromSuperview()
     }
     
     @objc func goToIDKs(sender: UIButton){
@@ -144,27 +148,39 @@ class MenuScene: SKScene {
         
         self.view?.presentScene(idksScene, transition: SKTransition.crossFadeWithDuration(0.0))
         
-        delete(IDKButton)
+        IDKButton.removeFromSuperview()
+        startButton.removeFromSuperview()
+        helpButton.removeFromSuperview()
+        settingsButton.removeFromSuperview()
+        volumeButton.removeFromSuperview()
     }
     
     @objc func goToHelp(sender: UIButton){
-        let helpScene = HelpScene(size: self.size)
+        let helpScene = HelpScene(size: CGSize(width: 1024, height: 720))
         
         helpScene.scaleMode = .AspectFill
         
         self.view?.presentScene(helpScene, transition: SKTransition.crossFadeWithDuration(0.0))
         
-        delete(helpButton)
+        IDKButton.removeFromSuperview()
+        startButton.removeFromSuperview()
+        helpButton.removeFromSuperview()
+        settingsButton.removeFromSuperview()
+        volumeButton.removeFromSuperview()
     }
     
     @objc func goToSettings(sender: UIButton){
-        let settingsScene = SettingsScene(size: self.size)
+        let settingsScene = SettingsScene(size: CGSize(width: 1024, height: 720))
         
         settingsScene.scaleMode = .AspectFill
         
         self.view?.presentScene(settingsScene, transition: SKTransition.crossFadeWithDuration(0.0))
         
-        delete(settingsButton)
+        IDKButton.removeFromSuperview()
+        startButton.removeFromSuperview()
+        helpButton.removeFromSuperview()
+        settingsButton.removeFromSuperview()
+        volumeButton.removeFromSuperview()
     }
     
     /*override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
