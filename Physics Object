@@ -1,0 +1,14 @@
+//
+//  PhysicsObject.swift
+//  Physics Breaker
+//
+//  Created by Charlie Bushman on 1/12/16.
+//  Copyright © 2016 imaginary inc. All rights reserved.
+//
+
+import Foundation
+import SpriteKit
+
+class PhysicsObject: SKSpriteNode{
+    
+}
