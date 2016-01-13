@@ -37,7 +37,7 @@ class HelpScene: SKScene{
         menuButton.titleLabel!.font = UIFont(name: "HelveticaNeue-UltraLight", size: 20.0)
         menuButton.frame = CGRect(x: self.view!.frame.size.width-100, y: self.view!.frame.size.height-300, width: 100, height: 30)
         menuButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        menuButton.addTarget(self, action: "goToMenu:", forControlEvents: UIControlEvents.TouchUpInside)
+        menuButton.addTarget(self, action: "goToMenuHelp:", forControlEvents: UIControlEvents.TouchUpInside)
         
         self.view!.addSubview(menuButton)
         
@@ -73,7 +73,7 @@ class HelpScene: SKScene{
         
     }
     
-    @objc func goToMenu(sender: UIButton){
+    @objc func goToMenuHelp(sender: UIButton){
         let menuScene = MenuScene(size: self.size)
         
         self.view?.presentScene(menuScene, transition: SKTransition.crossFadeWithDuration(0.0))
@@ -82,7 +82,7 @@ class HelpScene: SKScene{
         furtherHelpButton.removeFromSuperview()
     }
     
-    @objc func linkToFurtherHelp(){
+    @objc func linkToFurtherHelp(sender: UIButton){
         UIApplication.sharedApplication().openURL(NSURL(string: "http://physics-breaker.freeforums.net")!)
     }
 }
