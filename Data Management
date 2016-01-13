@@ -24,9 +24,6 @@ class DataManagement{
     var musicVolume: Float = 100
     var soundVolume: Float = 100
     
-    init(){
-    }
-    
     func setValues(){
         if(!defaults.boolForKey(defaultKeys.uninitializedKey)){
             /*Set all values for first run after download here*/
