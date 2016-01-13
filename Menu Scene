@@ -39,7 +39,7 @@ class MenuScene: SKScene {
         
         /*LABEL: Displays title*/
         menuLabel.fontColor = UIColor.blackColor()
-        menuLabel.fontSize = 60
+        menuLabel.fontSize = 80
         menuLabel.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame))
         
         self.addChild(menuLabel)
@@ -103,7 +103,6 @@ class MenuScene: SKScene {
                 volumeButton.setBackgroundImage(volumeImages[1], forState: UIControlState.Normal)
                 
                 dataManager.setMusicVolume(50.0)
-                dataManager.setSoundVolume(50.0)
                 
                 volumeChanged = 1
             }
@@ -113,7 +112,6 @@ class MenuScene: SKScene {
                 volumeButton.setBackgroundImage(volumeImages[2], forState: UIControlState.Normal)
                 
                 dataManager.setMusicVolume(0.0)
-                dataManager.setSoundVolume(0.0)
                 
                 volumeChanged = 1
             }
@@ -123,7 +121,6 @@ class MenuScene: SKScene {
                 volumeButton.setBackgroundImage(volumeImages[0], forState: UIControlState.Normal)
                 
                 dataManager.setMusicVolume(100.0)
-                dataManager.setSoundVolume(100.0)
                 
                 volumeChanged = 1
             }
