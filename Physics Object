@@ -10,16 +10,22 @@ import Foundation
 import SpriteKit
 
 class PhysicsObject: SKSpriteNode{
+    enum Type{
+        static let mass
+    }
+    
+    var objectType: Type
+    
     init(texture: SKTexture!, color: UIColor!, size: CGSize){
         super.init(texture: texture, color: color, size: size)
     }
     
-    convinience init(imageNamed: String!, currentPiece: Type)
+    convinience init(imageName: String!, currentPiece: Type)
     {
-        self.piecetype = currentPiece
-        let color = UIColor()
-        let texture = SKTexture(imageNamed: imageNamed)
-        let size = CGSizeMake(100.0, 100.0)
+        self.objectType = currentPiece
+        let color = UIColor.blackColor()
+        let texture = SKTexture(imageNamed: imageName)
+        let size = CGSize()
         super.init(texture: texture, color: color, size: size)
     }
 }
