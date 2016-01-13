@@ -12,11 +12,178 @@ import SpriteKit
 
 class HelpScene: SKScene{
     
+    let menuButton = UIButton()
+    
+    let titleLabel = SKLabelNode()
+    
+    let helpText1 = SKLabelNode()
+    let helpText2 = SKLabelNode()
+    let helpText3 = SKLabelNode()
+    let helpText4 = SKLabelNode()
+    let helpText5 = SKLabelNode()
+    let helpText6 = SKLabelNode()
+    let helpText7 = SKLabelNode()
+    let helpText8 = SKLabelNode()
+    let helpText9 = SKLabelNode()
+    
+    let furtherHelpButton = UIButton()
     
     override func didMoveToView(view: SKView) {
         self.backgroundColor = UIColor.whiteColor()  //sets scene's background to white
         
+        setUpScene()
+        setUpZAxis()
+    }
+    
+    override func willMoveFromView(view: SKView) {
+        self.removeAllChildren()
+    }
+    
+    func setUpScene(){
+        /*BUTTON: Button in top right that returns to main menu*/
+        menuButton.setTitle("MENU", forState: UIControlState.Normal)
+        menuButton.titleLabel!.font = UIFont(name: "HelveticaNeue-UltraLight", size: 20.0)
+        menuButton.frame = CGRect(x: self.view!.frame.size.width-100, y: self.view!.frame.size.height-300, width: 100, height: 30)
+        menuButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        menuButton.addTarget(self, action: "goToMenuHelp:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        self.view!.addSubview(menuButton)
+        
+        /*LABEL: Displays title with text 'HELP'*/
+        titleLabel.fontColor = UIColor.blackColor()
+        titleLabel.fontSize = 60.0
+        titleLabel.position = CGPoint(x: CGRectGetMidX(self.frame), y: 550)
+        titleLabel.text = "HELP"
+        
+        self.addChild(titleLabel)
+        
+        /*LABEL: Displays help text as a block; uses multiple labels*/
+        /*Line 1*/
+        helpText1.fontColor = UIColor.blackColor()
+        helpText1.fontSize = 30
+        helpText1.position = CGPoint(x: CGRectGetMidX(self.frame), y: 480)
+        helpText1.fontName = "HelveticaNeue"
+        helpText1.text = "Imaginary Inc took a revolutionary approach to solving physics problems. By "
+        
+        self.addChild(helpText1)
+        
+        /*Line 2*/
+        helpText2.fontColor = UIColor.blackColor()
+        helpText2.fontSize = 30
+        helpText2.position = CGPoint(x: CGRectGetMidX(self.frame), y: 440)
+        helpText2.fontName = "HelveticaNeue"
+        helpText2.text = "drawing them. Believe it or not, I found it easier to interpret real world "
+        
+        self.addChild(helpText2)
+        
+        /*Line 3*/
+        helpText3.fontColor = UIColor.blackColor()
+        helpText3.fontSize = 30
+        helpText3.position = CGPoint(x: CGRectGetMidX(self.frame), y: 400)
+        helpText3.fontName = "HelveticaNeue"
+        helpText3.text = "physics problems with drawings of the real world. It's not as if there are "
+        
+        self.addChild(helpText3)
+        
+        /*Line 4*/
+        helpText4.fontColor = UIColor.blackColor()
+        helpText4.fontSize = 30
+        helpText4.position = CGPoint(x: CGRectGetMidX(self.frame), y: 360)
+        helpText4.fontName = "HelveticaNeue"
+        helpText4.text = "just a bunch of numbers and vectors floating around our heads all the "
+        
+        self.addChild(helpText4)
+        
+        /*Line 5*/
+        helpText5.fontColor = UIColor.blackColor()
+        helpText5.fontSize = 30
+        helpText5.position = CGPoint(x: CGRectGetMidX(self.frame), y: 320)
+        helpText5.fontName = "HelveticaNeue"
+        helpText5.text = "time; there are pictures and that's how we best interpret physics. So all "
+        
+        self.addChild(helpText5)
+        
+        /*Line 6*/
+        helpText6.fontColor = UIColor.blackColor()
+        helpText6.fontSize = 30
+        helpText6.position = CGPoint(x: CGRectGetMidX(self.frame), y: 280)
+        helpText6.fontName = "HelveticaNeue"
+        helpText6.text = "you have to do to use this app is draw the problem. Unfortunately there "
+        
+        self.addChild(helpText6)
+        
+        /*Line 7*/
+        helpText7.fontColor = UIColor.blackColor()
+        helpText7.fontSize = 30
+        helpText7.position = CGPoint(x: CGRectGetMidX(self.frame), y: 240)
+        helpText7.fontName = "HelveticaNeue"
+        helpText7.text = "may be a bit of interpretation you need to do with the limited tools I give "
+        
+        self.addChild(helpText7)
+        
+        /*Line 8*/
+        helpText8.fontColor = UIColor.blackColor()
+        helpText8.fontSize = 30
+        helpText8.position = CGPoint(x: CGRectGetMidX(self.frame), y: 200)
+        helpText8.fontName = "HelveticaNeue"
+        helpText8.text = "you but I'm sure you can figure it out. If you do get stuck though, just "
+        
+        self.addChild(helpText8)
+        
+        /*Line 9*/
+        helpText9.fontColor = UIColor.blackColor()
+        helpText9.fontSize = 30
+        helpText9.position = CGPoint(x: CGRectGetMidX(self.frame), y: 160)
+        helpText9.fontName = "HelveticaNeue"
+        helpText9.text = "tap the button below and ask me."
+        
+        self.addChild(helpText9)
+        
+        /*BUTTON: Links to a forum designed to provide support for the app*/
+        furtherHelpButton.setTitle("Further Help", forState: UIControlState.Normal)
+        furtherHelpButton.titleLabel!.font = UIFont(name: "HelveticaNeue-UltraLight", size: 30.0)
+        furtherHelpButton.frame = CGRect(x: CGRectGetMidX(self.frame)-325, y: 270, width: 200, height: 50)
+        furtherHelpButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        furtherHelpButton.addTarget(self, action: "linkToFurtherHelp:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        self.view!.addSubview(furtherHelpButton)
         
     }
     
+    func setUpZAxis(){
+        
+    }
+    
+    @objc func goToMenuHelp(sender: UIButton){
+        let menuScene = MenuScene(size: self.size)
+        
+        self.view?.presentScene(menuScene, transition: SKTransition.crossFadeWithDuration(0.0))
+        
+        menuButton.removeFromSuperview()
+        furtherHelpButton.removeFromSuperview()
+    }
+    
+    @objc func linkToFurtherHelp(sender: UIButton){
+        UIApplication.sharedApplication().openURL(NSURL(string: "http://physics-breaker.freeforums.net")!)
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
