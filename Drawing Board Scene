@@ -17,6 +17,28 @@ class DrawingBoardScene: SKScene {
     override func didMoveToView(view: SKView) {
         self.backgroundColor = UIColor.whiteColor()  //sets scene's background to white
         
+        setUpScene()
+        isInBounds()
+    }
+    
+    func setUpScene(){
         
+        
+        /*Remember to remove sidebar buttons with the menu button*/
+    }
+    
+    func isInBounds(){
+        var rightBound = CGFloat()
+        var leftBound = CGFloat()
+        var upperBound = CGFloat()
+        var bottomBound = CGFloat()
+        rightBound = view.frame.width - (userNode.size.width / 2)
+        leftBound = CGRectGetMinX(view.frame) + (userNode.size.width / 2)
+        upperBound = view.frame.height - (userNode.size.height / 2)
+        bottomBound = CGRectGetMinY(self.frame) + (userNode.size.height / 2)
+        
+        if(node.position.x < leftBound || node.position.x > rightBound || node.position.y < upperBound || node.position.y > lowerBound){
+            self.removeChild(node)
+        }
     }
 }
