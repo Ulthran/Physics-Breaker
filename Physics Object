@@ -1,31 +1,29 @@
 //
-//  PhysicsObject.swift
+//  Physics Object.swift
 //  Physics Breaker
 //
-//  Created by Charlie Bushman on 1/12/16.
+//  Created by Charlie Bushman on 1/14/16.
 //  Copyright © 2016 imaginary inc. All rights reserved.
 //
 
 import Foundation
+import UIKit
 import SpriteKit
 
-class PhysicsObject: SKSpriteNode{
-    enum Type{
-        static let mass
+class PhysicsObject {
+    var physicsObject: SKSpriteNode
+    
+    init(objectType: String){
+        physicsObject = SKSpriteNode(imageNamed: "Imaginary Inc Logo")
+        
+        if(objectType == "Frictionless Mass"){
+            physicsObject = SKSpriteNode(imageNamed: "Frictionless Mass")
+        }
     }
     
-    var objectType: Type
-    
-    init(texture: SKTexture!, color: UIColor!, size: CGSize){
-        super.init(texture: texture, color: color, size: size)
+    func getPhysicsObject() ->SKSpriteNode{
+        return physicsObject
     }
     
-    convinience init(imageName: String!, currentPiece: Type)
-    {
-        self.objectType = currentPiece
-        let color = UIColor.blackColor()
-        let texture = SKTexture(imageNamed: imageName)
-        let size = CGSize()
-        super.init(texture: texture, color: color, size: size)
-    }
+    
 }
