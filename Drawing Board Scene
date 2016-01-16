@@ -12,33 +12,427 @@ import UIKit
 
 class DrawingBoardScene: SKScene {
     
-
+    let titleLabel = SKLabelNode(text: "PHYSICS BREAKER")
+    
+    let menuButton = UIButton()
+    
+    let calculateButton = UIButton()
+    
+    let calculateMenu = UIBarButtonItem()
+    
+    let drawingBoard = SKSpriteNode(imageNamed: "Drawing Board Outline")
+    
+    let sideBar = SKSpriteNode(imageNamed: "Drawing Board Outline")
+    
+    let sideBarItem1 = UIButton()
+    let sideBarItem2 = UIButton()
+    let sideBarItem3 = UIButton()
+    let sideBarItem4 = UIButton()
+    let sideBarItem5 = UIButton()
+    
+    let sideBarBackButton = UIButton()
     
     override func didMoveToView(view: SKView) {
         self.backgroundColor = UIColor.whiteColor()  //sets scene's background to white
         
         setUpScene()
-        isInBounds()
     }
     
+    
+    /*----------------------------------------------------------------------------------------------------------------------------
+    ----------------------------------------------------setUpScene()--------------------------------------------------------------
+    ----------------------------------------------------------------------------------------------------------------------------*/
+
+
     func setUpScene(){
+        /*LABEL: Displays title*/
+        titleLabel.fontColor = UIColor.blackColor()
+        titleLabel.fontSize = 50.0
+        titleLabel.position = CGPoint(x: CGRectGetMidX(self.frame), y: 560)
         
+        self.addChild(titleLabel)
         
-        /*Remember to remove sidebar buttons with the menu button*/
+        /*BUTTON: Button in top right that returns to main menu*/
+        menuButton.setTitle("MENU", forState: UIControlState.Normal)
+        menuButton.titleLabel!.font = UIFont(name: "HelveticaNeue-UltraLight", size: 20.0)
+        menuButton.frame = CGRect(x: self.view!.frame.size.width-100, y: self.view!.frame.size.height-300, width: 100, height: 30)
+        menuButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        menuButton.addTarget(self, action: "goToMenu:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        self.view!.addSubview(menuButton)
+        
+        /*BUTTON: Allows user to calculate for the variable selected in the calculateMenu*/
+        calculateButton.setTitle("Calculate: ", forState: UIControlState.Normal)
+        calculateButton.titleLabel!.font = UIFont(name: "HelveticaNeue-UltraLight", size: 30.0)
+        calculateButton.frame = CGRect(x: ((self.view!.frame.size.width)/2)-150, y: 280.0, width: 150, height: 30.0)
+        calculateButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        calculateButton.addTarget(self, action: "calculate:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        self.view!.addSubview(calculateButton)
+        
+        /*SPRITE NODE: Displays rectangle around drawing board*/
+        drawingBoard.size = CGSize(width: 775.0, height: 400.0)
+        drawingBoard.position = CGPoint(x: ((self.view!.frame.size.width)/2)+300.0, y: 350.0)
+        
+        self.addChild(drawingBoard)
+        
+        /*SPRITE NODE: Displays rectangle around sidebar*/
+        sideBar.size = CGSize(width: 300.0, height: 400.0)
+        sideBar.position = CGPoint(x: -25.0, y: 350.0)
+        
+        self.addChild(sideBar)
+        
+        /*BUTTON: Masses category in the sidebar*/
+        sideBarItem1.setImage(UIImage(named:"Masses"), forState: UIControlState.Normal)
+        sideBarItem1.frame = CGRect(x: 20.0, y: 70.0, width: 30.0, height: 30.0)
+        sideBarItem1.addTarget(self, action: "massesSideBar:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        self.view!.addSubview(sideBarItem1)
+        
+        /*BUTTON: Surfaces category in the sidebar*/
+        sideBarItem2.setImage(UIImage(named:"Surfaces"), forState: UIControlState.Normal)
+        sideBarItem2.frame = CGRect(x: 20.0, y: 120.0, width: 30.0, height: 30.0)
+        sideBarItem2.addTarget(self, action: "surfacesSideBar:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        self.view!.addSubview(sideBarItem2)
+        
+        /*BUTTON: Force vectors category in the sidebar*/
+        sideBarItem3.setImage(UIImage(named:"Force Vectors"), forState: UIControlState.Normal)
+        sideBarItem3.frame = CGRect(x: 20.0, y: 170.0, width: 30.0, height: 30.0)
+        sideBarItem3.addTarget(self, action: "forceVectorsSideBar:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        self.view!.addSubview(sideBarItem3)
+        
+        /*BUTTON: Connectors category in the sidebar*/
+        sideBarItem4.setImage(UIImage(named:"Connectors"), forState: UIControlState.Normal)
+        sideBarItem4.frame = CGRect(x: 20.0, y: 220.0, width: 30.0, height: 30.0)
+        sideBarItem4.addTarget(self, action: "connectorsSideBar:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        self.view!.addSubview(sideBarItem4)
+        
+        /*BUTTON: 5th category in the sidebar*/
+        /*sideBarItem5.setImage(UIImage(named:"Category 5 Image"), forState: UIControlState.Normal)
+        sideBarItem5.frame = CGRect(x: 20.0, y: 230.0, width: 30.0, height: 30.0)
+        sideBarItem5.addTarget(self, action: "cat5SideBar:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        self.view!.addSubview(sideBarItem5)*/
+        
+        /*Button: Adds a back button to the sidebar*/
+        sideBarBackButton.setTitle("<back", forState: UIControlState.Normal)
+        sideBarBackButton.frame = CGRect(x: 10.0, y: 245.0, width: 50.0, height: 30.0)
+        sideBarBackButton.titleLabel!.font = UIFont(name: "HelveticaNeue-UltraLight", size: 15.0)
+        sideBarBackButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        sideBarBackButton.addTarget(self, action: "mainSideBar:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        self.view!.addSubview(sideBarBackButton)
     }
     
-    func isInBounds(){
+    
+    /*----------------------------------------------------------------------------------------------------------------------------
+    ----------------------------------------------------setUpSideBars()-----------------------------------------------------------
+    ----------------------------------------------------------------------------------------------------------------------------*/
+    
+    
+    
+    func setUpMassesSideBar(){
+        sideBarItem1.setImage(UIImage(named: "Frictionless Mass"), forState: UIControlState.Normal)
+        sideBarItem1.frame = CGRect(x: 20.0, y: 70.0, width: 30.0, height: 30.0)
+        sideBarItem1.addTarget(self, action: "createFrictionlessMass:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem2.setImage(UIImage(named: "Angular Mass"), forState: UIControlState.Normal)
+        sideBarItem2.frame = CGRect(x: 20.0, y: 110.0, width: 30.0, height: 30.0)
+        sideBarItem2.addTarget(self, action: "createAngularMass:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem3.setImage(UIImage(named: "Focal Point"), forState: UIControlState.Normal)
+        sideBarItem3.frame = CGRect(x: 20.0, y: 150.0, width: 30.0, height: 30.0)
+        sideBarItem3.addTarget(self, action: "createFocalPoint:", forControlEvents: UIControlEvents.TouchUpInside)
+        /*sideBarItem4.setImage(UIImage(named: ""), forState: UIControlState.Normal)
+        sideBarItem4.frame = CGRect(x: 20.0, y: 190.0, width: 30.0, height: 30.0)
+        sideBarItem4.addTarget(self, action: "", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem5.setImage(UIImage(named: ""), forState: UIControlState.Normal)
+        sideBarItem5.frame = CGRect(x: 20.0, y: 230.0, width: 30.0, height: 30.0)
+        sideBarItem5.addTarget(self, action: "", forControlEvents: UIControlEvents.TouchUpInside)*/
+        
+        self.view!.addSubview(sideBarItem1)
+        self.view!.addSubview(sideBarItem2)
+        self.view!.addSubview(sideBarItem3)
+        //self.view!.addSubview(sideBarItem4)
+        //self.view!.addSubview(sideBarItem5)
+    }
+    
+    func setUpSurfacesSideBar(){
+        sideBarItem1.setImage(UIImage(named: "Flat Surface"), forState: UIControlState.Normal)
+        sideBarItem2.setImage(UIImage(named: "Inclined Plane"), forState: UIControlState.Normal)
+        sideBarItem3.setImage(UIImage(named: "Drop Off"), forState: UIControlState.Normal)
+        sideBarItem4.setImage(UIImage(named: "Rise"), forState: UIControlState.Normal)
+        sideBarItem5.setImage(UIImage(named: "Wall"), forState: UIControlState.Normal)
+        
+        self.view!.addSubview(sideBarItem1)
+        self.view!.addSubview(sideBarItem2)
+        self.view!.addSubview(sideBarItem3)
+        self.view!.addSubview(sideBarItem4)
+        self.view!.addSubview(sideBarItem5)
+    }
+    
+    func setUpForceVectorsSideBar(){
+        sideBarItem1.setImage(UIImage(named: "Force"), forState: UIControlState.Normal)
+        sideBarItem2.setImage(UIImage(named: "Weight"), forState: UIControlState.Normal)
+        sideBarItem3.setImage(UIImage(named: "Friction"), forState: UIControlState.Normal)
+        sideBarItem4.setImage(UIImage(named: "Normal"), forState: UIControlState.Normal)
+        //sideBarItem5.setImage(UIImage(named: ""), forState: UIControlState.Normal)
+        
+        self.view!.addSubview(sideBarItem1)
+        self.view!.addSubview(sideBarItem2)
+        self.view!.addSubview(sideBarItem3)
+        self.view!.addSubview(sideBarItem4)
+        //self.view!.addSubview(sideBarItem5)
+    }
+    
+    func setUpConnectorsSideBar(){
+        sideBarItem1.setImage(UIImage(named: "String"), forState: UIControlState.Normal)
+        sideBarItem2.setImage(UIImage(named: "Glue"), forState: UIControlState.Normal)
+        sideBarItem3.setImage(UIImage(named: "Putty"), forState: UIControlState.Normal)
+        sideBarItem4.setImage(UIImage(named: "Spring"), forState: UIControlState.Normal)
+        //sideBarItem5.setImage(UIImage(named: ""), forState: UIControlState.Normal)
+        
+        self.view!.addSubview(sideBarItem1)
+        self.view!.addSubview(sideBarItem2)
+        self.view!.addSubview(sideBarItem3)
+        self.view!.addSubview(sideBarItem4)
+        //self.view!.addSubview(sideBarItem5)
+    }
+    
+    /*func setUpCategory5SideBar(){
+        
+    }*/
+    
+    
+    /*----------------------------------------------------------------------------------------------------------------------------
+    ----------------------------------------------------isInBounds()--------------------------------------------------------------
+    ----------------------------------------------------------------------------------------------------------------------------*/
+    
+    
+    
+    func isInBounds(node: SKSpriteNode){
         var rightBound = CGFloat()
         var leftBound = CGFloat()
         var upperBound = CGFloat()
-        var bottomBound = CGFloat()
-        rightBound = view.frame.width - (userNode.size.width / 2)
-        leftBound = CGRectGetMinX(view.frame) + (userNode.size.width / 2)
-        upperBound = view.frame.height - (userNode.size.height / 2)
-        bottomBound = CGRectGetMinY(self.frame) + (userNode.size.height / 2)
+        var lowerBound = CGFloat()
+        rightBound = self.view!.frame.width - (node.size.width / 2)
+        leftBound = CGRectGetMinX(self.view!.frame) + (node.size.width / 2)
+        upperBound = self.view!.frame.height - (node.size.height / 2)
+        lowerBound = CGRectGetMinY(self.frame) + (node.size.height / 2)
         
         if(node.position.x < leftBound || node.position.x > rightBound || node.position.y < upperBound || node.position.y > lowerBound){
-            self.removeChild(node)
+            node.removeFromParent()
+        }
+    }
+    
+    
+    /*----------------------------------------------------------------------------------------------------------------------------
+    -------------------------------------------------------Targets----------------------------------------------------------------
+    ----------------------------------------------------------------------------------------------------------------------------*/
+    
+    
+    
+    @objc func goToMenu(sender: UIButton){
+        let menuScene = MenuScene(size: self.size)
+        
+        self.view?.presentScene(menuScene, transition: SKTransition.crossFadeWithDuration(0.0))
+        
+        menuButton.removeFromSuperview()
+        calculateButton.removeFromSuperview()
+        sideBarItem1.removeFromSuperview()
+        sideBarItem2.removeFromSuperview()
+        sideBarItem3.removeFromSuperview()
+        sideBarItem4.removeFromSuperview()
+        //sideBarItem5.removeFromSuperview()
+        sideBarBackButton.removeFromSuperview()
+    }
+    
+    @objc func mainSideBar(sender: UIButton){
+        sideBarItem1.removeFromSuperview()
+        sideBarItem2.removeFromSuperview()
+        sideBarItem3.removeFromSuperview()
+        sideBarItem4.removeFromSuperview()
+        //sideBarItem5.removeFromSuperview()
+        
+        sideBarItem1.setImage(UIImage(named:"Masses"), forState: UIControlState.Normal)
+        sideBarItem1.frame = CGRect(x: 20.0, y: 70.0, width: 30.0, height: 30.0)
+        sideBarItem1.addTarget(self, action: "massesSideBar:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        self.view!.addSubview(sideBarItem1)
+        
+        sideBarItem2.setImage(UIImage(named:"Surfaces"), forState: UIControlState.Normal)
+        sideBarItem2.frame = CGRect(x: 20.0, y: 120.0, width: 30.0, height: 30.0)
+        sideBarItem2.addTarget(self, action: "surfacesSideBar:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        self.view!.addSubview(sideBarItem2)
+        
+        sideBarItem3.setImage(UIImage(named:"Force Vectors"), forState: UIControlState.Normal)
+        sideBarItem3.frame = CGRect(x: 20.0, y: 170.0, width: 30.0, height: 30.0)
+        sideBarItem3.addTarget(self, action: "forceVectorsSideBar:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        self.view!.addSubview(sideBarItem3)
+        
+        sideBarItem4.setImage(UIImage(named:"Connectors"), forState: UIControlState.Normal)
+        sideBarItem4.frame = CGRect(x: 20.0, y: 220.0, width: 30.0, height: 30.0)
+        sideBarItem4.addTarget(self, action: "connectorsSideBar:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        self.view!.addSubview(sideBarItem4)
+        
+        /*sideBarItem5.setImage(UIImage(named:"Category 5 Image"), forState: UIControlState.Normal)
+        sideBarItem5.frame = CGRect(x: 20.0, y: 230.0, width: 30.0, height: 30.0)
+        sideBarItem5.addTarget(self, action: "cat5SideBar:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        self.view!.addSubview(sideBarItem5)*/
+    }
+    
+    @objc func calculate(sender: UIButton){
+        
+        
+        menuButton.removeFromSuperview()
+        calculateButton.removeFromSuperview()
+        sideBarItem1.removeFromSuperview()
+        sideBarItem2.removeFromSuperview()
+        sideBarItem3.removeFromSuperview()
+        sideBarItem4.removeFromSuperview()
+        sideBarItem5.removeFromSuperview()
+        sideBarBackButton.removeFromSuperview()
+        
+        self.removeAllChildren()
+    }
+    
+    @objc func massesSideBar(sender: UIButton){
+        setUpMassesSideBar()
+        
+        sideBarItem1.removeFromSuperview()
+        sideBarItem2.removeFromSuperview()
+        sideBarItem3.removeFromSuperview()
+        sideBarItem4.removeFromSuperview()
+        //sideBarItem5.removeFromSuperview()
+    }
+    
+    @objc func surfacesSideBar(sender: UIButton){
+        setUpSurfacesSideBar()
+        
+        sideBarItem1.removeFromSuperview()
+        sideBarItem2.removeFromSuperview()
+        sideBarItem3.removeFromSuperview()
+        sideBarItem4.removeFromSuperview()
+        //sideBarItem5.removeFromSuperview()
+    }
+    
+    @objc func forceVectorsSideBar(sender: UIButton){
+        setUpForceVectorsSideBar()
+        
+        sideBarItem1.removeFromSuperview()
+        sideBarItem2.removeFromSuperview()
+        sideBarItem3.removeFromSuperview()
+        sideBarItem4.removeFromSuperview()
+        //sideBarItem5.removeFromSuperview()
+    }
+    
+    @objc func connectorsSideBar(sender: UIButton){
+        setUpConnectorsSideBar()
+        
+        sideBarItem1.removeFromSuperview()
+        sideBarItem2.removeFromSuperview()
+        sideBarItem3.removeFromSuperview()
+        sideBarItem4.removeFromSuperview()
+        //sideBarItem5.removeFromSuperview()
+    }
+    
+    /*@objc func cat5SideBar(sender: UIButton){
+        setUpCategory5SideBar()
+        
+        sideBarItem1.removeFromSuperview()
+        sideBarItem2.removeFromSuperview()
+        sideBarItem3.removeFromSuperview()
+        sideBarItem4.removeFromSuperview()
+        sideBarItem5.removeFromSuperview()
+    }*/
+    
+    
+    /*----------------------------------------------------------------------------------------------------------------------------
+    -------------------------------------------------Create Physics Nodes---------------------------------------------------------
+    ----------------------------------------------------------------------------------------------------------------------------*/
+    
+    var physicsObject = PhysicsObject(objectType: "Null")
+    
+    var physicsNode = [SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode()]
+    
+    var nodeCounter = 0
+    
+    @objc func createFrictionlessMass(sender: UIButton){
+        if(nodeCounter < 32){
+            physicsObject = PhysicsObject(objectType: "Frictionless Mass")
+            physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
+            
+            nodeCounter += 1
+        }
+    }
+    
+    @objc func createAngularMass(sender: UIButton){
+        if(nodeCounter < 32){
+            physicsObject = PhysicsObject(objectType: "Angular Mass")
+            physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
+            
+            nodeCounter += 1
+        }
+    }
+    
+    @objc func createFocalPoint(sender: UIButton){
+        if(nodeCounter < 32){
+            physicsObject = PhysicsObject(objectType: "Focal Point")
+            physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
+            
+            nodeCounter += 1
+        }
+    }
+    
+    func touchesMove(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        for touch in touches{
+            let location = touch.locationInNode(self)
+            var nodeHeld = -1
+            
+            if(nodeHeld > -1){
+                for(var i=0; i<32; i++){
+                    if((physicsNode[i].position.x - location.x < 10 || physicsNode[i].position.x - location.x > -10) && (physicsNode[i].position.y - location.y < 10 || physicsNode[i].position.y - location.y > -10)){
+                        nodeHeld = i
+                    }
+                }
+            }
+            
+            physicsNode[nodeHeld].position = location
+            
+            if(){
+                
+            }
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
