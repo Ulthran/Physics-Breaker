@@ -28,7 +28,37 @@ class DrawingBoardScene: SKScene {
     let sideBarItem2 = UIButton()
     let sideBarItem3 = UIButton()
     let sideBarItem4 = UIButton()
-    let sideBarItem5 = UIButton()
+    //let sideBarItem5 = UIButton()
+    
+    let sideBarItem1_1 = UIButton()
+    let sideBarItem1_2 = UIButton()
+    let sideBarItem1_3 = UIButton()
+    //let sideBarItem1_4 = UIButton()
+    //let sideBarItem1_5 = UIButton()
+    
+    let sideBarItem2_1 = UIButton()
+    let sideBarItem2_2 = UIButton()
+    let sideBarItem2_3 = UIButton()
+    let sideBarItem2_4 = UIButton()
+    let sideBarItem2_5 = UIButton()
+    
+    let sideBarItem3_1 = UIButton()
+    let sideBarItem3_2 = UIButton()
+    let sideBarItem3_3 = UIButton()
+    let sideBarItem3_4 = UIButton()
+    //let sideBarItem3_5 = UIButton()
+    
+    let sideBarItem4_1 = UIButton()
+    let sideBarItem4_2 = UIButton()
+    let sideBarItem4_3 = UIButton()
+    let sideBarItem4_4 = UIButton()
+    //let sideBarItem4_5 = UIButton()
+    
+    /*let sideBarItem5_1 = UIButton()
+    let sideBarItem5_2 = UIButton()
+    let sideBarItem5_3 = UIButton()
+    let sideBarItem5_4 = UIButton()
+    let sideBarItem5_5 = UIButton()*/
     
     let sideBarBackButton = UIButton()
     
@@ -135,69 +165,99 @@ class DrawingBoardScene: SKScene {
     
     
     func setUpMassesSideBar(){
-        sideBarItem1.setImage(UIImage(named: "Frictionless Mass"), forState: UIControlState.Normal)
-        sideBarItem1.frame = CGRect(x: 20.0, y: 70.0, width: 30.0, height: 30.0)
-        sideBarItem1.addTarget(self, action: "createFrictionlessMass:", forControlEvents: UIControlEvents.TouchUpInside)
-        sideBarItem2.setImage(UIImage(named: "Angular Mass"), forState: UIControlState.Normal)
-        sideBarItem2.frame = CGRect(x: 20.0, y: 110.0, width: 30.0, height: 30.0)
-        sideBarItem2.addTarget(self, action: "createAngularMass:", forControlEvents: UIControlEvents.TouchUpInside)
-        sideBarItem3.setImage(UIImage(named: "Focal Point"), forState: UIControlState.Normal)
-        sideBarItem3.frame = CGRect(x: 20.0, y: 150.0, width: 30.0, height: 30.0)
-        sideBarItem3.addTarget(self, action: "createFocalPoint:", forControlEvents: UIControlEvents.TouchUpInside)
-        /*sideBarItem4.setImage(UIImage(named: ""), forState: UIControlState.Normal)
-        sideBarItem4.frame = CGRect(x: 20.0, y: 190.0, width: 30.0, height: 30.0)
-        sideBarItem4.addTarget(self, action: "", forControlEvents: UIControlEvents.TouchUpInside)
-        sideBarItem5.setImage(UIImage(named: ""), forState: UIControlState.Normal)
-        sideBarItem5.frame = CGRect(x: 20.0, y: 230.0, width: 30.0, height: 30.0)
-        sideBarItem5.addTarget(self, action: "", forControlEvents: UIControlEvents.TouchUpInside)*/
+        sideBarItem1_1.setImage(UIImage(named: "Frictionless Mass"), forState: UIControlState.Normal)
+        sideBarItem1_1.frame = CGRect(x: 20.0, y: 70.0, width: 35.0, height: 30.0)
+        sideBarItem1_1.addTarget(self, action: "createFrictionlessMass:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem1_2.setImage(UIImage(named: "Angular Mass"), forState: UIControlState.Normal)
+        sideBarItem1_2.frame = CGRect(x: 20.0, y: 110.0, width: 30.0, height: 30.0)
+        sideBarItem1_2.addTarget(self, action: "createAngularMass:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem1_3.setImage(UIImage(named: "Focal Point"), forState: UIControlState.Normal)
+        sideBarItem1_3.frame = CGRect(x: 20.0, y: 150.0, width: 30.0, height: 30.0)
+        sideBarItem1_3.addTarget(self, action: "createFocalPoint:", forControlEvents: UIControlEvents.TouchUpInside)
+        /*sideBarItem1_4.setImage(UIImage(named: ""), forState: UIControlState.Normal)
+        sideBarItem1_4.frame = CGRect(x: 20.0, y: 190.0, width: 30.0, height: 30.0)
+        sideBarItem1_4.addTarget(self, action: "", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem1_5.setImage(UIImage(named: ""), forState: UIControlState.Normal)
+        sideBarItem1_5.frame = CGRect(x: 20.0, y: 230.0, width: 30.0, height: 30.0)
+        sideBarItem1_5.addTarget(self, action: "", forControlEvents: UIControlEvents.TouchUpInside)*/
         
-        self.view!.addSubview(sideBarItem1)
-        self.view!.addSubview(sideBarItem2)
-        self.view!.addSubview(sideBarItem3)
-        //self.view!.addSubview(sideBarItem4)
-        //self.view!.addSubview(sideBarItem5)
+        self.view!.addSubview(sideBarItem1_1)
+        self.view!.addSubview(sideBarItem1_2)
+        self.view!.addSubview(sideBarItem1_3)
+        //self.view!.addSubview(sideBarItem1_4)
+        //self.view!.addSubview(sideBarItem1_5)
     }
     
     func setUpSurfacesSideBar(){
-        sideBarItem1.setImage(UIImage(named: "Flat Surface"), forState: UIControlState.Normal)
-        sideBarItem2.setImage(UIImage(named: "Inclined Plane"), forState: UIControlState.Normal)
-        sideBarItem3.setImage(UIImage(named: "Drop Off"), forState: UIControlState.Normal)
-        sideBarItem4.setImage(UIImage(named: "Rise"), forState: UIControlState.Normal)
-        sideBarItem5.setImage(UIImage(named: "Wall"), forState: UIControlState.Normal)
+        sideBarItem2_1.setImage(UIImage(named: "Flat Surface"), forState: UIControlState.Normal)
+        sideBarItem2_1.frame = CGRect(x: 20.0, y: 75.0, width: 30.0, height: 10.0)
+        sideBarItem2_1.addTarget(self, action: "createFlatSurface:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem2_2.setImage(UIImage(named: "Inclined Plane"), forState: UIControlState.Normal)
+        sideBarItem2_2.frame = CGRect(x: 20.0, y: 100.0, width: 30.0, height: 30.0)
+        sideBarItem2_2.addTarget(self, action: "createInclinedPlane:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem2_3.setImage(UIImage(named: "Drop Off"), forState: UIControlState.Normal)
+        sideBarItem2_3.frame = CGRect(x: 5.0, y: 140.0, width: 60.0, height: 30.0)
+        sideBarItem2_3.addTarget(self, action: "createDropOff:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem2_4.setImage(UIImage(named: "Rise"), forState: UIControlState.Normal)
+        sideBarItem2_4.frame = CGRect(x: 5.0, y: 180.0, width: 60.0, height: 30.0)
+        sideBarItem2_4.addTarget(self, action: "createRise:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem2_5.setImage(UIImage(named: "Wall"), forState: UIControlState.Normal)
+        sideBarItem2_5.frame = CGRect(x: 20.0, y: 220.0, width: 15.0, height: 30.0)
+        sideBarItem2_5.addTarget(self, action: "createWall:", forControlEvents: UIControlEvents.TouchUpInside)
         
-        self.view!.addSubview(sideBarItem1)
-        self.view!.addSubview(sideBarItem2)
-        self.view!.addSubview(sideBarItem3)
-        self.view!.addSubview(sideBarItem4)
-        self.view!.addSubview(sideBarItem5)
+        self.view!.addSubview(sideBarItem2_1)
+        self.view!.addSubview(sideBarItem2_2)
+        self.view!.addSubview(sideBarItem2_3)
+        self.view!.addSubview(sideBarItem2_4)
+        self.view!.addSubview(sideBarItem2_5)
     }
     
     func setUpForceVectorsSideBar(){
-        sideBarItem1.setImage(UIImage(named: "Force"), forState: UIControlState.Normal)
-        sideBarItem2.setImage(UIImage(named: "Weight"), forState: UIControlState.Normal)
-        sideBarItem3.setImage(UIImage(named: "Friction"), forState: UIControlState.Normal)
-        sideBarItem4.setImage(UIImage(named: "Normal"), forState: UIControlState.Normal)
-        //sideBarItem5.setImage(UIImage(named: ""), forState: UIControlState.Normal)
+        sideBarItem3_1.setImage(UIImage(named: "Force Vector"), forState: UIControlState.Normal)
+        sideBarItem3_1.frame = CGRect(x: 20.0, y: 70.0, width: 30.0, height: 30.0)
+        sideBarItem3_1.addTarget(self, action: "createForceVector:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem3_2.setImage(UIImage(named: "Weight"), forState: UIControlState.Normal)
+        sideBarItem3_2.frame = CGRect(x: 30.0, y: 110.0, width: 10.0, height: 30.0)
+        sideBarItem3_2.addTarget(self, action: "createWeight:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem3_3.setImage(UIImage(named: "Friction"), forState: UIControlState.Normal)
+        sideBarItem3_3.frame = CGRect(x: 18.0, y: 160.0, width: 35.0, height: 15.0)
+        sideBarItem3_3.addTarget(self, action: "createFriction:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem3_4.setImage(UIImage(named: "Normal Force"), forState: UIControlState.Normal)
+        sideBarItem3_4.frame = CGRect(x: 30.0, y: 190.0, width: 10.0, height: 30.0)
+        sideBarItem3_4.addTarget(self, action: "createNormalForce:", forControlEvents: UIControlEvents.TouchUpInside)
+        //sideBarItem3_5.setImage(UIImage(named: ""), forState: UIControlState.Normal)
+        //sideBarItem3_5.frame = CGRect(x: 20.0, y: 230.0, width: 15.0, height: 30.0)
+        //sideBarItem3_5.addTarget(self, action: "", forControlEvents: UIControlEvents.TouchUpInside)
         
-        self.view!.addSubview(sideBarItem1)
-        self.view!.addSubview(sideBarItem2)
-        self.view!.addSubview(sideBarItem3)
-        self.view!.addSubview(sideBarItem4)
-        //self.view!.addSubview(sideBarItem5)
+        self.view!.addSubview(sideBarItem3_1)
+        self.view!.addSubview(sideBarItem3_2)
+        self.view!.addSubview(sideBarItem3_3)
+        self.view!.addSubview(sideBarItem3_4)
+        //self.view!.addSubview(sideBarItem3_5)
     }
     
     func setUpConnectorsSideBar(){
-        sideBarItem1.setImage(UIImage(named: "String"), forState: UIControlState.Normal)
-        sideBarItem2.setImage(UIImage(named: "Glue"), forState: UIControlState.Normal)
-        sideBarItem3.setImage(UIImage(named: "Putty"), forState: UIControlState.Normal)
-        sideBarItem4.setImage(UIImage(named: "Spring"), forState: UIControlState.Normal)
-        //sideBarItem5.setImage(UIImage(named: ""), forState: UIControlState.Normal)
+        sideBarItem4_1.setImage(UIImage(named: "String"), forState: UIControlState.Normal)
+        sideBarItem4_1.frame = CGRect(x: 20.0, y: 80.0, width: 30.0, height: 10.0)
+        sideBarItem4_1.addTarget(self, action: "createString:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem4_2.setImage(UIImage(named: "Glue"), forState: UIControlState.Normal)
+        sideBarItem4_2.frame = CGRect(x: 20.0, y: 110.0, width: 30.0, height: 30.0)
+        sideBarItem4_2.addTarget(self, action: "createGlue:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem4_3.setImage(UIImage(named: "Putty"), forState: UIControlState.Normal)
+        sideBarItem4_3.frame = CGRect(x: 20.0, y: 150.0, width: 30.0, height: 30.0)
+        sideBarItem4_3.addTarget(self, action: "createPutty:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem4_4.setImage(UIImage(named: "Spring"), forState: UIControlState.Normal)
+        sideBarItem4_4.frame = CGRect(x: 20.0, y: 190.0, width: 30.0, height: 30.0)
+        sideBarItem4_4.addTarget(self, action: "createSpring:", forControlEvents: UIControlEvents.TouchUpInside)
+        //sideBarItem4_5.setImage(UIImage(named: ""), forState: UIControlState.Normal)
+        //sideBarItem4_5.frame = CGRect(x: 20.0, y: 230.0, width: 30.0, height: 30.0)
+        //sideBarItem4_5.addTarget(self, action: "", forState: UIControlState.TouchUpInside)
         
-        self.view!.addSubview(sideBarItem1)
-        self.view!.addSubview(sideBarItem2)
-        self.view!.addSubview(sideBarItem3)
-        self.view!.addSubview(sideBarItem4)
-        //self.view!.addSubview(sideBarItem5)
+        self.view!.addSubview(sideBarItem4_1)
+        self.view!.addSubview(sideBarItem4_2)
+        self.view!.addSubview(sideBarItem4_3)
+        self.view!.addSubview(sideBarItem4_4)
+        //self.view!.addSubview(sideBarItem4_5)
     }
     
     /*func setUpCategory5SideBar(){
@@ -245,7 +305,34 @@ class DrawingBoardScene: SKScene {
         sideBarItem3.removeFromSuperview()
         sideBarItem4.removeFromSuperview()
         //sideBarItem5.removeFromSuperview()
+        sideBarItem1_1.removeFromSuperview()
+        sideBarItem1_2.removeFromSuperview()
+        sideBarItem1_3.removeFromSuperview()
+        //sideBarItem1_4.removeFromSuperview()
+        //sideBarItem1_5.removeFromSuperview()
+        sideBarItem2_1.removeFromSuperview()
+        sideBarItem2_2.removeFromSuperview()
+        sideBarItem2_3.removeFromSuperview()
+        sideBarItem2_4.removeFromSuperview()
+        sideBarItem2_5.removeFromSuperview()
+        sideBarItem3_1.removeFromSuperview()
+        sideBarItem3_2.removeFromSuperview()
+        sideBarItem3_3.removeFromSuperview()
+        sideBarItem3_4.removeFromSuperview()
+        //sideBarItem3_5.removeFromSuperview()
+        sideBarItem4_1.removeFromSuperview()
+        sideBarItem4_2.removeFromSuperview()
+        sideBarItem4_3.removeFromSuperview()
+        sideBarItem4_4.removeFromSuperview()
+        //sideBarItem4_5.removeFromSuperview()
+        //sideBarItem5_1.removeFromSuperview()
+        //sideBarItem5_2.removeFromSuperview()
+        //sideBarItem5_3.removeFromSuperview()
+        //sideBarItem5_4.removeFromSuperview()
+        //sideBarItem5_5.removeFromSuperview()
         sideBarBackButton.removeFromSuperview()
+        
+        nodeCounter = 0
     }
     
     @objc func mainSideBar(sender: UIButton){
@@ -254,6 +341,31 @@ class DrawingBoardScene: SKScene {
         sideBarItem3.removeFromSuperview()
         sideBarItem4.removeFromSuperview()
         //sideBarItem5.removeFromSuperview()
+        sideBarItem1_1.removeFromSuperview()
+        sideBarItem1_2.removeFromSuperview()
+        sideBarItem1_3.removeFromSuperview()
+        //sideBarItem1_4.removeFromSuperview()
+        //sideBarItem1_5.removeFromSuperview()
+        sideBarItem2_1.removeFromSuperview()
+        sideBarItem2_2.removeFromSuperview()
+        sideBarItem2_3.removeFromSuperview()
+        sideBarItem2_4.removeFromSuperview()
+        sideBarItem2_5.removeFromSuperview()
+        sideBarItem3_1.removeFromSuperview()
+        sideBarItem3_2.removeFromSuperview()
+        sideBarItem3_3.removeFromSuperview()
+        sideBarItem3_4.removeFromSuperview()
+        //sideBarItem3_5.removeFromSuperview()
+        sideBarItem4_1.removeFromSuperview()
+        sideBarItem4_2.removeFromSuperview()
+        sideBarItem4_3.removeFromSuperview()
+        sideBarItem4_4.removeFromSuperview()
+        //sideBarItem4_5.removeFromSuperview()
+        //sideBarItem5_1.removeFromSuperview()
+        //sideBarItem5_2.removeFromSuperview()
+        //sideBarItem5_3.removeFromSuperview()
+        //sideBarItem5_4.removeFromSuperview()
+        //sideBarItem5_5.removeFromSuperview()
         
         sideBarItem1.setImage(UIImage(named:"Masses"), forState: UIControlState.Normal)
         sideBarItem1.frame = CGRect(x: 20.0, y: 70.0, width: 30.0, height: 30.0)
@@ -287,7 +399,7 @@ class DrawingBoardScene: SKScene {
     }
     
     @objc func calculate(sender: UIButton){
-        
+        /*GO TO CALCULATE SCENE*/
         
         menuButton.removeFromSuperview()
         calculateButton.removeFromSuperview()
@@ -295,60 +407,85 @@ class DrawingBoardScene: SKScene {
         sideBarItem2.removeFromSuperview()
         sideBarItem3.removeFromSuperview()
         sideBarItem4.removeFromSuperview()
-        sideBarItem5.removeFromSuperview()
+        //sideBarItem5.removeFromSuperview()
+        sideBarItem1_1.removeFromSuperview()
+        sideBarItem1_2.removeFromSuperview()
+        sideBarItem1_3.removeFromSuperview()
+        //sideBarItem1_4.removeFromSuperview()
+        //sideBarItem1_5.removeFromSuperview()
+        sideBarItem2_1.removeFromSuperview()
+        sideBarItem2_2.removeFromSuperview()
+        sideBarItem2_3.removeFromSuperview()
+        sideBarItem2_4.removeFromSuperview()
+        sideBarItem2_5.removeFromSuperview()
+        sideBarItem3_1.removeFromSuperview()
+        sideBarItem3_2.removeFromSuperview()
+        sideBarItem3_3.removeFromSuperview()
+        sideBarItem3_4.removeFromSuperview()
+        //sideBarItem3_5.removeFromSuperview()
+        sideBarItem4_1.removeFromSuperview()
+        sideBarItem4_2.removeFromSuperview()
+        sideBarItem4_3.removeFromSuperview()
+        sideBarItem4_4.removeFromSuperview()
+        //sideBarItem4_5.removeFromSuperview()
+        //sideBarItem5_1.removeFromSuperview()
+        //sideBarItem5_2.removeFromSuperview()
+        //sideBarItem5_3.removeFromSuperview()
+        //sideBarItem5_4.removeFromSuperview()
+        //sideBarItem5_5.removeFromSuperview()
         sideBarBackButton.removeFromSuperview()
         
         self.removeAllChildren()
     }
     
     @objc func massesSideBar(sender: UIButton){
-        setUpMassesSideBar()
-        
         sideBarItem1.removeFromSuperview()
         sideBarItem2.removeFromSuperview()
         sideBarItem3.removeFromSuperview()
         sideBarItem4.removeFromSuperview()
         //sideBarItem5.removeFromSuperview()
+        
+        setUpMassesSideBar()
     }
     
     @objc func surfacesSideBar(sender: UIButton){
-        setUpSurfacesSideBar()
-        
         sideBarItem1.removeFromSuperview()
         sideBarItem2.removeFromSuperview()
         sideBarItem3.removeFromSuperview()
         sideBarItem4.removeFromSuperview()
         //sideBarItem5.removeFromSuperview()
+        
+        setUpSurfacesSideBar()
     }
     
     @objc func forceVectorsSideBar(sender: UIButton){
-        setUpForceVectorsSideBar()
-        
         sideBarItem1.removeFromSuperview()
         sideBarItem2.removeFromSuperview()
         sideBarItem3.removeFromSuperview()
         sideBarItem4.removeFromSuperview()
         //sideBarItem5.removeFromSuperview()
+        
+        setUpForceVectorsSideBar()
     }
     
     @objc func connectorsSideBar(sender: UIButton){
-        setUpConnectorsSideBar()
-        
         sideBarItem1.removeFromSuperview()
         sideBarItem2.removeFromSuperview()
         sideBarItem3.removeFromSuperview()
         sideBarItem4.removeFromSuperview()
         //sideBarItem5.removeFromSuperview()
+        
+        setUpConnectorsSideBar()
     }
     
     /*@objc func cat5SideBar(sender: UIButton){
-        setUpCategory5SideBar()
-        
         sideBarItem1.removeFromSuperview()
         sideBarItem2.removeFromSuperview()
         sideBarItem3.removeFromSuperview()
         sideBarItem4.removeFromSuperview()
         sideBarItem5.removeFromSuperview()
+    
+        setUpCategory5SideBar()
     }*/
     
     
@@ -367,6 +504,8 @@ class DrawingBoardScene: SKScene {
             physicsObject = PhysicsObject(objectType: "Frictionless Mass")
             physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
             
+            self.addChild(physicsNode[nodeCounter])
+            
             nodeCounter += 1
         }
     }
@@ -375,6 +514,8 @@ class DrawingBoardScene: SKScene {
         if(nodeCounter < 32){
             physicsObject = PhysicsObject(objectType: "Angular Mass")
             physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
+            
+            self.addChild(physicsNode[nodeCounter])
             
             nodeCounter += 1
         }
@@ -385,30 +526,155 @@ class DrawingBoardScene: SKScene {
             physicsObject = PhysicsObject(objectType: "Focal Point")
             physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
             
+            self.addChild(physicsNode[nodeCounter])
+            
             nodeCounter += 1
         }
     }
     
-    func touchesMove(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        for touch in touches{
-            let location = touch.locationInNode(self)
-            var nodeHeld = -1
+    @objc func createFlatSurface(sender: UIButton){
+        if(nodeCounter < 32){
+            physicsObject = PhysicsObject(objectType: "Flat Surface")
+            physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
             
-            if(nodeHeld > -1){
-                for(var i=0; i<32; i++){
-                    if((physicsNode[i].position.x - location.x < 10 || physicsNode[i].position.x - location.x > -10) && (physicsNode[i].position.y - location.y < 10 || physicsNode[i].position.y - location.y > -10)){
-                        nodeHeld = i
-                    }
-                }
-            }
+            self.addChild(physicsNode[nodeCounter])
             
-            physicsNode[nodeHeld].position = location
-            
-            if(){
-                
-            }
+            nodeCounter += 1
         }
     }
+    
+    @objc func createInclinedPlane(sender: UIButton){
+        if(nodeCounter < 32){
+            physicsObject = PhysicsObject(objectType: "Inclined Plane")
+            physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
+            
+            self.addChild(physicsNode[nodeCounter])
+            
+            nodeCounter += 1
+        }
+    }
+    
+    @objc func createDropOff(sender: UIButton){
+        if(nodeCounter < 32){
+            physicsObject = PhysicsObject(objectType: "Drop Off")
+            physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
+            
+            self.addChild(physicsNode[nodeCounter])
+            
+            nodeCounter += 1
+        }
+    }
+    
+    @objc func createRise(sender: UIButton){
+        if(nodeCounter < 32){
+            physicsObject = PhysicsObject(objectType: "Rise")
+            physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
+            
+            self.addChild(physicsNode[nodeCounter])
+            
+            nodeCounter += 1
+        }
+    }
+    
+    @objc func createWall(sender: UIButton){
+        if(nodeCounter < 32){
+            physicsObject = PhysicsObject(objectType: "Wall")
+            physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
+            
+            self.addChild(physicsNode[nodeCounter])
+            
+            nodeCounter += 1
+        }
+    }
+    
+    @objc func createForceVector(sender: UIButton){
+        if(nodeCounter < 32){
+            physicsObject = PhysicsObject(objectType: "Force Vector")
+            physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
+            
+            self.addChild(physicsNode[nodeCounter])
+            
+            nodeCounter += 1
+        }
+    }
+    
+    @objc func createWeight(sender: UIButton){
+        if(nodeCounter < 32){
+            physicsObject = PhysicsObject(objectType: "Weight")
+            physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
+            
+            self.addChild(physicsNode[nodeCounter])
+            
+            nodeCounter += 1
+        }
+    }
+    
+    @objc func createFriction(sender: UIButton){
+        if(nodeCounter < 32){
+            physicsObject = PhysicsObject(objectType: "Friction")
+            physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
+            
+            self.addChild(physicsNode[nodeCounter])
+            
+            nodeCounter += 1
+        }
+    }
+    
+    @objc func createNormalForce(sender: UIButton){
+        if(nodeCounter < 32){
+            physicsObject = PhysicsObject(objectType: "Normal Force")
+            physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
+            
+            self.addChild(physicsNode[nodeCounter])
+            
+            nodeCounter += 1
+        }
+    }
+    
+    @objc func createString(sender: UIButton){
+        if(nodeCounter < 32){
+            physicsObject = PhysicsObject(objectType: "String")
+            physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
+            
+            self.addChild(physicsNode[nodeCounter])
+            
+            nodeCounter += 1
+        }
+    }
+    
+    @objc func createGlue(sender: UIButton){
+        if(nodeCounter < 32){
+            physicsObject = PhysicsObject(objectType: "Glue")
+            physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
+            
+            self.addChild(physicsNode[nodeCounter])
+            
+            nodeCounter += 1
+        }
+    }
+    
+    @objc func createPutty(sender: UIButton){
+        if(nodeCounter < 32){
+            physicsObject = PhysicsObject(objectType: "Putty")
+            physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
+            
+            self.addChild(physicsNode[nodeCounter])
+            
+            nodeCounter += 1
+        }
+    }
+    
+    @objc func createSpring(sender: UIButton){
+        if(nodeCounter < 32){
+            physicsObject = PhysicsObject(objectType: "Spring")
+            physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
+            
+            self.addChild(physicsNode[nodeCounter])
+            
+            nodeCounter += 1
+        }
+    }
+    
 }
 
 
