@@ -15,9 +15,20 @@ class PhysicsObject {
     
     init(objectType: String){
         physicsObject = SKSpriteNode(imageNamed: "Imaginary Inc Logo")
+        physicsObject.size = CGSize(width: 50.0, height: 50.0)
+        physicsObject.position = CGPoint(x: 275.0, y: 450.0)
         
         if(objectType == "Frictionless Mass"){
             physicsObject = SKSpriteNode(imageNamed: "Frictionless Mass")
+        }else if(objectType == "Angular Mass"){
+            physicsObject = SKSpriteNode(imageNamed: "Angular Mass")
+        }else if(objectType == "Focal Point"){
+            physicsObject = SKSpriteNode(imageNamed: "Focal Point")
+        }else if(objectType == "Flat Surface"){
+            physicsObject = SKSpriteNode(imageNamed: "Flat Surface")
+            physicsObject.size = CGSize(width: 100.0, height: 25.0)
+        }else if(objectType == "Inclined Plane"){
+            physicsObject = SKSpriteNode(imageNamed: "Inclined Plane")
         }
     }
     
