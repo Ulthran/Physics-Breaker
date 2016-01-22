@@ -496,6 +496,8 @@ class DrawingBoardScene: SKScene {
     var physicsObject = PhysicsObject(objectType: "Null")
     
     var physicsNode = [SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode()]
+    var initialPosition = CGPoint(x: 275.0, y: 400.0)
+    var initialSize = CGSize(width: 50.0, height: 50.0)
     
     var nodeCounter = 0
     
@@ -675,6 +677,71 @@ class DrawingBoardScene: SKScene {
         }
     }
     
+    
+    
+    /*----------------------------------------------------------------------------------------------------------------------------
+    --------------------------------------------------Move Physics Nodes----------------------------------------------------------
+    ----------------------------------------------------------------------------------------------------------------------------*/
+    
+    
+    var selectedNode = SKSpriteNode()
+    var movableNodeName = "movable"
+    
+    func assignNames(){
+        for(var i=0; i<32; i++){
+            physicsNode[i].name = movableNodeName
+        }
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        var positionInScene = CGPoint(x: 375.0, y: 400.0)
+        
+        for touch in touches {
+            positionInScene = touch.locationInNode(self)
+        }
+        
+        print("Touches Began")
+        
+        assignNames()
+        
+        selectNodeForTouch(positionInScene)
+    }
+    
+    func degToRad(degree: Double) -> CGFloat {
+        return CGFloat(Double(degree) / 180.0 * M_PI)
+    }
+    
+    func selectNodeForTouch(touchLocation: CGPoint) {
+        print(self.nodeAtPoint(touchLocation))
+        let touchedNode = self.nodeAtPoint(touchLocation)
+        print(touchedNode)
+        
+        if touchedNode is SKSpriteNode {
+            if !selectedNode.isEqual(touchedNode) {
+                selectedNode.removeAllActions()
+                selectedNode.runAction(SKAction.rotateToAngle(0.0, duration: 0.1))
+                
+                selectedNode = touchedNode as! SKSpriteNode
+                
+                if touchedNode.name == movableNodeName {
+                    let sequence = SKAction.sequence([SKAction.rotateByAngle(degToRad(-4.0), duration: 0.1),
+                        SKAction.rotateByAngle(0.0, duration: 0.1),
+                        SKAction.rotateByAngle(degToRad(4.0), duration: 0.1)])
+                    selectedNode.runAction(SKAction.repeatActionForever(sequence))
+                }
+            }
+        }
+    }
+    
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        var positionInScene = CGPoint(x: 375.0, y: 400.0)
+        
+        for touch in touches {
+            positionInScene = touch.locationInNode(self)
+        
+            (self.nodeAtPoint(touch.previousLocationInNode(self))).position = positionInScene
+        }
+    }
 }
 
 
