@@ -1,0 +1,159 @@
+//
+//  Configuration.swift
+//  Physics Breaker
+//
+//  Created by Charlie Bushman on 1/23/16.
+//  Copyright © 2016 imaginary inc. All rights reserved.
+//
+
+import Foundation
+import UIKit
+import SpriteKit
+
+
+class Configuration {
+    var physicsObject: SKSpriteNode
+    var tempObj: PhysicsObject
+    
+    init (physicsObj: String, rotation: CGFloat, position: CGPoint){
+        tempObj = PhysicsObject(objectType: physicsObj)
+        physicsObject = tempObj.getPhysicsObject()
+        physicsObject.name = physicsObj
+        let rotateToAngle = SKAction.rotateToAngle(rotation, duration: 0.0)
+        physicsObject.runAction(rotateToAngle)
+        physicsObject.position = position
+        
+        if(physicsObj == "Frictionless Mass"){
+            configFrictionlessMass()
+        }else if(physicsObj == "Angular Mass"){
+            configAngularMass()
+        }else if(physicsObj == "Focal Point"){
+            configFocalPoint()
+        }else if(physicsObj == "Flat Surface"){
+            configFlatSurface()
+        }else if(physicsObj == "Inclined Plane"){
+            configInclinedPlane()
+        }else if(physicsObj == "Drop Off"){
+            configDropOff()
+        }else if(physicsObj == "Rise"){
+            configRise()
+        }else if(physicsObj == "Wall"){
+            configWall()
+        }else if(physicsObj == "Force Vector"){
+            configForceVector()
+        }else if(physicsObj == "Weight"){
+            configWeight()
+        }else if(physicsObj == "Friction"){
+            configFriction()
+        }else if(physicsObj == "Normal Force"){
+            configNormalForce()
+        }else if(physicsObj == "String"){
+            configString()
+        }else if(physicsObj == "Glue"){
+            configGlue()
+        }else if(physicsObj == "Putty"){
+            configPutty()
+        }else if(physicsObj == "Spring"){
+            configSpring()
+        }
+    }
+    
+    func getPhysicsObject() ->SKSpriteNode{
+        return physicsObject
+    }
+    
+    func configFrictionlessMass(){
+        
+    }
+    
+    func configAngularMass(){
+        
+    }
+    
+    func configFocalPoint(){
+        
+    }
+    
+    func configFlatSurface(){
+        
+    }
+    
+    func configInclinedPlane(){
+        
+    }
+    
+    func configDropOff(){
+        
+    }
+    
+    func configRise(){
+        
+    }
+    
+    func configWall(){
+        
+    }
+    
+    func configForceVector(){
+        
+    }
+    
+    func configWeight(){
+        
+    }
+    
+    func configFriction(){
+        
+    }
+    
+    func configNormalForce(){
+        
+    }
+    
+    func configString(){
+        
+    }
+    
+    func configGlue(){
+        
+    }
+    
+    func configPutty(){
+        
+    }
+    
+    func configSpring(){
+        
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
