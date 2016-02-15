@@ -1,0 +1,108 @@
+//
+//  Physics Object.swift
+//  Physics Breaker
+//
+//  Created by Charlie Bushman on 1/14/16.
+//  Copyright © 2016 imaginary inc. All rights reserved.
+//
+
+import Foundation
+import UIKit
+import SpriteKit
+
+class PhysicsObject {
+    var physicsObject: SKSpriteNode
+    
+    init(objectType: String){
+        physicsObject = SKSpriteNode(imageNamed: "Imaginary Inc Logo")
+        
+        if(objectType == "Frictionless Mass"){
+            physicsObject = SKSpriteNode(imageNamed: "Frictionless Mass")
+            physicsObject.size = CGSize(width: 50.0, height: 50.0)
+        }else if(objectType == "Angular Mass"){
+            physicsObject = SKSpriteNode(imageNamed: "Angular Mass")
+            physicsObject.size = CGSize(width: 50.0, height: 50.0)
+        }else if(objectType == "Focal Point"){
+            physicsObject = SKSpriteNode(imageNamed: "Focal Point")
+            physicsObject.size = CGSize(width: 50.0, height: 50.0)
+        }else if(objectType == "Flat Surface"){
+            physicsObject = SKSpriteNode(imageNamed: "Flat Surface")
+            physicsObject.size = CGSize(width: 300.0, height: 25.0)
+        }else if(objectType == "Inclined Plane"){
+            physicsObject = SKSpriteNode(imageNamed: "Inclined Plane")
+            physicsObject.size = CGSize(width: 300.0, height: 150.0)
+        }else if(objectType == "Drop Off"){
+            physicsObject = SKSpriteNode(imageNamed: "Drop Off")
+            physicsObject.size = CGSize(width: 300.0, height: 150.0)
+        }else if(objectType == "Rise"){
+            physicsObject = SKSpriteNode(imageNamed: "Rise")
+            physicsObject.size = CGSize(width: 300.0, height: 150.0)
+        }else if(objectType == "Wall"){
+            physicsObject = SKSpriteNode(imageNamed: "Wall")
+            physicsObject.size = CGSize(width: 50.0, height: 100.0)
+        }else if(objectType == "Force Vector"){
+            physicsObject = SKSpriteNode(imageNamed: "Force Vector")
+            physicsObject.size = CGSize(width: 50.0, height: 50.0)
+        }else if(objectType == "Weight"){
+            physicsObject = SKSpriteNode(imageNamed: "Weight")
+            physicsObject.size = CGSize(width: 20.0, height: 60.0)
+        }else if(objectType == "Friction"){
+            physicsObject = SKSpriteNode(imageNamed: "Friction")
+            physicsObject.size = CGSize(width: 60.0, height: 20.0)
+        }else if(objectType == "Normal Force"){
+            physicsObject = SKSpriteNode(imageNamed: "Normal Force")
+            physicsObject.size = CGSize(width: 20.0, height: 60.0)
+        }else if(objectType == "String"){
+            physicsObject = SKSpriteNode(imageNamed: "String")
+            physicsObject.size = CGSize(width: 60.0, height: 20.0)
+        }else if(objectType == "Glue"){
+            physicsObject = SKSpriteNode(imageNamed: "Glue")
+            physicsObject.size = CGSize(width: 50.0, height: 50.0)
+        }else if(objectType == "Putty"){
+            physicsObject = SKSpriteNode(imageNamed: "Putty")
+            physicsObject.size = CGSize(width: 50.0, height: 50.0)
+        }else if(objectType == "Spring"){
+            physicsObject = SKSpriteNode(imageNamed: "Spring")
+            physicsObject.size = CGSize(width: 50.0, height: 50.0)
+        }
+        
+        physicsObject.position = CGPoint(x: 375.0, y: 400.0)
+    }
+    
+    func getPhysicsObject() ->SKSpriteNode{
+        return physicsObject
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
