@@ -1,0 +1,85 @@
+//
+//  FrictionlessMass.swift
+//  Physics Breaker
+//
+//  Created by Charlie Bushman on 2/14/16.
+//  Copyright © 2016 imaginary inc. All rights reserved.
+//
+
+import Foundation
+import  UIKit
+import SpriteKit
+
+
+class FrictionlessMass {
+    /*All the field declarations*/
+    var mass: Double
+    var acc: Double
+    var vel: Double
+    var elast: Bool
+    
+    init(){
+        mass = 0
+        acc = 0
+        vel = 0
+        elast = true
+    }
+    
+    func getMass() ->Double{
+        return mass
+    }
+    
+    func setMass(massX: Double){
+        mass = massX
+    }
+    
+    func getAcc() ->Double{
+        return acc
+    }
+    
+    func setAcc(accX: Double){
+        acc = accX
+    }
+    
+    func getVel() ->Double{
+        return vel
+    }
+    
+    func setVel(velX: Double){
+        vel = velX
+    }
+    
+    func getElast() ->Bool{
+        return elast
+    }
+    
+    func setElast(elastX: Bool){
+        elast = elastX
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
