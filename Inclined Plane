@@ -1,0 +1,69 @@
+//
+//  InclinedPlane.swift
+//  Physics Breaker
+//
+//  Created by Charlie Bushman on 2/15/16.
+//  Copyright © 2016 imaginary inc. All rights reserved.
+//
+
+import Foundation
+import UIKit
+import SpriteKit
+
+
+class InclinedPlane {
+    var u: Double
+    var len: Double
+    var ang: Double
+    
+    init(){
+        u = 0
+        len = 0
+        ang = 0
+    }
+    
+    func getU() ->Double{
+        return u
+    }
+    
+    func setU(uX: Double){
+        u = uX
+    }
+    
+    func getLen() ->Double{
+        return len
+    }
+    
+    func setLen(lenX: Double){
+        len = lenX
+    }
+    
+    func getAng() ->Double{
+        return ang
+    }
+    
+    func setAng(angX: Double){
+        ang = angX
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

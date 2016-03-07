@@ -1,0 +1,39 @@
+//
+//  Focal Point.swift
+//  Physics Breaker
+//
+//  Created by Charlie Bushman on 2/15/16.
+//  Copyright © 2016 imaginary inc. All rights reserved.
+//
+
+import Foundation
+import UIKit
+import SpriteKit
+
+
+class FocalPoint {
+    /*Nothing; Infinite Mass*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

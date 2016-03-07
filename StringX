@@ -1,0 +1,61 @@
+//
+//  String.swift
+//  Physics Breaker
+//
+//  Created by Charlie Bushman on 2/15/16.
+//  Copyright © 2016 imaginary inc. All rights reserved.
+//
+
+import Foundation
+import UIKit
+import SpriteKit
+
+
+class StringX {
+    var len: Double
+    var ten: Double
+    
+    init(){
+        len = 0
+        ten = 0
+    }
+    
+    func getLen() ->Double{
+        return len
+    }
+    
+    func setLen(lenX: Double){
+        len = lenX
+    }
+    
+    func getTen() ->Double{
+        return ten
+    }
+    
+    func setTen(tenX: Double){
+        ten = tenX
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
