@@ -14,14 +14,18 @@ import SpriteKit
 class Configuration {
     var physicsObject: SKSpriteNode
     var tempObj: PhysicsObject
+    var nodesInRegion: [SKSpriteNode]
+    var physicsNodes: [SKSpriteNode]
     
-    init (physicsObj: String, rotation: CGFloat, position: CGPoint){
+    init (physicsObj: String, rotation: CGFloat, position: CGPoint, physicsNodesX: [SKSpriteNode]){
         tempObj = PhysicsObject(objectType: physicsObj)
         physicsObject = tempObj.getPhysicsObject()
         physicsObject.name = physicsObj
         let rotateToAngle = SKAction.rotateToAngle(rotation, duration: 0.0)
         physicsObject.runAction(rotateToAngle)
         physicsObject.position = position
+        nodesInRegion = [SKSpriteNode(imageNamed: "Imaginary Inc")]
+        physicsNodes = physicsNodesX
         
         if(physicsObj == "Frictionless Mass"){
             configFrictionlessMass()
@@ -55,6 +59,8 @@ class Configuration {
             configPutty()
         }else if(physicsObj == "Spring"){
             configSpring()
+        }else{
+            
         }
     }
     
@@ -63,66 +69,502 @@ class Configuration {
     }
     
     func configFrictionlessMass(){
+        let region = SKRegion(radius: 10.0)
+        // Set nodesInRegion[] to hold all physics objects close to the node
         
+        var counter = 0
+        for node in physicsNodes{
+            /*
+            ** Test if they're in region
+            ** Make sure to account for different shapes and which parts should be in region
+            */
+            var inRegion = false
+            
+            if(node.name == ""){
+                // If physicsObject is close to node make inRegion true
+                
+            }
+            
+            if(inRegion){
+                nodesInRegion[counter] = node
+                counter++
+            }
+            
+        }
+        
+        if(counter == 0){
+            nodesInRegion[0] = SKSpriteNode(imageNamed: "Imaginary Inc")
+            nodesInRegion[0].name = "Empty"
+        }
+        
+        for obj in nodesInRegion{
+            if obj.name == "Flat Surface" {
+                //blah blah blah
+            }
+        }
     }
     
     func configAngularMass(){
+        let region = SKRegion(radius: 10.0)
+        
+        var counter = 0
+        for node in physicsNodes{
+            var inRegion = false
+            
+            if(node.name == ""){
+                
+            }
+            
+            if(inRegion){
+                nodesInRegion[counter] = node
+                counter++
+            }
+            
+        }
+        
+        if(counter == 0){
+            nodesInRegion[0] = SKSpriteNode(imageNamed: "Imaginary Inc")
+            nodesInRegion[0].name = "Empty"
+        }
+        
+        for obj in nodesInRegion{
+            if obj.name == "Flat Surface" {
+                //blah blah blah
+            }
+        }
         
     }
     
     func configFocalPoint(){
+        let region = SKRegion(radius: 10.0)
         
+        var counter = 0
+        for node in physicsNodes{
+            var inRegion = false
+            
+            if(node.name == ""){
+                
+            }
+            
+            if(inRegion){
+                nodesInRegion[counter] = node
+                counter++
+            }
+            
+        }
+        
+        if(counter == 0){
+            nodesInRegion[0] = SKSpriteNode(imageNamed: "Imaginary Inc")
+            nodesInRegion[0].name = "Empty"
+        }
+        
+        for obj in nodesInRegion{
+            if obj.name == "Flat Surface" {
+                //blah blah blah
+            }
+        }
     }
     
     func configFlatSurface(){
+        let region = SKRegion(radius: 10.0)
+        
+        var counter = 0
+        for node in physicsNodes{
+            var inRegion = false
+            
+            if(node.name == ""){
+                
+            }
+            
+            if(inRegion){
+                nodesInRegion[counter] = node
+                counter++
+            }
+            
+        }
+        
+        if(counter == 0){
+            nodesInRegion[0] = SKSpriteNode(imageNamed: "Imaginary Inc")
+            nodesInRegion[0].name = "Empty"
+        }
+        
+        for obj in nodesInRegion{
+            if obj.name == "Flat Surface" {
+                //blah blah blah
+            }
+        }
         
     }
     
     func configInclinedPlane(){
+        let region = SKRegion(radius: 10.0)
+        
+        var counter = 0
+        for node in physicsNodes{
+            var inRegion = false
+            
+            if(node.name == ""){
+                
+            }
+            
+            if(inRegion){
+                nodesInRegion[counter] = node
+                counter++
+            }
+            
+        }
+        
+        if(counter == 0){
+            nodesInRegion[0] = SKSpriteNode(imageNamed: "Imaginary Inc")
+            nodesInRegion[0].name = "Empty"
+        }
+        
+        for obj in nodesInRegion{
+            if obj.name == "Flat Surface" {
+                //blah blah blah
+            }
+        }
         
     }
     
     func configDropOff(){
+        let region = SKRegion(radius: 10.0)
+        
+        var counter = 0
+        for node in physicsNodes{
+            var inRegion = false
+            
+            if(node.name == ""){
+                
+            }
+            
+            if(inRegion){
+                nodesInRegion[counter] = node
+                counter++
+            }
+            
+        }
+        
+        if(counter == 0){
+            nodesInRegion[0] = SKSpriteNode(imageNamed: "Imaginary Inc")
+            nodesInRegion[0].name = "Empty"
+        }
+        
+        for obj in nodesInRegion{
+            if obj.name == "Flat Surface" {
+                //blah blah blah
+            }
+        }
         
     }
     
     func configRise(){
+        let region = SKRegion(radius: 10.0)
+        
+        var counter = 0
+        for node in physicsNodes{
+            var inRegion = false
+            
+            if(node.name == ""){
+                
+            }
+            
+            if(inRegion){
+                nodesInRegion[counter] = node
+                counter++
+            }
+            
+        }
+        
+        if(counter == 0){
+            nodesInRegion[0] = SKSpriteNode(imageNamed: "Imaginary Inc")
+            nodesInRegion[0].name = "Empty"
+        }
+        
+        for obj in nodesInRegion{
+            if obj.name == "Flat Surface" {
+                //blah blah blah
+            }
+        }
         
     }
     
     func configWall(){
+        let region = SKRegion(radius: 10.0)
+        
+        var counter = 0
+        for node in physicsNodes{
+            var inRegion = false
+            
+            if(node.name == ""){
+                
+            }
+            
+            if(inRegion){
+                nodesInRegion[counter] = node
+                counter++
+            }
+            
+        }
+        
+        if(counter == 0){
+            nodesInRegion[0] = SKSpriteNode(imageNamed: "Imaginary Inc")
+            nodesInRegion[0].name = "Empty"
+        }
+        
+        for obj in nodesInRegion{
+            if obj.name == "Flat Surface" {
+                //blah blah blah
+            }
+        }
         
     }
     
     func configForceVector(){
+        let region = SKRegion(radius: 10.0)
+        
+        var counter = 0
+        for node in physicsNodes{
+            var inRegion = false
+            
+            if(node.name == ""){
+                
+            }
+            
+            if(inRegion){
+                nodesInRegion[counter] = node
+                counter++
+            }
+            
+        }
+        
+        if(counter == 0){
+            nodesInRegion[0] = SKSpriteNode(imageNamed: "Imaginary Inc")
+            nodesInRegion[0].name = "Empty"
+        }
+        
+        for obj in nodesInRegion{
+            if obj.name == "Flat Surface" {
+                //blah blah blah
+            }
+        }
         
     }
     
     func configWeight(){
+        let region = SKRegion(radius: 10.0)
+        
+        var counter = 0
+        for node in physicsNodes{
+            var inRegion = false
+            
+            if(node.name == ""){
+                
+            }
+            
+            if(inRegion){
+                nodesInRegion[counter] = node
+                counter++
+            }
+            
+        }
+        
+        if(counter == 0){
+            nodesInRegion[0] = SKSpriteNode(imageNamed: "Imaginary Inc")
+            nodesInRegion[0].name = "Empty"
+        }
+        
+        for obj in nodesInRegion{
+            if obj.name == "Flat Surface" {
+                //blah blah blah
+            }
+        }
         
     }
     
     func configFriction(){
+        let region = SKRegion(radius: 10.0)
+        
+        var counter = 0
+        for node in physicsNodes{
+            var inRegion = false
+            
+            if(node.name == ""){
+                
+            }
+            
+            if(inRegion){
+                nodesInRegion[counter] = node
+                counter++
+            }
+            
+        }
+        
+        if(counter == 0){
+            nodesInRegion[0] = SKSpriteNode(imageNamed: "Imaginary Inc")
+            nodesInRegion[0].name = "Empty"
+        }
+        
+        for obj in nodesInRegion{
+            if obj.name == "Flat Surface" {
+                //blah blah blah
+            }
+        }
         
     }
     
     func configNormalForce(){
+        let region = SKRegion(radius: 10.0)
+        
+        var counter = 0
+        for node in physicsNodes{
+            var inRegion = false
+            
+            if(node.name == ""){
+                
+            }
+            
+            if(inRegion){
+                nodesInRegion[counter] = node
+                counter++
+            }
+            
+        }
+        
+        if(counter == 0){
+            nodesInRegion[0] = SKSpriteNode(imageNamed: "Imaginary Inc")
+            nodesInRegion[0].name = "Empty"
+        }
+        
+        for obj in nodesInRegion{
+            if obj.name == "Flat Surface" {
+                //blah blah blah
+            }
+        }
         
     }
     
     func configString(){
+        let region = SKRegion(radius: 10.0)
+        
+        var counter = 0
+        for node in physicsNodes{
+            var inRegion = false
+            
+            if(node.name == ""){
+                
+            }
+            
+            if(inRegion){
+                nodesInRegion[counter] = node
+                counter++
+            }
+            
+        }
+        
+        if(counter == 0){
+            nodesInRegion[0] = SKSpriteNode(imageNamed: "Imaginary Inc")
+            nodesInRegion[0].name = "Empty"
+        }
+        
+        for obj in nodesInRegion{
+            if obj.name == "Flat Surface" {
+                //blah blah blah
+            }
+        }
         
     }
     
     func configGlue(){
+        let region = SKRegion(radius: 10.0)
+        
+        var counter = 0
+        for node in physicsNodes{
+            var inRegion = false
+            
+            if(node.name == ""){
+                
+            }
+            
+            if(inRegion){
+                nodesInRegion[counter] = node
+                counter++
+            }
+            
+        }
+        
+        if(counter == 0){
+            nodesInRegion[0] = SKSpriteNode(imageNamed: "Imaginary Inc")
+            nodesInRegion[0].name = "Empty"
+        }
+        
+        for obj in nodesInRegion{
+            if obj.name == "Flat Surface" {
+                //blah blah blah
+            }
+        }
         
     }
     
     func configPutty(){
+        let region = SKRegion(radius: 10.0)
+        
+        var counter = 0
+        for node in physicsNodes{
+            var inRegion = false
+            
+            if(node.name == ""){
+                
+            }
+            
+            if(inRegion){
+                nodesInRegion[counter] = node
+                counter++
+            }
+            
+        }
+        
+        if(counter == 0){
+            nodesInRegion[0] = SKSpriteNode(imageNamed: "Imaginary Inc")
+            nodesInRegion[0].name = "Empty"
+        }
+        
+        for obj in nodesInRegion{
+            if obj.name == "Flat Surface" {
+                //blah blah blah
+            }
+        }
         
     }
     
     func configSpring(){
+        let region = SKRegion(radius: 10.0)
+        
+        var counter = 0
+        for node in physicsNodes{
+            var inRegion = false
+            
+            if(node.name == ""){
+                
+            }
+            
+            if(inRegion){
+                nodesInRegion[counter] = node
+                counter++
+            }
+            
+        }
+        
+        if(counter == 0){
+            nodesInRegion[0] = SKSpriteNode(imageNamed: "Imaginary Inc")
+            nodesInRegion[0].name = "Empty"
+        }
+        
+        for obj in nodesInRegion{
+            if obj.name == "Flat Surface" {
+                //blah blah blah
+            }
+        }
         
     }
 }
