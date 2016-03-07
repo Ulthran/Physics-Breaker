@@ -1,0 +1,93 @@
+//
+//  Rise.swift
+//  Physics Breaker
+//
+//  Created by Charlie Bushman on 2/15/16.
+//  Copyright © 2016 imaginary inc. All rights reserved.
+//
+
+import Foundation
+import UIKit
+import SpriteKit
+
+
+class Rise {
+    var u: Double
+    var lenUpper: Double
+    var lenLower: Double
+    var height: Double
+    var ang: Double
+    
+    init(){
+        u = 0
+        lenUpper = 0
+        lenLower = 0
+        height = 0
+        ang = 0
+    }
+    
+    func getU() ->Double{
+        return u
+    }
+    
+    func setU(uX: Double){
+        u = uX
+    }
+    
+    func getLenUpper() ->Double{
+        return lenUpper
+    }
+    
+    func setLenUpper(lenUpperX: Double){
+        lenUpper = lenUpperX
+    }
+    
+    func getLenLower() ->Double{
+        return lenLower
+    }
+    
+    func setLenLower(lenLowerX: Double){
+        lenLower = lenLowerX
+    }
+    
+    func getHeight() ->Double{
+        return height
+    }
+    
+    func setHeight(heightX: Double){
+        height = heightX
+    }
+    
+    func getAng() ->Double{
+        return ang
+    }
+    
+    func setAng(angX: Double){
+        ang = angX
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
