@@ -1,0 +1,78 @@
+//
+//  Spring.swift
+//  Physics Breaker
+//
+//  Created by Charlie Bushman on 2/15/16.
+//  Copyright © 2016 imaginary inc. All rights reserved.
+//
+
+import Foundation
+import UIKit
+import SpriteKit
+
+
+class Spring {
+    var baseLen: Double
+    var extLen: Double
+    var k: Double
+    var force: Double
+    
+    init(){
+        baseLen = 0
+        extLen = 0
+        k = 0
+        force = 0
+    }
+    
+    func getBaseLen() ->Double{
+        return baseLen
+    }
+    
+    func setBaseLen(baseLenX: Double){
+        baseLen = baseLenX
+    }
+    
+    func getExtLen() ->Double{
+        return extLen
+    }
+    
+    func setExtLen(extLenX: Double){
+        extLen = extLenX
+    }
+    
+    func getK() ->Double{
+        return k
+    }
+    
+    func setK(kX: Double){
+        k = kX
+    }
+    
+    func getForce() ->Double{
+        return force
+    }
+    
+    func setForce(forceX: Double){
+        force = forceX
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
