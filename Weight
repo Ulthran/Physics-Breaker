@@ -1,0 +1,61 @@
+//
+//  Weight.swift
+//  Physics Breaker
+//
+//  Created by Charlie Bushman on 2/15/16.
+//  Copyright © 2016 imaginary inc. All rights reserved.
+//
+
+import Foundation
+import UIKit
+import SpriteKit
+
+
+class Weight {
+    var force: Double
+    let ang: Double
+    
+    init(){
+        force = 0
+        ang = (3*M_PI)/2
+    }
+    
+    func getForce() ->Double{
+        return force
+    }
+    
+    func setForce(forceX: Double){
+        force = forceX
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
