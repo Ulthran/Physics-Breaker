@@ -1,7 +1,1 @@
-var variable_name
-set(variable){
-  variable_name = variable
-}
-get{
-  return variable_name
-}
+
