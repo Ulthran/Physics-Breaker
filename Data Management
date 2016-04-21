@@ -19,10 +19,10 @@ class DataManagement{
         static let soundVolumeKey = "soundVolume"
     }
     
-    var uninitialized: Bool = false
-    var numIDKs: Int = 5
-    var musicVolume: Float = 100
-    var soundVolume: Float = 100
+    private var uninitialized: Bool = false
+    private var numIDKs: Int = 5
+    private var musicVolume: Float = 100
+    private var soundVolume: Float = 100
     
     func setValues(){
         if(!defaults.boolForKey(defaultKeys.uninitializedKey)){
