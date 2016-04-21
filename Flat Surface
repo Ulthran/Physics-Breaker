@@ -12,8 +12,8 @@ import SpriteKit
 
 
 class FlatSurface {
-    var u: Double
-    var len: Double
+    private var u: Double
+    private var len: Double
     
     init(){
         u = 0
