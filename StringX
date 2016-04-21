@@ -12,8 +12,8 @@ import SpriteKit
 
 
 class StringX {
-    var len: Double
-    var ten: Double
+    private var len: Double
+    private var ten: Double
     
     init(){
         len = 0
