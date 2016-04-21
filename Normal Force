@@ -12,8 +12,8 @@ import SpriteKit
 
 
 class NormalForce {
-    var force: Double
-    var ang: Double
+    private var force: Double
+    private var ang: Double
     
     init(){
         force = 0
