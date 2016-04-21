@@ -49,7 +49,7 @@ class MenuScene: SKScene {
         startButton.titleLabel!.font = UIFont(name: "HelveticaNeue-UltraLight", size: 40.0)
         startButton.frame = CGRect(x: (self.view!.frame.size.width/2)-50, y: (self.view!.frame.size.height/2)+50, width: 100, height: 50)
         startButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        startButton.addTarget(self, action: "goToDrawingBoard:", forControlEvents: UIControlEvents.TouchUpInside)
+        startButton.addTarget(self, action: #selector(goToDrawingBoard), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.view!.addSubview(startButton)
         
@@ -62,7 +62,7 @@ class MenuScene: SKScene {
             volumeButton.setBackgroundImage(volumeImages[0], forState: UIControlState.Normal)
         }
         volumeButton.frame = CGRect(x: 20, y: (self.view!.frame.size.height)-50, width: 40, height: 40)
-        volumeButton.addTarget(self, action: "changeVolume:", forControlEvents: UIControlEvents.TouchUpInside)
+        volumeButton.addTarget(self, action: #selector(changeVolume), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.view!.addSubview(volumeButton)
         
@@ -71,7 +71,7 @@ class MenuScene: SKScene {
         settingsButton.titleLabel!.font = UIFont(name: "HelveticaNeue-UltraLight", size: 30.0)
         settingsButton.frame = CGRect(x: (self.view!.frame.size.width)-125, y: 20, width: 125, height: 30)
         settingsButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        settingsButton.addTarget(self, action: "goToSettings:", forControlEvents: UIControlEvents.TouchUpInside)
+        settingsButton.addTarget(self, action: #selector(goToSettings), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.view!.addSubview(settingsButton)
         
@@ -80,7 +80,7 @@ class MenuScene: SKScene {
         helpButton.titleLabel!.font = UIFont(name: "HelveticaNeue-UltraLight", size: 30.0)
         helpButton.frame = CGRect(x: (self.view!.frame.size.width)-110, y: (self.view!.frame.size.height)-40, width: 115, height: 30)
         helpButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        helpButton.addTarget(self, action: "goToHelp:", forControlEvents: UIControlEvents.TouchUpInside)
+        helpButton.addTarget(self, action: #selector(goToHelp), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.view!.addSubview(helpButton)
         
@@ -89,12 +89,12 @@ class MenuScene: SKScene {
         IDKButton.titleLabel!.font = UIFont(name: "HelveticaNeue-UltraLight", size: 30.0)
         IDKButton.frame = CGRect(x: 20, y: 20, width: 60, height: 30)
         IDKButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        IDKButton.addTarget(self, action: "goToIDKs:", forControlEvents: UIControlEvents.TouchUpInside)
+        IDKButton.addTarget(self, action: #selector(goToIDKs), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.view!.addSubview(IDKButton)
     }
     
-    @objc func changeVolume(sender: UIButton){
+    func changeVolume(sender: UIButton){
         var volumeChanged: Int = 0
         let dataManager = DataManagement()
         
@@ -127,7 +127,7 @@ class MenuScene: SKScene {
         }
     }
     
-    @objc func goToDrawingBoard(sender: UIButton){
+    func goToDrawingBoard(sender: UIButton){
         self.removeAllChildren()
         
         let drawingBoardScene = DrawingBoardScene(size: CGSize(width: 1024, height: 720))
@@ -143,7 +143,7 @@ class MenuScene: SKScene {
         volumeButton.removeFromSuperview()
     }
     
-    @objc func goToIDKs(sender: UIButton){
+    func goToIDKs(sender: UIButton){
         let idksScene = IDKsScene(size: CGSize(width: 1024, height: 720))
         
         idksScene.scaleMode = .AspectFill
@@ -157,7 +157,7 @@ class MenuScene: SKScene {
         volumeButton.removeFromSuperview()
     }
     
-    @objc func goToHelp(sender: UIButton){
+    func goToHelp(sender: UIButton){
         let helpScene = HelpScene(size: CGSize(width: 1024, height: 720))
         
         helpScene.scaleMode = .AspectFill
@@ -171,7 +171,7 @@ class MenuScene: SKScene {
         volumeButton.removeFromSuperview()
     }
     
-    @objc func goToSettings(sender: UIButton){
+    func goToSettings(sender: UIButton){
         let settingsScene = SettingsScene(size: CGSize(width: 1024, height: 720))
         
         settingsScene.scaleMode = .AspectFill
@@ -209,4 +209,3 @@ class MenuScene: SKScene {
         /* Called before each frame is rendered */
     }
 }
-
