@@ -12,8 +12,8 @@ import SpriteKit
 
 
 class Weight {
-    var force: Double
-    let ang: Double
+    private var force: Double
+    private let ang: Double
     
     init(){
         force = 0
