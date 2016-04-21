@@ -12,11 +12,11 @@ import SpriteKit
 
 
 class Cliff {
-    var u: Double
-    var lenUpper: Double
-    var lenLower: Double
-    var height: Double
-    var ang: Double
+    private var u: Double
+    private var lenUpper: Double
+    private var lenLower: Double
+    private var height: Double
+    private var ang: Double
     
     init(){
         u = 0
