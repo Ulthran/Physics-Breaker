@@ -1,5 +1,5 @@
 //
-//  FrictionlessMass.swift
+//  Frictionless Mass.swift
 //  Physics Breaker
 //
 //  Created by Charlie Bushman on 2/14/16.
@@ -13,10 +13,10 @@ import SpriteKit
 
 class FrictionlessMass {
     /*All the field declarations*/
-    var mass: Double
-    var acc: Double
-    var vel: Double
-    var elast: Bool
+    private var mass: Double
+    private var acc: Double
+    private var vel: Double
+    private var elast: Bool
     
     init(){
         mass = 0
