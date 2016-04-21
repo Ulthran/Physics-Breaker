@@ -12,9 +12,9 @@ import SpriteKit
 
 
 class InclinedPlane {
-    var u: Double
-    var len: Double
-    var ang: Double
+    private var u: Double
+    private var len: Double
+    private var ang: Double
     
     init(){
         u = 0
