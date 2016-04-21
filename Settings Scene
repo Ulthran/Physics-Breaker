@@ -68,8 +68,8 @@ class SettingsScene: SKScene{
         musicVolumeSlider.maximumValue = 100.0
         musicVolumeSlider.value = dataManager.getMusicVolume()
         musicVolumeSlider.frame = CGRect(x: self.view!.frame.size.width-350, y: self.view!.frame.size.height-225, width: 300, height: 50)
-        musicVolumeSlider.addTarget(self, action: "changeMusicVolume:", forControlEvents: UIControlEvents.ValueChanged)
-        musicVolumeSlider.addTarget(self, action: "changeMusicVolume:", forControlEvents: UIControlEvents.TouchUpInside)
+        musicVolumeSlider.addTarget(self, action: #selector(changeMusicVolume), forControlEvents: UIControlEvents.ValueChanged)
+        musicVolumeSlider.addTarget(self, action: #selector(changeMusicVolume), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.view!.addSubview(musicVolumeSlider)
         
@@ -77,8 +77,8 @@ class SettingsScene: SKScene{
         soundVolumeSlider.maximumValue = 100.0
         soundVolumeSlider.value = dataManager.getSoundVolume()
         soundVolumeSlider.frame = CGRect(x: self.view!.frame.size.width-350, y: self.view!.frame.size.height-150, width: 300, height: 50)
-        soundVolumeSlider.addTarget(self, action: "changeSoundVolume:", forControlEvents: UIControlEvents.ValueChanged)
-        soundVolumeSlider.addTarget(self, action: "changeSoundVolume:", forControlEvents: UIControlEvents.TouchUpInside)
+        soundVolumeSlider.addTarget(self, action: #selector(changeSoundVolume), forControlEvents: UIControlEvents.ValueChanged)
+        soundVolumeSlider.addTarget(self, action: #selector(changeSoundVolume), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.view!.addSubview(soundVolumeSlider)
         
@@ -87,7 +87,7 @@ class SettingsScene: SKScene{
         menuButton.titleLabel!.font = UIFont(name: "HelveticaNeue-UltraLight", size: 20.0)
         menuButton.frame = CGRect(x: self.view!.frame.size.width-100, y: self.view!.frame.size.height-300, width: 100, height: 30)
         menuButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        menuButton.addTarget(self, action: "goToMenuSettings:", forControlEvents: UIControlEvents.TouchUpInside)
+        menuButton.addTarget(self, action: #selector(goToMenuSettings), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.view!.addSubview(menuButton)
 
@@ -99,7 +99,7 @@ class SettingsScene: SKScene{
         soundVolumeLabel.zPosition = 1.0
     }
     
-    @objc func goToMenuSettings(sender: UIButton){
+    func goToMenuSettings(sender: UIButton){
         let menuScene = MenuScene(size: self.size)
         
         self.view?.presentScene(menuScene, transition: SKTransition.crossFadeWithDuration(0.0))
@@ -109,20 +109,19 @@ class SettingsScene: SKScene{
         soundVolumeSlider.removeFromSuperview()
     }
     
-    @objc func changeMusicVolume(sender: UISlider){
+    func changeMusicVolume(sender: UISlider){
         let dataManager = DataManagement()
         
         dataManager.setMusicVolume(musicVolumeSlider.value)
     }
     
-    @objc func changeSoundVolume(sender: UISlider){
+    func changeSoundVolume(sender: UISlider){
         let dataManager = DataManagement()
         
         dataManager.setSoundVolume(soundVolumeSlider.value)
     }
 
 }
-
 
 
 
