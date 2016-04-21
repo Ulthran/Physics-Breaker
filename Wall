@@ -12,8 +12,8 @@ import SpriteKit
 
 
 class Wall {
-    var height: Double
-    var width: Double
+    private var height: Double
+    private var width: Double
     
     init(){
         height = 0
