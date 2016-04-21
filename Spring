@@ -12,10 +12,10 @@ import SpriteKit
 
 
 class Spring {
-    var baseLen: Double
-    var extLen: Double
-    var k: Double
-    var force: Double
+    private var baseLen: Double
+    private var extLen: Double
+    private var k: Double
+    private var force: Double
     
     init(){
         baseLen = 0
