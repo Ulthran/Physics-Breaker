@@ -48,7 +48,7 @@ class IDKsScene: SKScene{
         menuButton.titleLabel!.font = UIFont(name: "HelveticaNeue-UltraLight", size: 20.0)
         menuButton.frame = CGRect(x: self.view!.frame.size.width-100, y: self.view!.frame.size.height-300, width: 100, height: 30)
         menuButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        menuButton.addTarget(self, action: "goToMenuIDK:", forControlEvents: UIControlEvents.TouchUpInside)
+        menuButton.addTarget(self, action: #selector(goToMenuIDK), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.view!.addSubview(menuButton)
         
@@ -140,7 +140,7 @@ class IDKsScene: SKScene{
         buyMoreButton.titleLabel!.font = UIFont(name: "HelveticaNeue-UltraLight", size: 30)
         buyMoreButton.frame = CGRect(x: CGRectGetMidX(self.frame)-325, y: 270, width: 200, height: 50)
         buyMoreButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        buyMoreButton.addTarget(self, action: "goToInAppPurchases:", forControlEvents: UIControlEvents.TouchUpInside)
+        buyMoreButton.addTarget(self, action: #selector(goToInAppPurchases), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.view!.addSubview(buyMoreButton)
         
@@ -159,7 +159,7 @@ class IDKsScene: SKScene{
         IDKDescription7.zPosition = 1.0
     }
     
-    @objc func goToMenuIDK(sender: UIButton){
+    func goToMenuIDK(sender: UIButton){
         let menuScene = MenuScene(size: self.size)
         
         self.view?.presentScene(menuScene, transition: SKTransition.crossFadeWithDuration(0.0))
@@ -168,12 +168,11 @@ class IDKsScene: SKScene{
         buyMoreButton.removeFromSuperview()
     }
     
-    @objc func goToInAppPurchases(sender: UIButton){
+    func goToInAppPurchases(sender: UIButton){
         /*Work on this later*/
     }
     
 }
-
 
 
 
