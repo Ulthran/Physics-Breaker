@@ -12,10 +12,10 @@ import SpriteKit
 
 
 class AngularMass {
-    var mass: Double
-    var acc: Double
-    var vel: Double
-    var elast: Bool
+    private var mass: Double
+    private var acc: Double
+    private var vel: Double
+    private var elast: Bool
     
     init(){
         mass = 0
