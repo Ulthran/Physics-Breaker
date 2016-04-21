@@ -510,7 +510,7 @@ class DrawingBoardScene: SKScene {
     
     var nodeCounter = 0
     
-    @objc func createFrictionlessMass(sender: UIButton){
+    func createFrictionlessMass(sender: UIButton){
         if(nodeCounter < 32){
             physicsObject = PhysicsObject(objectType: "Frictionless Mass")
             physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
@@ -522,7 +522,7 @@ class DrawingBoardScene: SKScene {
         }
     }
     
-    @objc func createAngularMass(sender: UIButton){
+    func createAngularMass(sender: UIButton){
         if(nodeCounter < 32){
             physicsObject = PhysicsObject(objectType: "Angular Mass")
             physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
@@ -534,7 +534,7 @@ class DrawingBoardScene: SKScene {
         }
     }
     
-    @objc func createFocalPoint(sender: UIButton){
+    func createFocalPoint(sender: UIButton){
         if(nodeCounter < 32){
             physicsObject = PhysicsObject(objectType: "Focal Point")
             physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
@@ -546,7 +546,7 @@ class DrawingBoardScene: SKScene {
         }
     }
     
-    @objc func createFlatSurface(sender: UIButton){
+    func createFlatSurface(sender: UIButton){
         if(nodeCounter < 32){
             physicsObject = PhysicsObject(objectType: "Flat Surface")
             physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
@@ -558,7 +558,7 @@ class DrawingBoardScene: SKScene {
         }
     }
     
-    @objc func createInclinedPlane(sender: UIButton){
+    func createInclinedPlane(sender: UIButton){
         if(nodeCounter < 32){
             physicsObject = PhysicsObject(objectType: "Inclined Plane")
             physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
@@ -570,7 +570,7 @@ class DrawingBoardScene: SKScene {
         }
     }
     
-    @objc func createDropOff(sender: UIButton){
+    func createDropOff(sender: UIButton){
         if(nodeCounter < 32){
             physicsObject = PhysicsObject(objectType: "Drop Off")
             physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
@@ -582,7 +582,7 @@ class DrawingBoardScene: SKScene {
         }
     }
     
-    @objc func createRise(sender: UIButton){
+    func createRise(sender: UIButton){
         if(nodeCounter < 32){
             physicsObject = PhysicsObject(objectType: "Rise")
             physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
@@ -594,7 +594,7 @@ class DrawingBoardScene: SKScene {
         }
     }
     
-    @objc func createWall(sender: UIButton){
+    func createWall(sender: UIButton){
         if(nodeCounter < 32){
             physicsObject = PhysicsObject(objectType: "Wall")
             physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
@@ -606,7 +606,7 @@ class DrawingBoardScene: SKScene {
         }
     }
     
-    @objc func createForceVector(sender: UIButton){
+    func createForceVector(sender: UIButton){
         if(nodeCounter < 32){
             physicsObject = PhysicsObject(objectType: "Force Vector")
             physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
@@ -618,7 +618,7 @@ class DrawingBoardScene: SKScene {
         }
     }
     
-    @objc func createWeight(sender: UIButton){
+    func createWeight(sender: UIButton){
         if(nodeCounter < 32){
             physicsObject = PhysicsObject(objectType: "Weight")
             physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
@@ -630,7 +630,7 @@ class DrawingBoardScene: SKScene {
         }
     }
     
-    @objc func createFriction(sender: UIButton){
+    func createFriction(sender: UIButton){
         if(nodeCounter < 32){
             physicsObject = PhysicsObject(objectType: "Friction")
             physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
@@ -642,7 +642,7 @@ class DrawingBoardScene: SKScene {
         }
     }
     
-    @objc func createNormalForce(sender: UIButton){
+    func createNormalForce(sender: UIButton){
         if(nodeCounter < 32){
             physicsObject = PhysicsObject(objectType: "Normal Force")
             physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
@@ -654,7 +654,7 @@ class DrawingBoardScene: SKScene {
         }
     }
     
-    @objc func createString(sender: UIButton){
+    func createString(sender: UIButton){
         if(nodeCounter < 32){
             physicsObject = PhysicsObject(objectType: "String")
             physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
@@ -666,7 +666,7 @@ class DrawingBoardScene: SKScene {
         }
     }
     
-    @objc func createGlue(sender: UIButton){
+    func createGlue(sender: UIButton){
         if(nodeCounter < 32){
             physicsObject = PhysicsObject(objectType: "Glue")
             physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
@@ -678,7 +678,7 @@ class DrawingBoardScene: SKScene {
         }
     }
     
-    @objc func createPutty(sender: UIButton){
+    func createPutty(sender: UIButton){
         if(nodeCounter < 32){
             physicsObject = PhysicsObject(objectType: "Putty")
             physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
@@ -690,7 +690,7 @@ class DrawingBoardScene: SKScene {
         }
     }
     
-    @objc func createSpring(sender: UIButton){
+    func createSpring(sender: UIButton){
         if(nodeCounter < 32){
             physicsObject = PhysicsObject(objectType: "Spring")
             physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
