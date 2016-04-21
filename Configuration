@@ -72,6 +72,8 @@ class Configuration {
         let region = SKRegion(radius: 10.0)
         // Set nodesInRegion[] to hold all physics objects close to the node
         
+        //INITIALIZE REGION NEAR NODE!!!
+        
         var counter = 0
         for node in physicsNodes{
             /*
@@ -80,14 +82,22 @@ class Configuration {
             */
             var inRegion = false
             
-            if(node.name == ""){
-                // If physicsObject is close to node make inRegion true
-                
+            if(node.name == "Flat Surface" || node.name == "Inclined Plane" || node.name == "Cliff" || node.name == "Rise" || node.name == "String" || node.name == "Spring"){
+                if(node.name == "Flat Surface" || node.name == "Rise"){
+                    // If physicsObject is close to node make inRegion true
+                    inRegion = region.containsPoint(node.position)
+                    print("Horray!")
+                }else if(node.name == "Cliff"){
+                    inRegion = region.containsPoint(CGPoint(x: node.position.x, y: node.position.y+5))
+                }else if(node.name == "Inclined Plane" || node.name == "String" || node.name == "Spring"){
+                    inRegion = region.containsPoint(CGPoint(x: node.position.x+5, y: node.position.y+5))
+                }
             }
             
             if(inRegion){
                 nodesInRegion[counter] = node
-                counter++
+                nodesInRegion[counter].name = node.name
+                counter += 1
             }
             
         }
@@ -99,7 +109,18 @@ class Configuration {
         
         for obj in nodesInRegion{
             if obj.name == "Flat Surface" {
-                //blah blah blah
+                physicsObject.position = obj.position
+                print("It's working")
+            }else if obj.name == "Inclined Plane" {
+                physicsObject.position = obj.position
+            }else if obj.name == "Cliff" {
+                physicsObject.position = obj.position
+            }else if obj.name == "Rise" {
+                physicsObject.position = obj.position
+            }else if obj.name == "String" {
+                physicsObject.position = obj.position
+            }else if obj.name == "Spring" {
+                physicsObject.position = obj.position
             }
         }
     }
@@ -111,13 +132,20 @@ class Configuration {
         for node in physicsNodes{
             var inRegion = false
             
-            if(node.name == ""){
-                
+            if(node.name == "Flat Surface" || node.name == "Inclined Plane" || node.name == "Cliff" || node.name == "Rise" || node.name == "String" || node.name == "Spring"){
+                if(node.name == "Flat Surface" || node.name == "Rise"){
+                    inRegion = region.containsPoint(node.position)
+                }else if(node.name == "Cliff"){
+                    inRegion = region.containsPoint(CGPoint(x: node.position.x, y: node.position.y+5))
+                }else if(node.name == "Inclined Plane" || node.name == "String" || node.name == "Spring"){
+                    inRegion = region.containsPoint(CGPoint(x: node.position.x+5, y: node.position.y+5))
+                }
             }
             
             if(inRegion){
                 nodesInRegion[counter] = node
-                counter++
+                nodesInRegion[counter].name = node.name
+                counter += 1
             }
             
         }
@@ -129,7 +157,17 @@ class Configuration {
         
         for obj in nodesInRegion{
             if obj.name == "Flat Surface" {
-                //blah blah blah
+                physicsObject.position = obj.position
+            }else if obj.name == "Inclined Plane" {
+                physicsObject.position = obj.position
+            }else if obj.name == "Cliff" {
+                physicsObject.position = obj.position
+            }else if obj.name == "Rise" {
+                physicsObject.position = obj.position
+            }else if obj.name == "String" {
+                physicsObject.position = obj.position
+            }else if obj.name == "Spring" {
+                physicsObject.position = obj.position
             }
         }
         
@@ -148,7 +186,7 @@ class Configuration {
             
             if(inRegion){
                 nodesInRegion[counter] = node
-                counter++
+                counter += 1
             }
             
         }
@@ -178,7 +216,7 @@ class Configuration {
             
             if(inRegion){
                 nodesInRegion[counter] = node
-                counter++
+                counter += 1
             }
             
         }
@@ -209,7 +247,7 @@ class Configuration {
             
             if(inRegion){
                 nodesInRegion[counter] = node
-                counter++
+                counter += 1
             }
             
         }
@@ -240,7 +278,7 @@ class Configuration {
             
             if(inRegion){
                 nodesInRegion[counter] = node
-                counter++
+                counter += 1
             }
             
         }
@@ -271,7 +309,7 @@ class Configuration {
             
             if(inRegion){
                 nodesInRegion[counter] = node
-                counter++
+                counter += 1
             }
             
         }
@@ -302,7 +340,7 @@ class Configuration {
             
             if(inRegion){
                 nodesInRegion[counter] = node
-                counter++
+                counter += 1
             }
             
         }
@@ -333,7 +371,7 @@ class Configuration {
             
             if(inRegion){
                 nodesInRegion[counter] = node
-                counter++
+                counter += 1
             }
             
         }
@@ -364,7 +402,7 @@ class Configuration {
             
             if(inRegion){
                 nodesInRegion[counter] = node
-                counter++
+                counter += 1
             }
             
         }
@@ -395,7 +433,7 @@ class Configuration {
             
             if(inRegion){
                 nodesInRegion[counter] = node
-                counter++
+                counter += 1
             }
             
         }
@@ -426,7 +464,7 @@ class Configuration {
             
             if(inRegion){
                 nodesInRegion[counter] = node
-                counter++
+                counter += 1
             }
             
         }
@@ -457,7 +495,7 @@ class Configuration {
             
             if(inRegion){
                 nodesInRegion[counter] = node
-                counter++
+                counter += 1
             }
             
         }
@@ -488,7 +526,7 @@ class Configuration {
             
             if(inRegion){
                 nodesInRegion[counter] = node
-                counter++
+                counter += 1
             }
             
         }
@@ -519,7 +557,7 @@ class Configuration {
             
             if(inRegion){
                 nodesInRegion[counter] = node
-                counter++
+                counter += 1
             }
             
         }
@@ -550,7 +588,7 @@ class Configuration {
             
             if(inRegion){
                 nodesInRegion[counter] = node
-                counter++
+                counter += 1
             }
             
         }
