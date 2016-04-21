@@ -62,8 +62,12 @@ class DrawingBoardScene: SKScene {
     
     let sideBarBackButton = UIButton()
     
+    var physicsNode = [SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode()]
+    
     override func didMoveToView(view: SKView) {
         self.backgroundColor = UIColor.whiteColor()  //sets scene's background to white
+        
+        self.view!.ignoresSiblingOrder = true
         
         setUpScene()
     }
@@ -87,7 +91,7 @@ class DrawingBoardScene: SKScene {
         menuButton.titleLabel!.font = UIFont(name: "HelveticaNeue-UltraLight", size: 20.0)
         menuButton.frame = CGRect(x: self.view!.frame.size.width-100, y: self.view!.frame.size.height-300, width: 100, height: 30)
         menuButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        menuButton.addTarget(self, action: "goToMenu:", forControlEvents: UIControlEvents.TouchUpInside)
+        menuButton.addTarget(self, action: #selector(goToMenu), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.view!.addSubview(menuButton)
         
@@ -96,7 +100,7 @@ class DrawingBoardScene: SKScene {
         calculateButton.titleLabel!.font = UIFont(name: "HelveticaNeue-UltraLight", size: 30.0)
         calculateButton.frame = CGRect(x: ((self.view!.frame.size.width)/2)-150, y: 280.0, width: 150, height: 30.0)
         calculateButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        calculateButton.addTarget(self, action: "calculate:", forControlEvents: UIControlEvents.TouchUpInside)
+        calculateButton.addTarget(self, action: #selector(calculate), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.view!.addSubview(calculateButton)
         
@@ -115,35 +119,35 @@ class DrawingBoardScene: SKScene {
         /*BUTTON: Masses category in the sidebar*/
         sideBarItem1.setImage(UIImage(named:"Masses"), forState: UIControlState.Normal)
         sideBarItem1.frame = CGRect(x: 20.0, y: 70.0, width: 30.0, height: 30.0)
-        sideBarItem1.addTarget(self, action: "massesSideBar:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem1.addTarget(self, action: #selector(massesSideBar), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.view!.addSubview(sideBarItem1)
         
         /*BUTTON: Surfaces category in the sidebar*/
         sideBarItem2.setImage(UIImage(named:"Surfaces"), forState: UIControlState.Normal)
         sideBarItem2.frame = CGRect(x: 20.0, y: 120.0, width: 30.0, height: 30.0)
-        sideBarItem2.addTarget(self, action: "surfacesSideBar:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem2.addTarget(self, action: #selector(surfacesSideBar), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.view!.addSubview(sideBarItem2)
         
         /*BUTTON: Force vectors category in the sidebar*/
         sideBarItem3.setImage(UIImage(named:"Force Vectors"), forState: UIControlState.Normal)
         sideBarItem3.frame = CGRect(x: 20.0, y: 170.0, width: 30.0, height: 30.0)
-        sideBarItem3.addTarget(self, action: "forceVectorsSideBar:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem3.addTarget(self, action: #selector(forceVectorsSideBar), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.view!.addSubview(sideBarItem3)
         
         /*BUTTON: Connectors category in the sidebar*/
         sideBarItem4.setImage(UIImage(named:"Connectors"), forState: UIControlState.Normal)
         sideBarItem4.frame = CGRect(x: 20.0, y: 220.0, width: 30.0, height: 30.0)
-        sideBarItem4.addTarget(self, action: "connectorsSideBar:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem4.addTarget(self, action: #selector(connectorsSideBar), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.view!.addSubview(sideBarItem4)
         
         /*BUTTON: 5th category in the sidebar*/
         /*sideBarItem5.setImage(UIImage(named:"Category 5 Image"), forState: UIControlState.Normal)
         sideBarItem5.frame = CGRect(x: 20.0, y: 230.0, width: 30.0, height: 30.0)
-        sideBarItem5.addTarget(self, action: "cat5SideBar:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem5.addTarget(self, action: #selector(cat5SideBar), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.view!.addSubview(sideBarItem5)*/
         
@@ -152,7 +156,7 @@ class DrawingBoardScene: SKScene {
         sideBarBackButton.frame = CGRect(x: 10.0, y: 245.0, width: 50.0, height: 30.0)
         sideBarBackButton.titleLabel!.font = UIFont(name: "HelveticaNeue-UltraLight", size: 15.0)
         sideBarBackButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        sideBarBackButton.addTarget(self, action: "mainSideBar:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarBackButton.addTarget(self, action: #selector(mainSideBar), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.view!.addSubview(sideBarBackButton)
     }
@@ -167,19 +171,19 @@ class DrawingBoardScene: SKScene {
     func setUpMassesSideBar(){
         sideBarItem1_1.setImage(UIImage(named: "Frictionless Mass"), forState: UIControlState.Normal)
         sideBarItem1_1.frame = CGRect(x: 20.0, y: 70.0, width: 35.0, height: 30.0)
-        sideBarItem1_1.addTarget(self, action: "createFrictionlessMass:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem1_1.addTarget(self, action: #selector(createFrictionlessMass), forControlEvents: UIControlEvents.TouchUpInside)
         sideBarItem1_2.setImage(UIImage(named: "Angular Mass"), forState: UIControlState.Normal)
         sideBarItem1_2.frame = CGRect(x: 20.0, y: 110.0, width: 30.0, height: 30.0)
-        sideBarItem1_2.addTarget(self, action: "createAngularMass:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem1_2.addTarget(self, action: #selector(createAngularMass), forControlEvents: UIControlEvents.TouchUpInside)
         sideBarItem1_3.setImage(UIImage(named: "Focal Point"), forState: UIControlState.Normal)
         sideBarItem1_3.frame = CGRect(x: 20.0, y: 150.0, width: 30.0, height: 30.0)
-        sideBarItem1_3.addTarget(self, action: "createFocalPoint:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem1_3.addTarget(self, action: #selector(createFocalPoint), forControlEvents: UIControlEvents.TouchUpInside)
         /*sideBarItem1_4.setImage(UIImage(named: ""), forState: UIControlState.Normal)
         sideBarItem1_4.frame = CGRect(x: 20.0, y: 190.0, width: 30.0, height: 30.0)
-        sideBarItem1_4.addTarget(self, action: "", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem1_4.addTarget(self, action: #selector(), forControlEvents: UIControlEvents.TouchUpInside)
         sideBarItem1_5.setImage(UIImage(named: ""), forState: UIControlState.Normal)
         sideBarItem1_5.frame = CGRect(x: 20.0, y: 230.0, width: 30.0, height: 30.0)
-        sideBarItem1_5.addTarget(self, action: "", forControlEvents: UIControlEvents.TouchUpInside)*/
+        sideBarItem1_5.addTarget(self, action: #selector(), forControlEvents: UIControlEvents.TouchUpInside)*/
         
         self.view!.addSubview(sideBarItem1_1)
         self.view!.addSubview(sideBarItem1_2)
@@ -191,19 +195,19 @@ class DrawingBoardScene: SKScene {
     func setUpSurfacesSideBar(){
         sideBarItem2_1.setImage(UIImage(named: "Flat Surface"), forState: UIControlState.Normal)
         sideBarItem2_1.frame = CGRect(x: 20.0, y: 75.0, width: 30.0, height: 10.0)
-        sideBarItem2_1.addTarget(self, action: "createFlatSurface:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem2_1.addTarget(self, action: #selector(createFlatSurface), forControlEvents: UIControlEvents.TouchUpInside)
         sideBarItem2_2.setImage(UIImage(named: "Inclined Plane"), forState: UIControlState.Normal)
         sideBarItem2_2.frame = CGRect(x: 20.0, y: 100.0, width: 30.0, height: 30.0)
-        sideBarItem2_2.addTarget(self, action: "createInclinedPlane:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem2_2.addTarget(self, action: #selector(createInclinedPlane), forControlEvents: UIControlEvents.TouchUpInside)
         sideBarItem2_3.setImage(UIImage(named: "Drop Off"), forState: UIControlState.Normal)
         sideBarItem2_3.frame = CGRect(x: 5.0, y: 140.0, width: 60.0, height: 30.0)
-        sideBarItem2_3.addTarget(self, action: "createDropOff:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem2_3.addTarget(self, action: #selector(createDropOff), forControlEvents: UIControlEvents.TouchUpInside)
         sideBarItem2_4.setImage(UIImage(named: "Rise"), forState: UIControlState.Normal)
         sideBarItem2_4.frame = CGRect(x: 5.0, y: 180.0, width: 60.0, height: 30.0)
-        sideBarItem2_4.addTarget(self, action: "createRise:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem2_4.addTarget(self, action: #selector(createRise), forControlEvents: UIControlEvents.TouchUpInside)
         sideBarItem2_5.setImage(UIImage(named: "Wall"), forState: UIControlState.Normal)
         sideBarItem2_5.frame = CGRect(x: 20.0, y: 220.0, width: 15.0, height: 30.0)
-        sideBarItem2_5.addTarget(self, action: "createWall:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem2_5.addTarget(self, action: #selector(createWall), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.view!.addSubview(sideBarItem2_1)
         self.view!.addSubview(sideBarItem2_2)
@@ -215,19 +219,19 @@ class DrawingBoardScene: SKScene {
     func setUpForceVectorsSideBar(){
         sideBarItem3_1.setImage(UIImage(named: "Force Vector"), forState: UIControlState.Normal)
         sideBarItem3_1.frame = CGRect(x: 20.0, y: 70.0, width: 30.0, height: 30.0)
-        sideBarItem3_1.addTarget(self, action: "createForceVector:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem3_1.addTarget(self, action: #selector(createForceVector), forControlEvents: UIControlEvents.TouchUpInside)
         sideBarItem3_2.setImage(UIImage(named: "Weight"), forState: UIControlState.Normal)
         sideBarItem3_2.frame = CGRect(x: 30.0, y: 110.0, width: 10.0, height: 30.0)
-        sideBarItem3_2.addTarget(self, action: "createWeight:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem3_2.addTarget(self, action: #selector(createWeight), forControlEvents: UIControlEvents.TouchUpInside)
         sideBarItem3_3.setImage(UIImage(named: "Friction"), forState: UIControlState.Normal)
         sideBarItem3_3.frame = CGRect(x: 18.0, y: 160.0, width: 35.0, height: 15.0)
-        sideBarItem3_3.addTarget(self, action: "createFriction:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem3_3.addTarget(self, action: #selector(createFriction), forControlEvents: UIControlEvents.TouchUpInside)
         sideBarItem3_4.setImage(UIImage(named: "Normal Force"), forState: UIControlState.Normal)
         sideBarItem3_4.frame = CGRect(x: 30.0, y: 190.0, width: 10.0, height: 30.0)
-        sideBarItem3_4.addTarget(self, action: "createNormalForce:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem3_4.addTarget(self, action: #selector(createNormalForce), forControlEvents: UIControlEvents.TouchUpInside)
         //sideBarItem3_5.setImage(UIImage(named: ""), forState: UIControlState.Normal)
         //sideBarItem3_5.frame = CGRect(x: 20.0, y: 230.0, width: 15.0, height: 30.0)
-        //sideBarItem3_5.addTarget(self, action: "", forControlEvents: UIControlEvents.TouchUpInside)
+        //sideBarItem3_5.addTarget(self, action: #selector(), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.view!.addSubview(sideBarItem3_1)
         self.view!.addSubview(sideBarItem3_2)
@@ -239,19 +243,19 @@ class DrawingBoardScene: SKScene {
     func setUpConnectorsSideBar(){
         sideBarItem4_1.setImage(UIImage(named: "String"), forState: UIControlState.Normal)
         sideBarItem4_1.frame = CGRect(x: 20.0, y: 80.0, width: 30.0, height: 10.0)
-        sideBarItem4_1.addTarget(self, action: "createString:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem4_1.addTarget(self, action: #selector(createString), forControlEvents: UIControlEvents.TouchUpInside)
         sideBarItem4_2.setImage(UIImage(named: "Glue"), forState: UIControlState.Normal)
         sideBarItem4_2.frame = CGRect(x: 20.0, y: 110.0, width: 30.0, height: 30.0)
-        sideBarItem4_2.addTarget(self, action: "createGlue:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem4_2.addTarget(self, action: #selector(createGlue), forControlEvents: UIControlEvents.TouchUpInside)
         sideBarItem4_3.setImage(UIImage(named: "Putty"), forState: UIControlState.Normal)
         sideBarItem4_3.frame = CGRect(x: 20.0, y: 150.0, width: 30.0, height: 30.0)
-        sideBarItem4_3.addTarget(self, action: "createPutty:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem4_3.addTarget(self, action: #selector(createPutty), forControlEvents: UIControlEvents.TouchUpInside)
         sideBarItem4_4.setImage(UIImage(named: "Spring"), forState: UIControlState.Normal)
         sideBarItem4_4.frame = CGRect(x: 20.0, y: 190.0, width: 30.0, height: 30.0)
-        sideBarItem4_4.addTarget(self, action: "createSpring:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem4_4.addTarget(self, action: #selector(createSpring), forControlEvents: UIControlEvents.TouchUpInside)
         //sideBarItem4_5.setImage(UIImage(named: ""), forState: UIControlState.Normal)
         //sideBarItem4_5.frame = CGRect(x: 20.0, y: 230.0, width: 30.0, height: 30.0)
-        //sideBarItem4_5.addTarget(self, action: "", forState: UIControlState.TouchUpInside)
+        //sideBarItem4_5.addTarget(self, action: #selector(), forState: UIControlState.TouchUpInside)
         
         self.view!.addSubview(sideBarItem4_1)
         self.view!.addSubview(sideBarItem4_2)
@@ -269,20 +273,26 @@ class DrawingBoardScene: SKScene {
     ----------------------------------------------------isInBounds()--------------------------------------------------------------
     ----------------------------------------------------------------------------------------------------------------------------*/
     
+    //Corners:
+    //top left: 215, 540
+    //top right: 950, 540
+    //bottom right: 950, 150
+    //bottom left: 215, 150
     
-    
-    func isInBounds(node: SKSpriteNode){
+    func isInBounds(node: SKSpriteNode) ->Bool{
         var rightBound = CGFloat()
         var leftBound = CGFloat()
         var upperBound = CGFloat()
         var lowerBound = CGFloat()
-        rightBound = self.view!.frame.width - (node.size.width / 2)
-        leftBound = CGRectGetMinX(self.view!.frame) + (node.size.width / 2)
-        upperBound = self.view!.frame.height - (node.size.height / 2)
-        lowerBound = CGRectGetMinY(self.frame) + (node.size.height / 2)
+        rightBound = 950.0
+        leftBound = 215.0
+        upperBound = 540.0
+        lowerBound = 150.0
         
-        if(node.position.x < leftBound || node.position.x > rightBound || node.position.y < upperBound || node.position.y > lowerBound){
-            node.removeFromParent()
+        if(positionInScene.x < leftBound || positionInScene.x > rightBound || positionInScene.y > upperBound || positionInScene.y < lowerBound){
+            return true //true if out of bounds
+        }else{
+            return false //false if in bounds
         }
     }
     
@@ -293,7 +303,7 @@ class DrawingBoardScene: SKScene {
     
     
     
-    @objc func goToMenu(sender: UIButton){
+    func goToMenu(sender: UIButton){
         let menuScene = MenuScene(size: self.size)
         
         self.view?.presentScene(menuScene, transition: SKTransition.crossFadeWithDuration(0.0))
@@ -335,7 +345,7 @@ class DrawingBoardScene: SKScene {
         nodeCounter = 0
     }
     
-    @objc func mainSideBar(sender: UIButton){
+    func mainSideBar(sender: UIButton){
         sideBarItem1.removeFromSuperview()
         sideBarItem2.removeFromSuperview()
         sideBarItem3.removeFromSuperview()
@@ -369,36 +379,36 @@ class DrawingBoardScene: SKScene {
         
         sideBarItem1.setImage(UIImage(named:"Masses"), forState: UIControlState.Normal)
         sideBarItem1.frame = CGRect(x: 20.0, y: 70.0, width: 30.0, height: 30.0)
-        sideBarItem1.addTarget(self, action: "massesSideBar:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem1.addTarget(self, action: #selector(massesSideBar), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.view!.addSubview(sideBarItem1)
         
         sideBarItem2.setImage(UIImage(named:"Surfaces"), forState: UIControlState.Normal)
         sideBarItem2.frame = CGRect(x: 20.0, y: 120.0, width: 30.0, height: 30.0)
-        sideBarItem2.addTarget(self, action: "surfacesSideBar:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem2.addTarget(self, action: #selector(surfacesSideBar), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.view!.addSubview(sideBarItem2)
         
         sideBarItem3.setImage(UIImage(named:"Force Vectors"), forState: UIControlState.Normal)
         sideBarItem3.frame = CGRect(x: 20.0, y: 170.0, width: 30.0, height: 30.0)
-        sideBarItem3.addTarget(self, action: "forceVectorsSideBar:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem3.addTarget(self, action: #selector(forceVectorsSideBar), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.view!.addSubview(sideBarItem3)
         
         sideBarItem4.setImage(UIImage(named:"Connectors"), forState: UIControlState.Normal)
         sideBarItem4.frame = CGRect(x: 20.0, y: 220.0, width: 30.0, height: 30.0)
-        sideBarItem4.addTarget(self, action: "connectorsSideBar:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem4.addTarget(self, action: #selector(connectorsSideBar), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.view!.addSubview(sideBarItem4)
         
         /*sideBarItem5.setImage(UIImage(named:"Category 5 Image"), forState: UIControlState.Normal)
         sideBarItem5.frame = CGRect(x: 20.0, y: 230.0, width: 30.0, height: 30.0)
-        sideBarItem5.addTarget(self, action: "cat5SideBar:", forControlEvents: UIControlEvents.TouchUpInside)
+        sideBarItem5.addTarget(self, action: #selector(cat5SideBar), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.view!.addSubview(sideBarItem5)*/
     }
     
-    @objc func calculate(sender: UIButton){
+    func calculate(sender: UIButton){
         /*GO TO CALCULATE SCENE*/
         
         menuButton.removeFromSuperview()
@@ -438,7 +448,7 @@ class DrawingBoardScene: SKScene {
         self.removeAllChildren()
     }
     
-    @objc func massesSideBar(sender: UIButton){
+    func massesSideBar(sender: UIButton){
         sideBarItem1.removeFromSuperview()
         sideBarItem2.removeFromSuperview()
         sideBarItem3.removeFromSuperview()
@@ -448,7 +458,7 @@ class DrawingBoardScene: SKScene {
         setUpMassesSideBar()
     }
     
-    @objc func surfacesSideBar(sender: UIButton){
+    func surfacesSideBar(sender: UIButton){
         sideBarItem1.removeFromSuperview()
         sideBarItem2.removeFromSuperview()
         sideBarItem3.removeFromSuperview()
@@ -458,7 +468,7 @@ class DrawingBoardScene: SKScene {
         setUpSurfacesSideBar()
     }
     
-    @objc func forceVectorsSideBar(sender: UIButton){
+    func forceVectorsSideBar(sender: UIButton){
         sideBarItem1.removeFromSuperview()
         sideBarItem2.removeFromSuperview()
         sideBarItem3.removeFromSuperview()
@@ -468,7 +478,7 @@ class DrawingBoardScene: SKScene {
         setUpForceVectorsSideBar()
     }
     
-    @objc func connectorsSideBar(sender: UIButton){
+    func connectorsSideBar(sender: UIButton){
         sideBarItem1.removeFromSuperview()
         sideBarItem2.removeFromSuperview()
         sideBarItem3.removeFromSuperview()
@@ -478,7 +488,7 @@ class DrawingBoardScene: SKScene {
         setUpConnectorsSideBar()
     }
     
-    /*@objc func cat5SideBar(sender: UIButton){
+    /*func cat5SideBar(sender: UIButton){
         sideBarItem1.removeFromSuperview()
         sideBarItem2.removeFromSuperview()
         sideBarItem3.removeFromSuperview()
@@ -495,7 +505,6 @@ class DrawingBoardScene: SKScene {
     
     var physicsObject = PhysicsObject(objectType: "Null")
     
-    var physicsNode = [SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode(), SKSpriteNode()]
     var initialPosition = CGPoint(x: 275.0, y: 400.0)
     var initialSize = CGSize(width: 50.0, height: 50.0)
     
@@ -505,6 +514,7 @@ class DrawingBoardScene: SKScene {
         if(nodeCounter < 32){
             physicsObject = PhysicsObject(objectType: "Frictionless Mass")
             physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
+            physicsNode[nodeCounter].name = "Frictionless Mass"
             
             self.addChild(physicsNode[nodeCounter])
             
@@ -516,6 +526,7 @@ class DrawingBoardScene: SKScene {
         if(nodeCounter < 32){
             physicsObject = PhysicsObject(objectType: "Angular Mass")
             physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
+            physicsNode[nodeCounter].name = "Angular Mass"
             
             self.addChild(physicsNode[nodeCounter])
             
@@ -527,6 +538,7 @@ class DrawingBoardScene: SKScene {
         if(nodeCounter < 32){
             physicsObject = PhysicsObject(objectType: "Focal Point")
             physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
+            physicsNode[nodeCounter].name = "Focal Point"
             
             self.addChild(physicsNode[nodeCounter])
             
@@ -538,6 +550,7 @@ class DrawingBoardScene: SKScene {
         if(nodeCounter < 32){
             physicsObject = PhysicsObject(objectType: "Flat Surface")
             physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
+            physicsNode[nodeCounter].name = "Flat Surface"
             
             self.addChild(physicsNode[nodeCounter])
             
@@ -549,6 +562,7 @@ class DrawingBoardScene: SKScene {
         if(nodeCounter < 32){
             physicsObject = PhysicsObject(objectType: "Inclined Plane")
             physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
+            physicsNode[nodeCounter].name = "Inclined Plane"
             
             self.addChild(physicsNode[nodeCounter])
             
@@ -560,6 +574,7 @@ class DrawingBoardScene: SKScene {
         if(nodeCounter < 32){
             physicsObject = PhysicsObject(objectType: "Drop Off")
             physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
+            physicsNode[nodeCounter].name = "Drop Off"
             
             self.addChild(physicsNode[nodeCounter])
             
@@ -571,6 +586,7 @@ class DrawingBoardScene: SKScene {
         if(nodeCounter < 32){
             physicsObject = PhysicsObject(objectType: "Rise")
             physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
+            physicsNode[nodeCounter].name = "Rise"
             
             self.addChild(physicsNode[nodeCounter])
             
@@ -582,6 +598,7 @@ class DrawingBoardScene: SKScene {
         if(nodeCounter < 32){
             physicsObject = PhysicsObject(objectType: "Wall")
             physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
+            physicsNode[nodeCounter].name = "Wall"
             
             self.addChild(physicsNode[nodeCounter])
             
@@ -593,6 +610,7 @@ class DrawingBoardScene: SKScene {
         if(nodeCounter < 32){
             physicsObject = PhysicsObject(objectType: "Force Vector")
             physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
+            physicsNode[nodeCounter].name = "Force Vector"
             
             self.addChild(physicsNode[nodeCounter])
             
@@ -604,6 +622,7 @@ class DrawingBoardScene: SKScene {
         if(nodeCounter < 32){
             physicsObject = PhysicsObject(objectType: "Weight")
             physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
+            physicsNode[nodeCounter].name = "Weight"
             
             self.addChild(physicsNode[nodeCounter])
             
@@ -615,6 +634,7 @@ class DrawingBoardScene: SKScene {
         if(nodeCounter < 32){
             physicsObject = PhysicsObject(objectType: "Friction")
             physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
+            physicsNode[nodeCounter].name = "Friction"
             
             self.addChild(physicsNode[nodeCounter])
             
@@ -626,6 +646,7 @@ class DrawingBoardScene: SKScene {
         if(nodeCounter < 32){
             physicsObject = PhysicsObject(objectType: "Normal Force")
             physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
+            physicsNode[nodeCounter].name = "Normal Force"
             
             self.addChild(physicsNode[nodeCounter])
             
@@ -637,6 +658,7 @@ class DrawingBoardScene: SKScene {
         if(nodeCounter < 32){
             physicsObject = PhysicsObject(objectType: "String")
             physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
+            physicsNode[nodeCounter].name = "String"
             
             self.addChild(physicsNode[nodeCounter])
             
@@ -648,6 +670,7 @@ class DrawingBoardScene: SKScene {
         if(nodeCounter < 32){
             physicsObject = PhysicsObject(objectType: "Glue")
             physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
+            physicsNode[nodeCounter].name = "Glue"
             
             self.addChild(physicsNode[nodeCounter])
             
@@ -659,6 +682,7 @@ class DrawingBoardScene: SKScene {
         if(nodeCounter < 32){
             physicsObject = PhysicsObject(objectType: "Putty")
             physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
+            physicsNode[nodeCounter].name = "Putty"
             
             self.addChild(physicsNode[nodeCounter])
             
@@ -670,6 +694,7 @@ class DrawingBoardScene: SKScene {
         if(nodeCounter < 32){
             physicsObject = PhysicsObject(objectType: "Spring")
             physicsNode[nodeCounter] = physicsObject.getPhysicsObject()
+            physicsNode[nodeCounter].name = "Spring"
             
             self.addChild(physicsNode[nodeCounter])
             
@@ -679,71 +704,79 @@ class DrawingBoardScene: SKScene {
     
     
     
+    
     /*----------------------------------------------------------------------------------------------------------------------------
     --------------------------------------------------Move Physics Nodes----------------------------------------------------------
     ----------------------------------------------------------------------------------------------------------------------------*/
     
     
-    var selectedNode = SKSpriteNode()
-    var movableNodeName = "movable"
     
-    func assignNames(){
-        for(var i=0; i<32; i++){
-            physicsNode[i].name = movableNodeName
-        }
-    }
+    var positionInScene = CGPoint(x: 0.0, y: 0.0)
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        var positionInScene = CGPoint(x: 375.0, y: 400.0)
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        positionInScene = CGPoint(x: 375.0, y: 400.0)
+        var i = 0
+        
+        repeat{
+            physicsNode[i].zPosition = 10
+            i += 1
+        }while(i<32)
+        
+        titleLabel.zPosition = 5
+        drawingBoard.zPosition = 5
+        sideBar.zPosition = 5
+        
+        titleLabel.userInteractionEnabled = false
+        drawingBoard.userInteractionEnabled = false
+        sideBar.userInteractionEnabled = false
+        
+        titleLabel.name = "blah"
+        drawingBoard.name = "blah"
+        sideBar.name = "blah"
         
         for touch in touches {
             positionInScene = touch.locationInNode(self)
-        }
-        
-        print("Touches Began")
-        
-        assignNames()
-        
-        selectNodeForTouch(positionInScene)
-    }
-    
-    func degToRad(degree: Double) -> CGFloat {
-        return CGFloat(Double(degree) / 180.0 * M_PI)
-    }
-    
-    func selectNodeForTouch(touchLocation: CGPoint) {
-        print(self.nodeAtPoint(touchLocation))
-        let touchedNode = self.nodeAtPoint(touchLocation)
-        print(touchedNode)
-        
-        if touchedNode is SKSpriteNode {
-            if !selectedNode.isEqual(touchedNode) {
-                selectedNode.removeAllActions()
-                selectedNode.runAction(SKAction.rotateToAngle(0.0, duration: 0.1))
+            
+            if self.nodeAtPoint(positionInScene) is SKSpriteNode {
                 
-                selectedNode = touchedNode as! SKSpriteNode
-                
-                if touchedNode.name == movableNodeName {
-                    let sequence = SKAction.sequence([SKAction.rotateByAngle(degToRad(-4.0), duration: 0.1),
-                        SKAction.rotateByAngle(0.0, duration: 0.1),
-                        SKAction.rotateByAngle(degToRad(4.0), duration: 0.1)])
-                    selectedNode.runAction(SKAction.repeatActionForever(sequence))
+                if(self.nodeAtPoint(positionInScene).zPosition >= 10){
+                    (self.nodeAtPoint(touch.previousLocationInNode(self))).zPosition = 15
+                    (self.nodeAtPoint(touch.previousLocationInNode(self))).position = positionInScene
+                    print(positionInScene)
                 }
             }
         }
     }
     
-    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        var positionInScene = CGPoint(x: 375.0, y: 400.0)
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {        
+        var i = 0
         
-        for touch in touches {
+        for touch in touches{
             positionInScene = touch.locationInNode(self)
+        }
         
-            (self.nodeAtPoint(touch.previousLocationInNode(self))).position = positionInScene
+        drawingBoard.position = CGPoint(x: ((self.view!.frame.size.width)/2)+300.0, y: 350.0)
+        
+        if (self.nodeAtPoint(positionInScene).name == "blah" || self.nodeAtPoint(positionInScene).name == nil){
+            print("uh-oh")
+        }else{
+            let configObj = Configuration(physicsObj: self.nodeAtPoint(positionInScene).name!, rotation: self.nodeAtPoint(positionInScene).zRotation, position: self.nodeAtPoint(positionInScene).position, physicsNodesX: physicsNode)
+            
+            repeat{
+                if physicsNode[i].position == self.nodeAtPoint(positionInScene).position {
+                    physicsNode[i].zPosition = 10
+                    physicsNode[i].removeFromParent()
+                    physicsNode[i] = configObj.getPhysicsObject()
+                    self.addChild(physicsNode[i])
+                    if isInBounds(physicsNode[i]){
+                        physicsNode[i].removeFromParent()
+                    }
+                }
+                i += 1
+            }while(i<32)
         }
     }
 }
-
 
 
 
